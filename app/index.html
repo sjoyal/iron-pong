@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="" ng-app="iron-pong">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -27,17 +27,16 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <div class="container">
-      <div class="header">
+    <main ng-controller="MainController as app">
+      <header class="container-fluid head">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
         <h3 class="text-muted">iron pong</h3>
-      </div>
-
+      </header>
+      <div ng-view></div>
       <div class="jumbotron">
         <h1>'Allo, 'Allo!</h1>
         <p class="lead">Always a pleasure scaffolding your apps.</p>
@@ -60,10 +59,10 @@
         </div>
       </div>
 
-      <div class="footer">
+      <footer class="footer">
         <p>♥ from the Yeoman team</p>
-      </div>
-    </div>
+      </footer>
+    </main> <!-- ng-controller -->
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -92,7 +91,11 @@
     <!-- endbuild -->
 
     <!-- build:js scripts/main.js -->
-    <script src="scripts/main.js"></script>
+    <script src="scripts/iron-pong.js"></script>
+    <script src="scripts/iron-pong/leaderboard.controller.js"></script>
+    <script src="scripts/iron-pong/gameresult.controller.js"></script>
+    <script src="scripts/iron-pong/submitgameresult.controller.js"></script>
+    <script src="scripts/iron-pong/results.service.js"></script>
     <!-- endbuild -->
   </body>
 </html>
