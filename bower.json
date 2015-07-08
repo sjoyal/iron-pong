@@ -1,0 +1,12 @@
+{
+  "name": "iron-pong",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass": "3.3.4",
+    "modernizr": "~2.8.1"
+  },
+  "devDependencies": {
+    "chai": "~3.0.0",
+    "mocha": "~2.2.5"
+  }
+}
