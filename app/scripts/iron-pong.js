@@ -21,14 +21,16 @@
         // controllerAs: 'submitgameresult'
       }); // END $routeProvider submitgameresult
 
+      $routeProvider.when('/404', {
+        templateUrl: 'views/404.html'
+      });
+
       $routeProvider.when('/', {
         redirectTo: '/leaderboard'
       }); // END redirecTo leaderboard
 
-      $routeProvider.otherwise('/404', {
-        templateUrl: 'views/404.html'
-      });
-    }); // END otherwise 404
+      $routeProvider.otherwise('/404');
+    })
 
     .controller('MainController', function($scope) {
 
