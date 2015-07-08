@@ -1,6 +1,5 @@
 {
   "name": "iron-pong",
-  "private": true,
   "dependencies": {
     "bootstrap-sass": "3.3.4",
     "modernizr": "~2.8.1"
@@ -8,5 +7,19 @@
   "devDependencies": {
     "chai": "~3.0.0",
     "mocha": "~2.2.5"
-  }
+  },
+  "version": "0.0.0",
+  "homepage": "https://github.com/sjoyal/iron-pong",
+  "authors": [
+    "Sean Joyal <sean.joyal@gmail.com>"
+  ],
+  "main": "app/index.html",
+  "license": "CC0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
