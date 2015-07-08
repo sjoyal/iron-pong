@@ -36,5 +36,28 @@
         "single"
       ]
     }
-  }
+  },
+  "name": "iron-pong",
+  "description": "A project for tracking table tennis game results in a cohort-based learning environment",
+  "version": "0.0.0",
+  "main": "gulpfile.babel.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjoyal/iron-pong.git"
+  },
+  "author": "Sean Joyal <sean.joyal@gmail.com>",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/sjoyal/iron-pong/issues"
+  },
+  "homepage": "https://github.com/sjoyal/iron-pong#readme"
 }
