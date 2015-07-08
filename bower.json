@@ -6,7 +6,8 @@
     "angular": "~1.4.2",
     "angularfire": "~1.1.2",
     "angular-route": "~1.4.2",
-    "firebase": "~2.2.7"
+    "firebase": "~2.2.7",
+    "ng-table": "~0.5.4"
   },
   "devDependencies": {
     "chai": "~3.0.0",
