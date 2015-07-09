@@ -28,18 +28,19 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <main ng-controller="MainController as app">
-      <header class="container-fluid head">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#leaderboard">Leaderboard</a></li>
-          <li><a href="#gameresults/:gameresult">Game Result</a></li>
-          <li><a href="#submit">Submit Result</a></li>
-        </ul>
-        <h3 class="text-muted">iron pong</h3>
+      <header class="container-fluid">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <ul class="nav nav-pills">
+            <li><a class="navbar-brand" href="#">Iron Pong</a></li>
+            <li class="active"><a href="#leaderboard">Leaderboard</a></li>
+            <li><a href="#gameresults/:gameresult">Game Result</a></li>
+            <li><a href="#submit">Submit Result</a></li>
+          </ul>
+        </nav>
       </header>
       <div ng-view></div>
       <div class="jumbotron">
-        <h1>'Allo, 'Allo!</h1>
-        <p class="lead">Always a pleasure scaffolding your apps.</p>
+        <h1>Put a table here!</h1>
         <p><a class="btn btn-lg btn-success" href="#somewhere">Splendid!</a></p>
       </div>
 

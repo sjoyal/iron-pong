@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('iron-pong', ['ngRoute', 'restangular'])
+  angular.module('iron-pong', ['ngRoute'])
 
     .config(function($routeProvider){
       $routeProvider.when('/leaderboard', {
