@@ -10,7 +10,7 @@ header {
   h2 {
     color: #EEEEEE;
     font-family: serif;
-    margin-top: 0;
+    margin: 0;
     padding: .5em 0;
     text-align: center;
     background: #2C2C2C;
@@ -18,21 +18,25 @@ header {
   }
 
   ul {
+    @extend .clearfix;
     text-align: center;
     list-style-type: none;
     padding-left: 0;
+    margin: 0;
+    background-color: rgba(0,0,0,0.5);
 
     li {
       display: inline-block;
       box-sizing: border-box;
-      height: 2.5em;
+      height: 3.5em;
 
       a {
-        color: rgba(0,0,0,0.5);
+        display: block;
+        color: #EEEEEE;
         text-align: center;
         width: 100%;
         height: 100%;
-
+        line-height: 3.5em;
       }
     }
   }
