@@ -16,7 +16,6 @@ header {
     background: #2C2C2C;
     background: rgba(0,0,0,0.5);
   }
-
   ul {
     @extend .clearfix;
     text-align: center;
@@ -28,7 +27,6 @@ header {
     .col-xs-4 {
       padding: 0;
     }
-
     li {
       display: inline-block;
       box-sizing: border-box;
@@ -44,7 +42,6 @@ header {
         line-height: 4em;
         text-decoration: none;
       }
-
       a:hover {
         color: #EEEEEE;
         text-decoration: none;
@@ -70,5 +67,24 @@ footer {
   }
   ul {
     text-align: center;
+
+    li {
+      display: inline-block;
+      margin-right: 1em;
+      margin-left: 1em;
+      background: #B4B4B4;
+      height: 3.5em;
+      width: 6em;
+      border-radius: 6px;
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        font-size: 2ex;
+        color: rgba(0,0,0,0.5);
+        line-height: 3.25em;
+      }
+    }
   }
 }
