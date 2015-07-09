@@ -61,8 +61,13 @@
   font-size: 1.5ex;
   border: 1px solid #9C9C9C;
 
+  .head-row {
+    border-bottom: 3px solid #9C9C9C;
+    color: white;
+  }
   tr {
     height: 2.5em;
+    border-bottom: 1px solid #9C9C9C;
 
     th {
       text-align: center;
@@ -79,8 +84,5 @@
       font-weight: 200;
       width: 10%;
     }
-  }
-  .head-row {
-    border-bottom: 1px solid white;
   }
 }
