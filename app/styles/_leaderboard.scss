@@ -58,16 +58,29 @@
   background: #2C2C2C;
   background: rgba(0,0,0,0.5);
   color: #EEEEEE;
+  font-size: 1.5ex;
+  border: 1px solid #9C9C9C;
 
   tr {
     height: 2.5em;
 
     th {
       text-align: center;
+      font-weight: 200;
+      width: 10%;
     }
     .table-player {
       text-align: left;
       padding-left: 1ex;
+      width: 60%;
     }
+    td {
+      text-align: center;
+      font-weight: 200;
+      width: 10%;
+    }
+  }
+  .head-row {
+    border-bottom: 1px solid white;
   }
 }
