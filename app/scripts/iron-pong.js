@@ -7,34 +7,26 @@
     .config(function($routeProvider){
       $routeProvider.when('/leaderboard', {
         templateUrl: 'views/leaderboard.html'
-        // controller: 'LeaderboardController',
-        // controllerAs: 'leaderboard'
-      }); // END $routeProvider leaderboard
-
-      $routeProvider.when('/gameresults/:gameresultID', {
+        // controller: 'LeaderboardController'
+      }) // END $routeProvider leaderboard
+      .when('/gameresults/:gameresultID', {
         templateUrl: 'views/gameresults.html'
-        // controller: 'GameResultController',
-        // controllerAs: 'gameresult'
-      }); // END $routeProvider gameresults
-
-      $routeProvider.when('/submit', {
+        // controller: 'GameResultController'
+      }) // END $routeProvider gameresults
+      .when('/submit', {
         templateUrl: 'views/submitgameresult.html'
-        // controller: 'SubmitGameResutController',
-        // controllerAs: 'submitgameresult'
-      }); // END $routeProvider submitgameresult
-
-      $routeProvider.when('/404', {
+        // controller: 'SubmitGameResutController'
+      }) // END $routeProvider submitgameresult
+      .when('/404', {
         templateUrl: 'views/404.html'
-      });
-
-      $routeProvider.when('/', {
+      }) // END $routeProvider 404
+      .when('/', {
         redirectTo: '/leaderboard'
-      }); // END redirecTo leaderboard
-
-      $routeProvider.otherwise('/404');
-    })
+      }) // END redirectTo leaderboard
+      .otherwise('/404');
+    }) // END $routeProvider
 
     .controller('MainController', function() {
-
+      console.log('controller yo');
     }); // END MainController
 })();
