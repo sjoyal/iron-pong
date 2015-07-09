@@ -1,0 +1,38 @@
+.recent-results {
+  width: 90%;
+  background: rgba(222,16,16,0.75);
+  margin: 2.5em 5%;
+  border-radius: 10px;
+
+  h3 {
+    margin: 0;
+    padding: .5ex .5em;
+    color: white;
+    font-weight: lighter;
+  }
+
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+
+    li {
+      @extend .clearfix;
+      /* padding-left: 2ex; */
+
+      div {
+        display: inline-block;
+      }
+
+      .vs {
+        text-align: center;
+        width: 7.5%;
+      }
+      span {
+        padding-left: .5em;
+      }
+    }
+    li:first-child {
+      padding-left: 1.5em;
+    }
+  }
+}
