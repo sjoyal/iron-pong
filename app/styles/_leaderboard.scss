@@ -8,7 +8,7 @@
     margin: 0;
     padding: .5ex .5em;
     color: white;
-    font-weight: lighter;
+    font-weight: 300;
   }
 
   ul {
@@ -17,22 +17,26 @@
 
     li {
       @extend .clearfix;
-      /* padding-left: 2ex; */
+      color: white;
+      font-weight: 300;
 
       div {
         display: inline-block;
-      }
 
+        span {
+          padding-left: .5em;
+        }
+      }
       .vs {
         text-align: center;
         width: 7.5%;
       }
-      span {
+      a {
         padding-left: .5em;
       }
     }
     li:first-child {
-      padding-left: 1.5em;
+      padding-left: 2em;
     }
   }
 }

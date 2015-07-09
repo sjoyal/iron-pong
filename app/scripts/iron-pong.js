@@ -10,7 +10,7 @@
         // controllerAs: 'leaderboard'
       }); // END $routeProvider leaderboard
 
-      $routeProvider.when('/gameresults/:gameresult', {
+      $routeProvider.when('/gameresults/:gameresultID', {
         templateUrl: 'views/gameresults.html',
         // controller: 'GameResultController',
         // controllerAs: 'gameresult'
