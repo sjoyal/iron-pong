@@ -11,7 +11,7 @@ header {
     color: #EEEEEE;
     font-family: serif;
     margin: 0;
-    padding: .5em 0;
+    padding: .35em 0;
     text-align: center;
     background: #2C2C2C;
     background: rgba(0,0,0,0.5);
@@ -23,21 +23,36 @@ header {
     list-style-type: none;
     padding-left: 0;
     margin: 0;
-    background-color: rgba(0,0,0,0.5);
+    background: rgba(222,16,16,0.75);
 
     li {
       display: inline-block;
       box-sizing: border-box;
-      height: 3.5em;
+      height: 4em;
+      border-left: 1px solid #B41010;
+      padding: 0;
 
       a {
         display: block;
-        color: #EEEEEE;
+        color: rgba(0,0,0,0.5);
         text-align: center;
         width: 100%;
         height: 100%;
-        line-height: 3.5em;
+        line-height: 4em;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #EEEEEE;
+        text-decoration: none;
       }
     }
+    li:nth-child(1) {
+      border-left: none;
+    }
+
+    /* li:hover {
+      background: rgba(180,16,16,0.75);
+    } */
   }
 }
