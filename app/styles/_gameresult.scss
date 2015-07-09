@@ -29,10 +29,17 @@
       color: rgba(0,0,0,0.5);
     }
   }
+  h5 {
+    margin-bottom: .25em;
+  }
   aside {
     box-sizing: border-box;
     background: rgba(222,16,16,0.75);
     padding: 1.5em;
+    text-align: center;
 
+    p {
+      margin: 0;
+    }
   }
 }
