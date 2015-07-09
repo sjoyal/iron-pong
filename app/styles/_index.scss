@@ -25,12 +25,15 @@ header {
     margin: 0;
     background: rgba(222,16,16,0.75);
 
+    .col-xs-4 {
+      padding: 0;
+    }
+
     li {
       display: inline-block;
       box-sizing: border-box;
       height: 4em;
       border-left: 1px solid #B41010;
-      padding: 0;
 
       a {
         display: block;
@@ -50,9 +53,18 @@ header {
     li:nth-child(1) {
       border-left: none;
     }
+    li:hover {
+      background: rgba(140,16,16,0.4);
+    }
+    .active {
+      background: rgba(140,16,16,0.4);
+      color: #EEEEEE;
+    }
+  }
+}
 
-    /* li:hover {
-      background: rgba(180,16,16,0.75);
-    } */
+footer {
+  p {
+    text-align: center;
   }
 }
