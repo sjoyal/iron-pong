@@ -1,0 +1,9 @@
+{
+  "firebase": "iron-pong",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
