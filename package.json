@@ -42,7 +42,7 @@
   },
   "name": "iron-pong",
   "description": "A project for tracking table tennis game results in a cohort-based learning environment",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "gulpfile.babel.js",
   "directories": {
     "test": "test"
