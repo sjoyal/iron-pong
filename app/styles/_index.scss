@@ -7,6 +7,8 @@ body {
 }
 
 header {
+  margin-bottom: 2.5em;
+  
   h2 {
     color: #EEEEEE;
     font-family: serif;
@@ -62,6 +64,7 @@ header {
 footer {
   background: #2C2C2C;
   background: rgba(0,0,0,0.5);
+  margin-top: 2.5em;
 
   p {
     text-align: center;
