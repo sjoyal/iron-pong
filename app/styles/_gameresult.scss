@@ -23,9 +23,9 @@
     li {
       display: inline-block;
       box-sizing: border-box;
-      padding-top: .5em;
+      padding-top: .75em;
       width: 25%;
-      height: 3.5em;
+      height: 4em;
       text-align: center;
       background: rgba(222,16,16,0.75);
 
@@ -33,12 +33,12 @@
         display: block;
       }
       big {
-        color: rgba(0,0,0,0.5);
+        color: rgba(0,0,0,0.75);
       }
     }
     .result-vs {
       vertical-align: top;
-      line-height: 3.5em;
+      line-height: 4.25em;
       background: none;
       padding-top: 0;
       color: rgba(0,0,0,0.75);
