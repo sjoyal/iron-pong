@@ -14,9 +14,25 @@
   }
   div {
     display: inline-block;
-    
+    box-sizing: border-box;
+    padding-top: .5em;
+    width: 25%;
+    height: 3.5em;
+    margin: 1em 12%;
+    text-align: center;
+    background: rgba(222,16,16,0.75);
+
     small {
       display: block;
     }
+    big {
+      color: rgba(0,0,0,0.5);
+    }
+  }
+  aside {
+    box-sizing: border-box;
+    background: rgba(222,16,16,0.75);
+    padding: 1.5em;
+
   }
 }
