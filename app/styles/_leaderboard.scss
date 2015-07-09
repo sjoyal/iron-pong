@@ -48,13 +48,26 @@
         text-align: left;
         width: 10%;
       }
-/*       a {
-  padding-left: 1em;
-  color: #020F61;
+    }
+  }
 }
-a:hover {
-  text-decoration: none;
-} */
+
+.stats {
+  width: 90%;
+  margin: auto;
+  background: #2C2C2C;
+  background: rgba(0,0,0,0.5);
+  color: #EEEEEE;
+
+  tr {
+    height: 2.5em;
+
+    th {
+      text-align: center;
+    }
+    .table-player {
+      text-align: left;
+      padding-left: 1ex;
     }
   }
 }
