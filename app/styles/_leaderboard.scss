@@ -30,17 +30,31 @@
           color: rgba(0,0,0,0.5);
           font-weight: 500;
         }
+        a {
+          padding-left: .25em;
+          color: #020F61;
+        }
+        a:hover {
+          text-decoration: none;
+        }
       }
-      .recent-player {
+      .recent-player1 {
         width: 30%;
+      }
+      .recent-player2 {
+        width: 45%;
       }
       .vs {
         text-align: left;
         width: 10%;
       }
-      a {
-        padding-left: 1em;
-      }
+/*       a {
+  padding-left: 1em;
+  color: #020F61;
+}
+a:hover {
+  text-decoration: none;
+} */
     }
   }
 }
