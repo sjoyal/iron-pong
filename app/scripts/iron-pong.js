@@ -1,3 +1,4 @@
+/* global angular */
 (function(){
   'use strict';
 
@@ -5,19 +6,19 @@
 
     .config(function($routeProvider){
       $routeProvider.when('/leaderboard', {
-        templateUrl: 'views/leaderboard.html',
+        templateUrl: 'views/leaderboard.html'
         // controller: 'LeaderboardController',
         // controllerAs: 'leaderboard'
       }); // END $routeProvider leaderboard
 
       $routeProvider.when('/gameresults/:gameresultID', {
-        templateUrl: 'views/gameresults.html',
+        templateUrl: 'views/gameresults.html'
         // controller: 'GameResultController',
         // controllerAs: 'gameresult'
       }); // END $routeProvider gameresults
 
       $routeProvider.when('/submit', {
-        templateUrl: 'views/submitgameresult.html',
+        templateUrl: 'views/submitgameresult.html'
         // controller: 'SubmitGameResutController',
         // controllerAs: 'submitgameresult'
       }); // END $routeProvider submitgameresult
@@ -33,7 +34,7 @@
       $routeProvider.otherwise('/404');
     })
 
-    .controller('MainController', function($scope) {
+    .controller('MainController', function() {
 
     }); // END MainController
 })();
