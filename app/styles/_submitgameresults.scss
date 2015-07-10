@@ -9,10 +9,19 @@
   h2 {
     margin: 0;
   }
+  h4 {
+    margin-bottom: .25em;
+  }
   .submit-button {
     margin-top: 1em;
+    width: 5em;
+    height: 2.5em;
     color: #EEEEEE;
-    background: rgba(222,16,16,0.75);
+    background: rgba(180,16,16,0.75);
+    border-radius: 5px;
     border: none;
+  }
+  .submit-button:hover {
+    background: rgba(222,16,16,0.75);
   }
 }
