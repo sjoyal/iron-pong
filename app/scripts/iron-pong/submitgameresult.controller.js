@@ -8,7 +8,7 @@
       $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
         .then(function(response){
           players = response.data;
-          console.log(players[0].login);
+          console.log(players);
         });
     });
 

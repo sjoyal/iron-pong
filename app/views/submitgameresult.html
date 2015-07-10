@@ -4,12 +4,12 @@
     <div class="form-group">
       <label>Player 1:</label>
       <select class="form-control" name="player1">
-        <option selected>Select player</option>
-        <option value="sjoyal">sjoyal</option>
-        <option value="pcreglow">pcreglow</option>
-        <option value="jorgehjr84">jorgehjr84</option>
-        <option value="al-the-x">al-the-x</option>
-        <option value="gatorpazz">gatorpazz</option>
+<!--         <option selected>Select player</option> -->
+        <option ng-options="player.login for player in players"></option>
+<!--         <option value="pcreglow">pcreglow</option>
+<option value="jorgehjr84">jorgehjr84</option>
+<option value="al-the-x">al-the-x</option>
+<option value="gatorpazz">gatorpazz</option> -->
       </select>
       <label>Score</label>
       <input class="form-control" name="player1score" placeholder="Enter score" style="width: 50%;"></input>
