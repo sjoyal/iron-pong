@@ -3,7 +3,7 @@
   margin: auto;
   background: rgba(0,0,0,0.5);
   border-radius: 10px;
-  padding: .25em 1em;
+  padding: .25em .75em 1em .75em;
   color: #EEEEEE;
 
   h3 {
@@ -13,7 +13,10 @@
   label {
     margin: 0;
   }
-  select, input {
+  select {
+    width: 75%;
+  }
+  input {
     width: 50%;
   }
   h4 {
