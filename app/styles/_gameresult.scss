@@ -24,9 +24,9 @@
     li {
       display: inline-block;
       box-sizing: border-box;
-      padding-top: .75em;
-      width: 25%;
-      height: 4em;
+      padding-top: 1em;
+      width: 7.5em;
+      height: 5em;
       text-align: center;
       background: rgba(222,16,16,0.75);
 
@@ -39,11 +39,12 @@
     }
     .result-vs {
       vertical-align: top;
-      line-height: 4.25em;
+      line-height: 4.75em;
       background: none;
       padding-top: 0;
       color: rgba(0,0,0,0.75);
       font-weight: bold;
+      width: 5em;
     }
   }
   h5 {

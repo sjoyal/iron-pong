@@ -54,37 +54,20 @@
   }
 }
 
-.stats {
+.table-section {
   width: 90%;
   margin: auto;
   background: #2C2C2C;
   background: rgba(0,0,0,0.5);
   color: #EEEEEE;
-  font-size: 1.5ex;
-  border: 1px solid #9C9C9C;
+  padding: 1em;
+  border-radius: 10px;
+  text-align: center;
 
-  .head-row {
-    border-bottom: 3px solid #9C9C9C;
-    color: white;
+  th {
+    text-align: center;
   }
-  tr {
-    height: 2.5em;
-    border-bottom: 1px solid #9C9C9C;
-
-    th {
-      text-align: center;
-      font-weight: 200;
-      width: 10%;
-    }
-    .table-player {
-      text-align: left;
-      padding-left: 1ex;
-      width: 60%;
-    }
-    td {
-      text-align: center;
-      font-weight: 200;
-      width: 10%;
-    }
+  .player-login {
+    text-align: left;
   }
 }
