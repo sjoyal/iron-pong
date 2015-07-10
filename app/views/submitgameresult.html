@@ -3,7 +3,7 @@
   <form>
     <div class="form-group">
       <label>Player 1:</label>
-      <select class="form-control" name="player1">
+      <select class="form-control" ng-model="player1" ng-change="addPlayers(player1)">
         <option ng-repeat="player in players" value="{{player.login}}">{{player.login}}</option>
       </select>
       <label>Score</label>
@@ -11,7 +11,7 @@
     </div>
     <div class="form-group">
       <label>Player 2:</label>
-      <select class="form-control" name="player2">
+      <select class="form-control" ng-model="player2" ng-change="addPlayers(player2)">
         <option ng-repeat="player in players" value="{{player.login}}">{{player.login}}</option>
       </select>
       <label>Score</label>
