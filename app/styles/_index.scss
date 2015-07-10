@@ -16,7 +16,7 @@ header {
     padding: .35em 0;
     text-align: center;
     background: #2C2C2C;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.65);
   }
   ul {
     @extend .clearfix;
@@ -58,9 +58,17 @@ header {
   }
 }
 
+#mission {
+  margin: auto;
+  margin-top: 6em;
+  width: 90%;
+  text-align: center;
+  color: #EEEEEE;
+}
+
 footer {
   background: #2C2C2C;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.65);
   margin-top: 2.5em;
 
   p {
@@ -68,6 +76,7 @@ footer {
     color: #EEEEEE;
     padding-top: .5em;
     margin-bottom: 0;
+    font-size: .75em;
   }
   ul {
     text-align: center;
