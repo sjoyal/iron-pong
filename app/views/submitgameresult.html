@@ -1,6 +1,6 @@
 <section class="submit-results">
   <h3>Submit Results</h3>
-  <form>
+  <form ng-submit="submitData()">
     <div class="form-group">
       <label>Player 1:</label>
       <select class="form-control" ng-model="player1" ng-change="addPlayer1(player1.login)" ng-options="player.login for player in players"></select>
