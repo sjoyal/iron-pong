@@ -14,8 +14,8 @@
         // controller: 'GameResultController'
       }) // END $routeProvider gameresults
       .when('/submit', {
-        templateUrl: 'views/submitgameresult.html'
-        // controller: 'SubmitGameResutController'
+        templateUrl: 'views/submitgameresult.html',
+        controller: 'SubmitController'
       }) // END $routeProvider submitgameresult
       .when('/404', {
         templateUrl: 'views/404.html'
