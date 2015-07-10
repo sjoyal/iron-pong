@@ -5,8 +5,12 @@
     .controller('SubmitController', function($scope, $http){
       $scope.players = [ ];
       $scope.competitors = [ ];
-      $scope.addPlayers = function(playerName){
-        $scope.competitors.push(playerName);
+      $scope.addPlayer1 = function(playerName){
+        $scope.competitors[0] = playerName;
+        console.log($scope.competitors);
+      };
+      $scope.addPlayer2 = function(playerName){
+        $scope.competitors[1] = playerName;
         console.log($scope.competitors);
       };
       // Retrieve list of stargazers from cohort repo
