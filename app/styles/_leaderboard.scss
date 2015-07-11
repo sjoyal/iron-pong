@@ -64,15 +64,21 @@
   border-radius: 10px;
   text-align: center;
 
-  .player-login {
-    text-align: left;
-  }
   .score-added {
     text-align: center;
   }
   .borderless{
     td {
       border: none;
+      line-height: 30px;
+      text-align: left;
+
+      img {
+        margin-right: 5px;
+      }
+    }
+    .data-center {
+      text-align: center;
     }
   }
 }
