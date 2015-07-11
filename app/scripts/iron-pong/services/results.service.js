@@ -7,9 +7,14 @@
           ref.authWithOAuthPopup('github', function(error, authData){
             console.log(authData)
             }, {remember: 'sessionOnly'})
-          },
+        },
         authStatus: function(){
           ref.getAuth();
+          console.log(ref.getAuth());
+        },
+        ghLogout: function(){
+          ref.unauth();
+          console.log(ref.getAuth());
         }
       };
     });

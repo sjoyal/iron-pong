@@ -43,7 +43,9 @@
       };
       $scope.checkAuth = function(){
         Auth.authStatus();
-        console.log(Auth.authStatus());
+      };
+      $scope.logout = function(){
+        Auth.ghLogout();
       };
     }); // END MainController
 })();
