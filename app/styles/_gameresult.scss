@@ -24,7 +24,7 @@
     li {
       display: inline-block;
       box-sizing: border-box;
-      padding-top: 1em;
+      padding-top: .75em;
       width: 7.5em;
       height: 5em;
       text-align: center;
@@ -32,9 +32,11 @@
 
       small {
         display: block;
+        font-size: 1em;
       }
       big {
         color: rgba(0,0,0,0.75);
+        font-size: 1.5em;
       }
     }
     .result-vs {
@@ -44,7 +46,7 @@
       padding-top: 0;
       color: rgba(0,0,0,0.75);
       font-weight: bold;
-      width: 5em;
+      width: 4em;
     }
   }
   .game-summary {
@@ -58,14 +60,13 @@
       border-radius: 10px;
       padding: 2em 1.5em;
 
-      h5 {
-        font-weight: bold;
+      h4 {
         margin-top: 0;
         margin-bottom: .5em;
       }
       p {
         margin: 0;
-        font-size: 1em;
+        font-size: 1.25em;
       }
     }
   }
