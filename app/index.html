@@ -40,26 +40,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">IRON PONG</a>
+              <a class="navbar-brand" id="namesake" href="#/recentresults">Insert Logo</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+                <li><a class="route-links" href="#/recentresults">Results</a></li>
+                <li><a class="route-links" href="#/leaderboard">Leaderboard</a></li>
+                <li><a class="route-links" href="#/submit">Submit</a></li>
+                <li><a class="route-links" href="#recentresults">Login</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
-        <nav>
-          <ul>
-            <li class="col-xs-4 col-md-4"><a href="#/leaderboard">Leaderboard</a></li>
-            <li class="col-xs-4 col-md-4"><a href="#/submit">Submit Result</a></li>
-            <li class="col-xs-4 col-md-4"><a href="#/gameresult/:gameresultID">Game Result</a></li>
-          </ul>
-        </nav>
+        <ul class="nav nav-pills">
+          <li role="presentation"><a id="test-link" href="#/gameresult/:gameresultID">Game Result</a></li>
+        </ul>
       </header>
       <div ng-view></div>
       <p id="mission">Iron Pong is a table tennis results tracker for cohort based learning groups. Submit scores for your cohort and engage in some friendly competiton with your peers.</p>
