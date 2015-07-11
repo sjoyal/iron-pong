@@ -1,4 +1,4 @@
-.recent-results {
+/* .recent-results {
   width: 90%;
   background: rgba(222,16,16,0.75);
   margin: auto;
@@ -52,39 +52,60 @@
       }
     }
   }
+} */
+
+.recent-games-table {
+  width: 75%;
+  margin: auto;
+  background: #D23838;
+  background: rgba(222,16,16,0.75);
+  color: #EEEEEE;
+  padding: 1em;
+  border-radius: 10px;
+  text-align: center;
+
+  .score-added {
+    text-align: center;
+  }
+  .borderless{
+    td {
+      border: none;
+      line-height: 30px;
+      text-align: left;
+
+      img {
+        margin-right: 5px;
+      }
+    }
+    .data-center {
+      text-align: center;
+    }
+  }
 }
 
-.stats {
-  width: 90%;
+.table-section {
+  width: 75%;
   margin: auto;
   background: #2C2C2C;
   background: rgba(0,0,0,0.5);
   color: #EEEEEE;
-  font-size: 1.5ex;
-  border: 1px solid #9C9C9C;
+  padding: 1em;
+  border-radius: 10px;
+  text-align: center;
 
-  .head-row {
-    border-bottom: 3px solid #9C9C9C;
-    color: white;
-  }
-  tr {
-    height: 2.5em;
-    border-bottom: 1px solid #9C9C9C;
-
+  .player-stats {
     th {
       text-align: center;
-      font-weight: 200;
-      width: 10%;
     }
-    .table-player {
+    .player-login {
       text-align: left;
-      padding-left: 1ex;
-      width: 60%;
     }
     td {
-      text-align: center;
-      font-weight: 200;
-      width: 10%;
+      line-height: 30px;
+
+      img {
+        margin-right: 5px;
+      }
     }
   }
 }
