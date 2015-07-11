@@ -17,6 +17,10 @@
         templateUrl: 'views/gameresult.html'
         // controller: 'GameResultController'
       }) // END $routeProvider gameresult
+      .when('/player/:playerID', {
+        templateUrl: 'views/player.html'
+        // controller: 'PlayerController'
+      }) // END $routeProvider player
       .when('/submit', {
         templateUrl: 'views/submitgameresult.html',
         controller: 'SubmitController'

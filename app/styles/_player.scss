@@ -1,0 +1,38 @@
+.player-page {
+  color: #EEEEEE;
+
+  figure, aside {
+    @extend .clearfix;
+    margin-bottom: 1em;
+  }
+
+  h5, address, p {
+    margin-bottom: .75em;
+  }
+}
+
+.narcissistic-stats {
+  margin: auto;
+  margin-top: 1em;
+  background: #2C2C2C;
+  background: rgba(0,0,0,0.5);
+  color: #EEEEEE;
+  padding: 1em 1em 0 1em;
+  border-radius: 10px;
+  text-align: center;
+
+  .player-stats {
+    margin-bottom: .5em;
+
+    th {
+      text-align: center;
+    }
+    .player-login {
+      text-align: left;
+    }
+  }
+}
+
+.table-responsive {
+  border: none;
+}
