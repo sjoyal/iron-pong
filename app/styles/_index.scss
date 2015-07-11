@@ -18,7 +18,7 @@ header {
       color: #EEEEEE;
       font-size: 1.5em;
     }
-    .route-links {
+    .route-links li a {
       color: #EEEEEE;
     }
   }
@@ -71,8 +71,7 @@ header {
     }
   } */
   #test-link {
-    margin-left: 2em;
-    background: rgba(222,16,16,0.75);
+    color: white;
   }
 }
 
