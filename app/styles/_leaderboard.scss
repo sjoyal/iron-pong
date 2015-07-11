@@ -1,4 +1,4 @@
-.recent-results {
+/* .recent-results {
   width: 90%;
   background: rgba(222,16,16,0.75);
   margin: auto;
@@ -52,10 +52,33 @@
       }
     }
   }
+} */
+
+.recent-games-table {
+  width: 75%;
+  margin: auto;
+  background: #D23838;
+  background: rgba(222,16,16,0.75);
+  color: #EEEEEE;
+  padding: 1em;
+  border-radius: 10px;
+  text-align: center;
+
+  .player-login {
+    text-align: left;
+  }
+  .score-added {
+    text-align: center;
+  }
+  .borderless{
+    td {
+      border: none;
+    }
+  }
 }
 
 .table-section {
-  width: 90%;
+  width: 75%;
   margin: auto;
   background: #2C2C2C;
   background: rgba(0,0,0,0.5);
@@ -64,10 +87,19 @@
   border-radius: 10px;
   text-align: center;
 
-  th {
-    text-align: center;
-  }
-  .player-login {
-    text-align: left;
+  .player-stats {
+    th {
+      text-align: center;
+    }
+    .player-login {
+      text-align: left;
+    }
+    td {
+      line-height: 30px;
+
+      img {
+        margin-right: 5px;
+      }
+    }
   }
 }
