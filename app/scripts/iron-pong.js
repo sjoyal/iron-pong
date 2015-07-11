@@ -6,7 +6,7 @@
 
     .config(function($routeProvider){
       $routeProvider.when('/recentresults', {
-        templateUrl: 'views/recentresutls.html'
+        templateUrl: 'views/recentresults.html'
         //controller: 'RecentResultsController'
       }) // END $routeProvider recentresults
       .when('/leaderboard', {

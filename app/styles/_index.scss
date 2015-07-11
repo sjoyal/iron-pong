@@ -9,6 +9,12 @@ body {
 header {
   margin-bottom: 2.5em;
 
+  .ip-nav {
+    background: rgba(222,16,16,0.75);
+    border-radius: 0;
+    border: none;
+  }
+
   h2 {
     color: #EEEEEE;
     font-family: serif;
