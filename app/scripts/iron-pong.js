@@ -5,14 +5,18 @@
   angular.module('iron-pong', ['ngRoute'])
 
     .config(function($routeProvider){
-      $routeProvider.when('/leaderboard', {
+      $routeProvider.when('/recentresults', {
+        templateUrl: 'views/recentresutls.html'
+        //controller: 'RecentResultsController'
+      }) // END $routeProvider recentresults
+      .when('/leaderboard', {
         templateUrl: 'views/leaderboard.html'
         // controller: 'LeaderboardController'
       }) // END $routeProvider leaderboard
-      .when('/gameresults/:gameresultID', {
-        templateUrl: 'views/gameresults.html'
+      .when('/gameresult/:gameresultID', {
+        templateUrl: 'views/gameresult.html'
         // controller: 'GameResultController'
-      }) // END $routeProvider gameresults
+      }) // END $routeProvider gameresult
       .when('/submit', {
         templateUrl: 'views/submitgameresult.html',
         controller: 'SubmitController'
@@ -21,7 +25,7 @@
         templateUrl: 'views/404.html'
       }) // END $routeProvider 404
       .when('/', {
-        redirectTo: '/leaderboard'
+        redirectTo: '/recentresults'
       }) // END redirectTo leaderboard
       .otherwise('/404');
     }) // END $routeProvider
