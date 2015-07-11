@@ -34,12 +34,16 @@
       .otherwise('/404');
     }) // END $routeProvider
 
-    .controller('MainController', function($scope) {
-      $scope.login = function(){
-        var ref = new Firebase ('https://iron-pong.firebaseio.com');
-        ref.authWithOAuthPopup('github', function(error, authData){
-          console.log(authData);
-        }, {remember: 'sessionOnly'});
+    .controller('MainController', function($scope, Auth) {
+      $scope.login = function (){
+        Auth.ghLogin();
+      };
+      $scope.authStatus = function(){
+        return Auth.authStatus() !== null;
+      };
+      $scope.checkAuth = function(){
+        Auth.authStatus();
+        console.log(Auth.authStatus());
       };
     }); // END MainController
 })();
