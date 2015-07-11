@@ -34,7 +34,12 @@
       .otherwise('/404');
     }) // END $routeProvider
 
-    .controller('MainController', function() {
-      console.log('controller yo');
+    .controller('MainController', function($scope) {
+      $scope.login = function(){
+        var ref = new Firebase ('https://iron-pong.firebaseio.com');
+        ref.authWithOAuthPopup('github', function(error, authData){
+          console.log(authData);
+        }, {remember: 'sessionOnly'});
+      };
     }); // END MainController
 })();
