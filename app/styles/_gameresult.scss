@@ -1,7 +1,7 @@
 .game-result {
-  width: 80%;
+  width: 75%;
   margin: auto;
-  margin-bottom: 12em;
+  margin-bottom: 5em;
   color: #EEEEEE;
 
   h2 {
@@ -47,21 +47,26 @@
       width: 5em;
     }
   }
-  h5 {
-    color: rgba(0,0,0,0.75);
-    font-weight: bold;
-    margin-bottom: .25em;
-  }
-  aside {
-    box-sizing: border-box;
-    background: rgba(222,16,16,0.75);
-    border-radius: 10px;
-    padding: 2em 1.5em;
+  .game-summary {
     text-align: center;
+    width: 50%;
+    margin: auto;
 
-    p {
-      margin: 0;
-      font-size: 1em;
+    aside {
+      box-sizing: border-box;
+      background: rgba(222,16,16,0.75);
+      border-radius: 10px;
+      padding: 2em 1.5em;
+
+      h5 {
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: .5em;
+      }
+      p {
+        margin: 0;
+        font-size: 1em;
+      }
     }
   }
 }
