@@ -5,9 +5,9 @@
     "modernizr": "~2.8.1",
     "angular": "~1.4.2",
     "angularfire": "~1.1.2",
-    "angular-route": "~1.4.2",
     "firebase": "~2.2.7",
-    "ng-table": "~0.5.4"
+    "ng-table": "~0.5.4",
+    "angular-ui-router": "~0.2.15"
   },
   "devDependencies": {
     "chai": "~3.0.0",

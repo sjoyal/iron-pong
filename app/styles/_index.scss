@@ -9,6 +9,32 @@ body {
 header {
   margin-bottom: 2.5em;
 
+  .ip-nav {
+    background: rgba(222,16,16,0.75);
+    border-radius: 0;
+    border: none;
+
+    #namesake {
+      color: #C6C6C6;
+      font-size: 1.5em;
+    }
+    .route-links li {
+
+      a {
+        color: #C6C6C6;
+      }
+      a:visited {
+        color: #C6C6C6;
+      }
+      a:hover {
+        color: white;
+      }
+    }
+    .route-links li:hover {
+      background: rgba(140,16,16,0.4);
+    }
+  }
+
   h2 {
     color: #EEEEEE;
     font-family: serif;
@@ -18,43 +44,8 @@ header {
     background: #2C2C2C;
     background: rgba(0,0,0,0.65);
   }
-  ul {
-    @extend .clearfix;
-    text-align: center;
-    list-style-type: none;
-    padding-left: 0;
-    margin: 0;
-    background: rgba(222,16,16,0.75);
-
-    .col-xs-4 {
-      padding: 0;
-    }
-    li {
-      display: inline-block;
-      box-sizing: border-box;
-      height: 4em;
-      border-left: 1px solid #B41010;
-
-      a, a:visited {
-        display: block;
-        color: #EEEEEE;
-        text-align: center;
-        width: 100%;
-        height: 100%;
-        line-height: 4em;
-        text-decoration: none !important;
-      }
-      a:hover {
-        text-decoration: none;
-        color: #EEEEEE;
-      }
-    }
-    li:nth-child(1) {
-      border-left: none;
-    }
-    li:hover {
-      background: rgba(140,16,16,0.4);
-    }
+  .extras .test-link {
+    color: black;
   }
 }
 
