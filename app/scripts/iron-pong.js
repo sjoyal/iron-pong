@@ -35,15 +35,17 @@
     }) // END $routeProvider
 
     .controller('MainController', function($scope, Auth) {
-      $scope.logStatus = userSession.authenticated;
+      $scope.logStatus = false;
       $scope.login = function (){
         Auth.ghLogin();
+        $scope.logStatus = true;
       };
       $scope.checkAuth = function(){
         console.log(Auth.authStatus());
       };
       $scope.logout = function(){
         Auth.ghLogout();
+        $scope.logStatus = false;
       };
     }); // END MainController
 })();
