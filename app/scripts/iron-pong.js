@@ -37,10 +37,8 @@
         }); // END $stateProvider 404
       $urlRouterProvider
         .otherwise('/recentresults');
-        // .state('/', {
-        //   url: '/',
-        //   redirectTo: '/recentresults'
-        // }) // END redirectTo recentresults
+       // .when('/', '/recentresults');
+       // END redirectTo recentresults
     }) // END $stateProvider .config
 
     .controller('MainController', function($scope, Auth) {
