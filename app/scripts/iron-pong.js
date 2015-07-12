@@ -5,8 +5,6 @@
   angular.module('iron-pong', ['ui.router'])
 
     .config(function($stateProvider, $urlRouterProvider){
-      $urlRouterProvider.otherwise('/404');
-
       $stateProvider
         .state('recentresults', {
           url: '/recentresults',
@@ -36,12 +34,14 @@
         .state('404', {
           url: '/404',
           templateUrl: 'views/404.html'
-        }) // END $stateProvider 404
-        .state('/', {
-          url: '/',
-          redirectTo: '/recentresults'
-        }) // END redirectTo recentresults
-    }) // END $stateProvider
+        }); // END $stateProvider 404
+      $urlRouterProvider
+        .otherwise('/recentresults');
+        // .state('/', {
+        //   url: '/',
+        //   redirectTo: '/recentresults'
+        // }) // END redirectTo recentresults
+    }) // END $stateProvider .config
 
     .controller('MainController', function($scope, Auth) {
       $scope.logStatus = false;
@@ -56,5 +56,6 @@
         Auth.ghLogout();
         $scope.logStatus = false;
       };
-    }); // END MainController
+    }) // END MainController
+  ; // END ALL THE THINGS
 })();
