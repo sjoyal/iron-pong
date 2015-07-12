@@ -5,7 +5,7 @@
       return {
         ghLogin: function(){
           ref.authWithOAuthPopup('github', function(error, authData){
-            console.log(authData)
+            console.log('hello');
             }, {remember: 'sessionOnly'})
         },
         authStatus: function(){
@@ -14,7 +14,7 @@
         },
         ghLogout: function(){
           ref.unauth();
-          console.log(ref.getAuth());
+          console.log('goodbye');
         }
       };
     });
