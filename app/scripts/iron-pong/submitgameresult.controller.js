@@ -1,9 +1,10 @@
-/* global angular _*/
+/* global angular _ Firebase*/
 (function(){
-  angular.module('iron-pong')
+  'use strict';
 
+  angular.module('iron-pong')
     .controller('SubmitController',
-      function($scope, $http, Auth, Players, $firebaseArray, $state){
+      function($scope, $http, Auth, Players, $firebaseArray){
       // $scope.players = Players.retrievePlayers();
       $scope.players = [];
 
@@ -14,7 +15,7 @@
       //  + $scope.authInfo.github.accessToken)
         .then(function(response){
           $scope.players = _.forEach(response.data, function(player){
-            var data = player
+            var data = player;
             delete player.id;
             delete player.gravatar_id;
             delete player.url;
@@ -61,8 +62,8 @@
       $scope.results = $firebaseArray(ref);
       $scope.submitResults = function(){
         $scope.results.$add($scope.gameresult);
-        $scope.gameresult = {winner:'',winnerScore:'',loser:'',loserScore:'',summary:''};
-        // $state.go('recentresults');
+        $scope.gameresult = { winner: '', winnerScore: '', loser: '', loserScore: '', summary: '' };
+        // $state.go('recentresults'); Must add $state as dependency for this to work
       };
     });
 })();
