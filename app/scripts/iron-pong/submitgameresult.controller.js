@@ -42,13 +42,7 @@
         created: ''
       };
       $scope.submitResults = function(){
-        // $scope.results.push($scope.gameresult);
-        $http({
-          method: 'POST',
-          url: 'https://iron-pong.firebaseio.com',
-          data: {'gameresult': $scope.gameresult},
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        });
+        $scope.results.push($scope.gameresult);
         $scope.gameresult = {
           winner: '',
           winnerScore: '',

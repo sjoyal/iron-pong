@@ -1,4 +1,12 @@
 <section class="submit-results">
+  <div ng-repeat="result in results">
+    <img ng-src="{{result.winner.avatar_url}}" height="30" width="30">
+    <big>{{result.winner.login}}</big><small>{{result.winnerScore}}</small><br>
+    <img ng-src="{{result.loser.avatar_url}}" height="30" width="30">
+    <big>{{result.loser.login}}</big><small>{{result.loserScore}}</small>
+    <p>{{result.summary}}</p>
+  </div>
+
   <h3>Submit Results</h3>
   <form ng-submit="submitResults()">
     <div class="form-group">
@@ -21,6 +29,7 @@
     <textarea class="form-control" ng-model="gameresult.summary" rows="5" placeholder="Provide a brief game description here"></textarea>
     <button name="submit" class="submit-button">Submit</button>
   </form> <!--.answer-form-->
+
   Result {{gameresult}}<br />
   Results {{results}}
 </section>
