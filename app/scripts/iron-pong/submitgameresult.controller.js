@@ -9,10 +9,10 @@
       $scope.players = [];
 
       // Retrieve list of stargazers from cohort repo
-      $scope.authInfo = Auth.authStatus();
-      // $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
-      $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
-       + $scope.authInfo.github.accessToken)
+      // $scope.authInfo = Auth.authStatus();
+      $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
+      // $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
+      //  + $scope.authInfo.github.accessToken)
         .then(function(response){
           $scope.players = _.forEach(response.data, function(player){
             var data = player;
@@ -41,8 +41,8 @@
         winnerScore: '',
         loser: '',
         loserScore: '',
-        summary: ''
-        // created: moment()
+        summary: '',
+        created_on: ''
       };
       // $scope.submitResults = function(){
       //   $scope.results.push($scope.gameresult);
@@ -58,14 +58,35 @@
       $scope.deleteResult = function(index){
         $scope.results.splice(index, 1);
       };
-      var ref = new Firebase('https://iron-pong.firebaseio.com');
-      $scope.results = $firebaseArray(ref);
+      var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
+      $scope.results = $firebaseArray(games);
+
+      // var playerWin = new Firebase('https://iron-pong.firebaseio.com/players' + $scope.gameresult.winner.login);
+      // $scope.dbPlayersWin = $firebaseArray(playerWin);
+      //
+      // var playerLose = new Firebase('https://iron-pong.firebaseio.com/players' + $scope.gameresult.loser.login);
+      // $scope.dbPlayersLose = $firebaseArray(playerLose);
+
+      // adding a result to database
       $scope.submitResults = function(){
+        var timestamp = new Date().getTime();
+        $scope.gameresult.created_on = timestamp;
+        console.log($scope.gameresult);
         $scope.results.$add($scope.gameresult);
-        $scope.gameresult = { winner: '', winnerScore: '', loser: '', loserScore: '', summary: '' };
+        $scope.gameresult = { winner: '', winnerScore: '', loser: '', loserScore: '', summary: '', created_on: '' };
         // $state.go('recentresults'); Must add $state as dependency for this to work
       };
-    });
+
+      // adding results to individual players
+      $scope.submitPlayers = function(){
+        var playerWin = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.winner.login);
+        this.dbPlayersWin = $firebaseArray(playerWin);
+        var playerLose = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.loser.login);
+        this.dbPlayersLose = $firebaseArray(playerLose);
+        $scope.dbPlayersWin.$add($scope.gameresult);
+        $scope.dbPlayersLose.$add($scope.gameresult);
+      };
+    }); // END SubmitController
 })();
 
 
