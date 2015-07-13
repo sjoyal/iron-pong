@@ -13,12 +13,6 @@
             console.log('hello');
           }, {remember: 'sessionOnly'});
         },
-        // onAuth: function(){
-        //   ref.onAuth(function(authData){
-        //     this.authData = authData;
-        //     console.log(authData);
-        //   });
-        // },
         authStatus: function(){
           return ref.getAuth();
         },
