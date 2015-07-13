@@ -2,7 +2,7 @@
 (function(){
   'use strict';
 
-  angular.module('iron-pong', ['ui.router'])
+  angular.module('iron-pong', ['ui.router', 'firebase'])
 
     .config(function($stateProvider, $urlRouterProvider){
       $stateProvider

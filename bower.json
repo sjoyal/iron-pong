@@ -8,7 +8,9 @@
     "firebase": "~2.2.7",
     "ng-table": "~0.5.4",
     "angular-ui-router": "~0.2.15",
-    "lodash": "~3.10.0"
+    "lodash": "~3.10.0",
+    "moment": "~2.10.3",
+    "restangular": "~1.5.1"
   },
   "devDependencies": {
     "chai": "~3.0.0",
