@@ -41,19 +41,23 @@
        // END redirectTo recentresults
     }) // END $stateProvider .config
 
-    .controller('MainController', function($scope, Auth) {
-      $scope.logStatus = false;
+    .controller('MainController', function($scope, Auth, $firebase) {
+
+      $scope.auth = Auth.magicAuth;
+      $scope.auth.$onAuth(function(authData){
+        $scope.authData = authData;
+        console.log(authData);
+      });
       $scope.login = function (){
         Auth.ghLogin();
-        $scope.logStatus = true;
       };
       $scope.checkAuth = function(){
         console.log(Auth.authStatus());
       };
       $scope.logout = function(){
         Auth.ghLogout();
-        $scope.logStatus = false;
       };
+
     }) // END MainController
   ; // END ALL THE THINGS
 })();

@@ -9,7 +9,7 @@
   </div>
 
   <h3>Submit Results</h3>
-  <form ng-submit="submitResults()">
+  <form name="submitDemResults" ng-submit="submitPlayers(); submitResults()">
     <div class="form-group">
       <label>Winner:</label>
       <select class="form-control" ng-model="gameresult.winner" ng-change="addPlayer1(player1.login)" ng-options="player.login for player in players"></select>
