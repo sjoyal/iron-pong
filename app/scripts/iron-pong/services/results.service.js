@@ -1,14 +1,16 @@
+/* global angular Firebase*/
 (function(){
-  angular.module('iron-pong')
+  'use strict';
 
+  angular.module('iron-pong')
     // authenticate users
     .factory('Auth', function(){
       var ref = new Firebase('https://iron-pong.firebaseio.com');
       return {
         ghLogin: function(){
-          ref.authWithOAuthPopup('github', function(error, authData){
+          ref.authWithOAuthPopup('github', function(){
             console.log('hello');
-            }, {remember: 'sessionOnly'})
+          }, {remember: 'sessionOnly'});
         },
         authStatus: function(){
           return ref.getAuth();
@@ -17,7 +19,7 @@
           ref.unauth();
           console.log('goodbye');
         }
-      } // END 'Auth' return
+      }; // END Auth return
     }) // END Auth factory
 
     // retrieve a list of players for the cohort
@@ -34,7 +36,7 @@
           });
           return self.players;
         }
-      }
+      }; // END Players return
     })
     ; // END ALL THE THINGS!
 })();
