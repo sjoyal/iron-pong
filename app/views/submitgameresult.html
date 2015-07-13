@@ -2,23 +2,25 @@
   <h3>Submit Results</h3>
   <form ng-submit="submitData()">
     <div class="form-group">
-      <label>Player 1:</label>
-      <select class="form-control" ng-model="player1" ng-change="addPlayer1(player1.login)" ng-options="player.login for player in players"></select>
+      <label>Winner:</label>
+      <select class="form-control" ng-model="gameresult.winner" ng-change="addPlayer1(player1.login)" ng-options="player.login for player in players"></select>
       <label>Score</label>
-      <input class="form-control" ng-model="player1score" placeholder="Enter score" style="width: 50%;"></input>
+      <input class="form-control" ng-model="gameresult.winnerScore" placeholder="Enter score" style="width: 50%;"></input>
     </div>
     <div class="form-group">
-      <label>Player 2:</label>
-      <select class="form-control" ng-model="player2" ng-change="addPlayer2(player2.login)" ng-options="player.login for player in players"></select>
+      <label>Loser:</label>
+      <select class="form-control" ng-model="gameresult.loser" ng-change="addPlayer2(player2.login)" ng-options="player.login for player in players"></select>
       <label>Score</label>
-      <input class="form-control" ng-model="player2score" placeholder="Enter score"></input>
+      <input class="form-control" ng-model="gameresult.loserScore" placeholder="Enter score"></input>
     </div>
-    <label>Winner:</label>
+    <!-- <label>Winner:</label>
     <select class="form-control" ng-model="winner" ng-options="competitor for competitor in competitors"></select>
     <label>Loser:</label>
-    <select class="form-control" ng-model="loser" ng-options="competitor for competitor in competitors"></select>
+    <select class="form-control" ng-model="loser" ng-options="competitor for competitor in competitors"></select> -->
     <h4>Summary</h4>
-    <textarea class="form-control" ng-model="gameSummary" rows="5" placeholder="Provide a brief game description here"></textarea>
+    <textarea class="form-control" ng-model="gameresult.summary" rows="5" placeholder="Provide a brief game description here"></textarea>
     <button name="submit" class="submit-button">Submit</button>
   </form> <!--.answer-form-->
+  Result {{gameresult}}<br />
+  Results {{results}}
 </section>
