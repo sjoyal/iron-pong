@@ -5,6 +5,7 @@
     <img ng-src="{{result.loser.avatar_url}}" height="30" width="30">
     <big>{{result.loser.login}}</big><small>{{result.loserScore}}</small>
     <p>{{result.summary}}{{result.created}}</p>
+    <a ng-click="deleteResult($index)">delete</a>
   </div>
 
   <h3>Submit Results</h3>

@@ -2,7 +2,7 @@
 (function(){
   angular.module('iron-pong')
 
-    .controller('SubmitController', function($scope, $http, Auth, Players){
+    .controller('SubmitController', function($scope, $http, Auth, Players, $firebaseArray, $state){
       // $scope.players = Players.retrievePlayers();
       $scope.players = [];
 
@@ -32,28 +32,44 @@
           });
           console.log($scope.players);
         }); // END $http.get github repo stargazers
-      $scope.results = [ ];
+      // $scope.results = [ ];
       $scope.gameresult = {
         winner: '',
         winnerScore: '',
         loser: '',
         loserScore: '',
-        summary: '',
-        created: moment()
+        summary: ''
+        // created: moment()
       };
+      // $scope.submitResults = function(){
+      //   $scope.results.push($scope.gameresult);
+      //   $scope.gameresult = {
+      //     winner: '',
+      //     winnerScore: '',
+      //     loser: '',
+      //     loserScore: '',
+      //     summary: '',
+      //     created: moment()
+      //   }
+      // };
+      $scope.deleteResult = function(index){
+        $scope.results.splice(index, 1);
+      };
+      var ref = new Firebase('https://iron-pong.firebaseio.com');
+      $scope.results = $firebaseArray(ref);
       $scope.submitResults = function(){
-        $scope.results.push($scope.gameresult);
-        $scope.gameresult = {
-          winner: '',
-          winnerScore: '',
-          loser: '',
-          loserScore: '',
-          summary: '',
-          created: moment()
-        }
+        $scope.results.$add($scope.gameresult);
+        $scope.gameresult = {winner:'',winnerScore:'',loser:'',loserScore:'',summary:''};
+        // $state.go('recentresults');
       };
     });
 })();
+
+
+
+
+
+
 
 // $scope.competitors = [ ];
 // $scope.addPlayer1 = function(playerName){
