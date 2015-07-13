@@ -1,11 +1,11 @@
-/* global angular */
+/* global angular _*/
 (function(){
   angular.module('iron-pong')
 
     .controller('SubmitController', function($scope, $http, Auth, Players){
       // $scope.players = Players.retrievePlayers();
       $scope.players = {};
-      
+
       // Retrieve list of stargazers from cohort repo
       // $scope.authInfo = Auth.authStatus();
       $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
