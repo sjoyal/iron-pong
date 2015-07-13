@@ -4,7 +4,7 @@
 
     .controller('SubmitController', function($scope, $http, Auth, Players){
       // $scope.players = Players.retrievePlayers();
-      $scope.players = {};
+      $scope.players = [];
 
       // Retrieve list of stargazers from cohort repo
       // $scope.authInfo = Auth.authStatus();
@@ -42,7 +42,13 @@
         created: ''
       };
       $scope.submitResults = function(){
-        $scope.results.push($scope.gameresult);
+        // $scope.results.push($scope.gameresult);
+        $http({
+          method: 'POST',
+          url: 'https://iron-pong.firebaseio.com',
+          data: {'gameresult': $scope.gameresult},
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
         $scope.gameresult = {
           winner: '',
           winnerScore: '',
