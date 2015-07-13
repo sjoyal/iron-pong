@@ -3,6 +3,14 @@
   angular.module('iron-pong')
 
     .controller('SubmitController', function($scope, $http, Auth){
+      $scope.gameresult = {
+        winner: '',
+        winnerScore: '',
+        loser: '',
+        loserScore: '',
+        summary: '',
+        created: ''
+      };
       $scope.players = [ ];
       $scope.competitors = [ ];
       $scope.addPlayer1 = function(playerName){
@@ -21,6 +29,7 @@
           $scope.players = response.data;
           console.log($scope.players);
         });
+
     });
 
 
