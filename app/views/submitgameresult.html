@@ -1,52 +1,33 @@
 <section class="submit-results">
+  <div ng-repeat="result in results">
+    <img ng-src="{{result.winner.avatar_url}}" height="30" width="30">
+    <big>{{result.winner.login}}</big><small>{{result.winnerScore}}</small><br>
+    <img ng-src="{{result.loser.avatar_url}}" height="30" width="30">
+    <big>{{result.loser.login}}</big><small>{{result.loserScore}}</small>
+    <p>{{result.summary}}{{result.created}}</p>
+    <a ng-click="deleteResult($index)">delete</a>
+  </div>
+
   <h3>Submit Results</h3>
-  <form>
+  <form ng-submit="submitResults()">
     <div class="form-group">
-      <label>Player 1:</label>
-      <select class="form-control" name="player1">
-        <option selected>Select player</option>
-        <option value="sjoyal">sjoyal</option>
-        <option value="pcreglow">pcreglow</option>
-        <option value="jorgehjr84">jorgehjr84</option>
-        <option value="al-the-x">al-the-x</option>
-        <option value="gatorpazz">gatorpazz</option>
-      </select>
+      <label>Winner:</label>
+      <select class="form-control" ng-model="gameresult.winner" ng-change="addPlayer1(player1.login)" ng-options="player.login for player in players"></select>
       <label>Score</label>
-      <input class="form-control" name="player1score" placeholder="Enter score" style="width: 50%;"></input>
+      <input class="form-control" ng-model="gameresult.winnerScore" placeholder="Enter score" style="width: 50%;"></input>
     </div>
     <div class="form-group">
-      <label>Player 2:</label>
-      <select class="form-control" name="player2">
-        <option selected>Select player</option>
-        <option value="sjoyal">sjoyal</option>
-        <option value="pcreglow">pcreglow</option>
-        <option value="jorgehjr84">jorgehjr84</option>
-        <option value="al-the-x">al-the-x</option>
-        <option value="gatorpazz">gatorpazz</option>
-      </select>
+      <label>Loser:</label>
+      <select class="form-control" ng-model="gameresult.loser" ng-change="addPlayer2(player2.login)" ng-options="player.login for player in players"></select>
       <label>Score</label>
-      <input class="form-control" name="player2score" placeholder="Enter score"></input>
+      <input class="form-control" ng-model="gameresult.loserScore" placeholder="Enter score"></input>
     </div>
-    <label>Winner:</label>
-    <select class="form-control" name="winner">
-      <option selected>Select winner</option>
-      <option value="sjoyal">sjoyal</option>
-      <option value="pcreglow">pcreglow</option>
-      <option value="jorgehjr84">jorgehjr84</option>
-      <option value="al-the-x">al-the-x</option>
-      <option value="gatorpazz">gatorpazz</option>
-    </select>
+    <!-- <label>Winner:</label>
+    <select class="form-control" ng-model="winner" ng-options="competitor for competitor in competitors"></select>
     <label>Loser:</label>
-    <select class="form-control" name="loser">
-      <option selected>Select loser</option>
-      <option value="sjoyal">sjoyal</option>
-      <option value="pcreglow">pcreglow</option>
-      <option value="jorgehjr84">jorgehjr84</option>
-      <option value="al-the-x">al-the-x</option>
-      <option value="gatorpazz">gatorpazz</option>
-    </select>
+    <select class="form-control" ng-model="loser" ng-options="competitor for competitor in competitors"></select> -->
     <h4>Summary</h4>
-    <textarea class="form-control" name="game-summary" rows="5">Provide a brief game description here</textarea>
-    <button class="submit-button">Submit</button>
-  </form> <!--.answer-form-->
+    <textarea class="form-control" ng-model="gameresult.summary" rows="5" placeholder="Provide a brief game description here"></textarea>
+    <button name="submit" class="submit-button">Submit</button>
+  </form> <!--submitResults()-->
 </section>

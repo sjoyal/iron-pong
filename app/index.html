@@ -30,15 +30,36 @@
     <main ng-controller="MainController as app">
       <header>
         <h2>IRON PONG</h2>
-        <nav>
-          <ul>
-            <li class="col-xs-4"><a href="#/leaderboard">Leaderboard</a></li>
-            <li class="col-xs-4"><a href="#/submit">Submit Result</a></li>
-            <li class="col-xs-4"><a href="#/gameresults/:gameresult">Game Result</a></li>
-          </ul>
+        <nav class="navbar navbar-default ip-nav">
+          <div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a ng-click="checkAuth()" class="navbar-brand" id="namesake" ui-sref="recentresults">Insert Logo</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse route-links" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a ui-sref="recentresults">Results</a></li>
+                <li><a ui-sref="leaderboard">Leaderboard</a></li>
+                <li><a ui-sref="submit">Submit</a></li>
+                <li ng-click="login()" ng-hide="logStatus"><a ui-sref="recentresults">Login</a></li>
+                <li ng-click="logout()" ng-show="logStatus"><a ui-sref="recentresults">Logout</a></li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
         </nav>
+        <ul class="nav nav-pills extras">
+          <li role="presentation"><a class="test-link" ui-sref="gameresult">Game Result</a></li>
+          <li role="presentation"><a class="test-link" ui-sref="player">Player</a></li>
+        </ul>
       </header>
-      <div ng-view></div>
+      <div ui-view></div>
       <p id="mission">Iron Pong is a table tennis results tracker for cohort based learning groups. Submit scores for your cohort and engage in some friendly competiton with your peers.</p>
       <footer>
         <p>♥ This site is fueled by RedBull, Tanqueray's, and some AngularJS. Enjoy!</p>
@@ -56,8 +77,11 @@
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/firebase/firebase.js"></script>
     <script src="/bower_components/angularfire/dist/angularfire.js"></script>
-    <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/ng-table/dist/ng-table.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/lodash/lodash.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/restangular/dist/restangular.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
