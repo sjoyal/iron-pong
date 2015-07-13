@@ -39,7 +39,7 @@
         loser: '',
         loserScore: '',
         summary: '',
-        created: ''
+        created: moment()
       };
       $scope.submitResults = function(){
         $scope.results.push($scope.gameresult);
@@ -49,7 +49,7 @@
           loser: '',
           loserScore: '',
           summary: '',
-          created: ''
+          created: moment()
         }
       };
     });
