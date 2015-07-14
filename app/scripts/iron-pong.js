@@ -2,7 +2,7 @@
 (function(){
   'use strict';
 
-  angular.module('iron-pong', ['ui.router', 'firebase', 'angularMoment'])
+  angular.module('iron-pong', ['ui.router', 'firebase', 'angularMoment', 'ngTable'])
 
     .config(function($stateProvider, $urlRouterProvider){
       $stateProvider
@@ -13,8 +13,8 @@
         }) // END $stateProvider recentresults
         .state('leaderboard', {
           url: '/leaderboard',
-          templateUrl: 'views/leaderboard.html'
-          // controller: 'LeaderboardController'
+          templateUrl: 'views/leaderboard.html',
+          controller: 'LeaderboardController'
         }) // END $stateProvider leaderboard
         .state('gameresult', {
           url: '/gameresult/:gameresultID',
