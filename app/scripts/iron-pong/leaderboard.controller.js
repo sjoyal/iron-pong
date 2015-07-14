@@ -6,7 +6,7 @@
     .controller('LeaderboardController',
       function($scope, $filter, $firebase, $firebaseArray, ngTableParams){
 
-      var players = [
+      $scope.players = [
         {avatar_url: 'http://lorempixel.com/120/120/people/1', login: 'sjoyal',
         wins: '55', losses: '14', pct: '.757', games: '69'},
         {avatar_url: 'http://lorempixel.com/120/120/people/2', login: 'pcreglow',
@@ -25,11 +25,12 @@
 
       $scope.tableParams = new ngTableParams({
         sorting: {
-          wins: 'asc'  // initial sorting
+          wins: 'desc'  // initial sorting
         }
       }, {
         getData: function($defer, params){
-            $defer.resolve($filter('orderBy')(players, params.orderBy()));
+          var data = $scope.players;
+            $defer.resolve($filter('orderBy')(data, params.orderBy()));
         }
       });
     }); // END LeaderboardController
