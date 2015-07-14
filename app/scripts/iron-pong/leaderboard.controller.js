@@ -24,7 +24,7 @@
 
       $scope.tableParams = new ngTableParams({
         sorting: {
-          login: 'asc'
+          wins: 'asc'
         }
       }, {
         total: $scope.players.length,
@@ -32,6 +32,9 @@
           var orderedData = params.sorting() ?
             $filter('orderBy')($scope.players, params.orderBy()):
             $scope.players;
+
+            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(),
+              params.page() * params.count()));
         }
       });
 
