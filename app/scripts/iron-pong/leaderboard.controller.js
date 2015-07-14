@@ -1,0 +1,1 @@
+alert('allo allo');
