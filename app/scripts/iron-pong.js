@@ -18,8 +18,8 @@
         }) // END $stateProvider leaderboard
         .state('gameresult', {
           url: '/gameresult/:gameresultID',
-          templateUrl: 'views/gameresult.html'
-          // controller: 'GameResultController'
+          templateUrl: 'views/gameresult.html',
+          controller: 'GameResultController'
         }) // END $stateProvider gameresult
         .state('player', {
           url: '/player/:playerID',

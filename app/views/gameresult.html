@@ -1,21 +1,22 @@
 <section class="game-result">
   <h2>Winner!</h2>
-  <h3>sjoyal</h3>
+  <h3>{{result.winner.login}}</h3>
   <ul>
     <li>
-      <small class="result-player1">sjoyal</small>
-      <big>21</big>
+      <small class="result-player1">{{result.winner.login}}</small>
+      <big>{{result.winnerScore}}</big>
     </li>
     <li class="result-vs">vs</li>
     <li>
-      <small class="result-player2">pcreglow</small>
-      <big>19</big>
+      <small class="result-player2">{{result.loser.login}}</small>
+      <big>{{result.loserScore}}</big>
     </li>
   </ul>
   <div class="game-summary">
     <aside>
       <h4>GAME SUMMARY</h4>
-      <p>A close game from start to finish, sjoyal was able to hold off pcreglow with a backhand smash on match point.</p>
+      <p>{{result.summary}}</p>
     </aside>
   </div>
+  <a ui-sref="recentresults">Back to Recent Results</a>
 </section> <!--.container-->
