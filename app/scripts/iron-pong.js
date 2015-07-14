@@ -2,14 +2,14 @@
 (function(){
   'use strict';
 
-  angular.module('iron-pong', ['ui.router', 'firebase'])
+  angular.module('iron-pong', ['ui.router', 'firebase', 'angularMoment'])
 
     .config(function($stateProvider, $urlRouterProvider){
       $stateProvider
         .state('recentresults', {
           url: '/recentresults',
-          templateUrl: 'views/recentresults.html'
-          //controller: 'RecentResultsController'
+          templateUrl: 'views/recentresults.html',
+          controller: 'RecentResultsController'
         }) // END $stateProvider recentresults
         .state('leaderboard', {
           url: '/leaderboard',
