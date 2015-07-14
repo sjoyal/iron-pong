@@ -6,6 +6,7 @@
     .controller('LeaderboardController',
       function($scope, $filter, $firebase, $firebaseArray, ngTableParams){
 
+      // FIXME: Pull and munge data for live stuff in the leaderboardz
         $scope.players = [
           {avatar_url: 'http://lorempixel.com/120/120/people/1', login: 'sjoyal',
           wins: 55, losses: 14, pct: .757, games: 69},
