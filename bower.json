@@ -10,7 +10,8 @@
     "angular-ui-router": "~0.2.15",
     "lodash": "~3.10.0",
     "moment": "~2.10.3",
-    "restangular": "~1.5.1"
+    "restangular": "~1.5.1",
+    "angular-moment": "~0.10.1"
   },
   "devDependencies": {
     "chai": "~3.0.0",
