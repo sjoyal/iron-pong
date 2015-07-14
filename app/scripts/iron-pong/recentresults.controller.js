@@ -4,8 +4,11 @@
 
   angular.module('iron-pong')
     .controller('RecentResultsController', function($scope, $firebase, $firebaseArray){
-      console.log('hello');
 
+      // pull in the recent game results from firebase
+      var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
+      $scope.results = $firebaseArray(games);
+      console.log($scope.results);
 
     }); // END RecentResultsController
 })();
