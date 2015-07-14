@@ -3,9 +3,9 @@
   'use strict';
 
   angular.module('iron-pong')
-    .controller('LeaderboardController', function($scope, $firebase, $firebaseArray){
+    .controller('LeaderboardController', function($scope, $filter, $firebase, $firebaseArray, ngTableParams){
 
-      $scope.players: [
+      $scope.players = [
         {avatar_url: 'http://lorempixel.com/120/120/people/1', login: 'sjoyal',
         wins: '55', losses: '14', pct: '.757', games: '69'},
         {avatar_url: 'http://lorempixel.com/120/120/people/2', login: 'pcreglow',
@@ -21,6 +21,19 @@
         {avatar_url: 'http://lorempixel.com/120/120/people/7', login: 'mstaehling',
         wins: '0', losses: '0', pct: '.000', games: '0'}
       ] // END $scope.players
+
+      $scope.tableParams = new ngTableParams({
+        sorting: {
+          login: 'asc'
+        }
+      }, {
+        total: $scope.players.length,
+        getData: function($defer, params){
+          var orderedData = params.sorting() ?
+            $filter('orderBy')($scope.players, params.orderBy()):
+            $scope.players;
+        }
+      });
 
       console.log($scope.players);
     }); // END LeaderboardController

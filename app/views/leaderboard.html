@@ -1,5 +1,5 @@
 <section class="table-section table-responsive">
-  <table class="table player-stats">
+  <table class="table player-stats" ng-table="tableParams">
     <thead>
       <tr>
           <th class="player-login">Player</th>
@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr ng-repeat="player in players">
         <td class="player-login">
           <img width="30" height="30" src=http://lorempixel.com/120/120/people/7/>
           sjoyal
