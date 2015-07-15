@@ -47,7 +47,7 @@
         loser: '',
         loserScore: '',
         summary: '',
-        created_on: ''
+        createdOn: ''
       };
 
   /** results array and add / delete functions
@@ -76,10 +76,10 @@
       // adding a result to database
       $scope.submitResults = function(){
         var timestamp = new Date().getTime();
-        $scope.gameresult.created_on = timestamp;
+        $scope.gameresult.createdOn = timestamp;
         console.log($scope.gameresult);
         $scope.results.$add($scope.gameresult);
-        $scope.gameresult = { winner: '', winnerScore: '', loser: '', loserScore: '', summary: '', created_on: '' };
+        $scope.gameresult = { winner: '', winnerScore: '', loser: '', loserScore: '', summary: '', createdOn: '' };
         // $state.go('recentresults'); Must add $state as dependency for this to work
       };
 

@@ -37,7 +37,8 @@
       "quotes": [
         2,
         "single"
-      ]
+      ],
+      "new-cap": 0
     }
   },
   "name": "iron-pong",

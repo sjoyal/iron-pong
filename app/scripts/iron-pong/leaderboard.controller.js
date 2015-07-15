@@ -21,12 +21,12 @@
             });
             player.gamesLostLength = player.gamesLost.length;
             // player.pct = (player.gamesWonLength / (players.gamesWonLength + players.gamesLostLength) * 100);
-            player.avatar_url = _.map(player.games, function(game){
+            player.avatarUrl = _.map(player.games, function(game){
               if (game.winner.login === playerName) {
                 return game.winner.avatar_url;
               } else {
                 return game.loser.avatar_url;
-              };
+              }
             });
           });
           console.log(players);
