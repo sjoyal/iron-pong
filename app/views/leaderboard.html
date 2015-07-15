@@ -1,15 +1,16 @@
 <section class="table-section table-responsive">
   <table class="table player-stats" ng-table="tableParams">
     <tbody>
-      <tr ng-repeat="player in players">
+      <tr ng-repeat="player in leaderboard">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{player.avatar_url}}"/>
-          {{player.login}}
+          <img width="30" height="30" ng-src="{{player.avatar_url[0]}}"/>
+          {{player.$id}}
         </td>
-        <td data-title="'wins'" sortable="'wins'">{{player.wins}}</td>
-        <td data-title="'losses'" sortable="'losses'">{{player.losses}}</td>
-        <td data-title="'pct'" sortable="'pct'">{{player.pct}}</td>
-        <td data-title="'games'" sortable="'games'">{{player.games}}</td>
+        <td data-title="'Wins'" sortable="'wins'">{{player.gamesWon.length}}</td>
+        <td data-title="'Losses'" sortable="'losses'">{{player.gamesLost.length}}</td>
+        <td data-title="'Win %'" sortable="'pct'">
+          {{(player.gamesWon.length / (player.gamesWon.length + player.gamesLost.length) * 100) | number:0}}%</td>
+        <td data-title="'Games'" sortable="'games'">{{player.gamesPlayed}}</td>
       </tr>
     </tbody>
   </table><!-- .table -->

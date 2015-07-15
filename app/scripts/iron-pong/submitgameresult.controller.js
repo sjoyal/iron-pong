@@ -85,9 +85,9 @@
 
       // adding results to individual players
       $scope.submitPlayers = function(){
-        var playerWin = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.winner.login);
+        var playerWin = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.winner.login + '/games');
         this.dbPlayersWin = $firebaseArray(playerWin);
-        var playerLose = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.loser.login);
+        var playerLose = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.loser.login + '/games');
         this.dbPlayersLose = $firebaseArray(playerLose);
         $scope.dbPlayersWin.$add($scope.gameresult);
         $scope.dbPlayersLose.$add($scope.gameresult);
