@@ -9,9 +9,15 @@
         var ref = new Firebase('https://iron-pong.firebaseio.com/players');
         $scope.leaderboard = $firebaseArray(ref);
         $scope.leaderboard.$loaded().then(function(leaderboard) {
-          console.log(leaderboard.length);
           _.forEach(leaderboard, function(player){
-            player.gamesPlayed = player.length;
+            var playerName = player.$id;
+            player.gamesPlayed = _.size(player.games);
+            player.gamesWon = _.filter(player.games, function(game){
+              return game.winner.login === playerName;
+            });
+            // _.forEach(player.games, function(game){
+            //   console.log(game.winner.login);
+            // });
           });
           console.log(leaderboard);
         });
