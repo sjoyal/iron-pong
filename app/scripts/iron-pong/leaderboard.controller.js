@@ -18,6 +18,13 @@
             player.gamesLost = _.filter(player.games, function(game){
               return game.loser.login === playerName;
             });
+            player.avatar_url = _.map(player.games, function(game){
+              if (game.winner.login === playerName) {
+                return game.winner.avatar_url;
+              } else {
+                return game.loser.avatar_url;
+              };
+            });
           });
           console.log(leaderboard);
         });
