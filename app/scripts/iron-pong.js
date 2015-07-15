@@ -2,24 +2,24 @@
 (function(){
   'use strict';
 
-  angular.module('iron-pong', ['ui.router', 'firebase'])
+  angular.module('iron-pong', ['ui.router', 'firebase', 'angularMoment', 'ngTable'])
 
     .config(function($stateProvider, $urlRouterProvider){
       $stateProvider
         .state('recentresults', {
           url: '/recentresults',
-          templateUrl: 'views/recentresults.html'
-          //controller: 'RecentResultsController'
+          templateUrl: 'views/recentresults.html',
+          controller: 'RecentResultsController'
         }) // END $stateProvider recentresults
         .state('leaderboard', {
           url: '/leaderboard',
-          templateUrl: 'views/leaderboard.html'
-          // controller: 'LeaderboardController'
+          templateUrl: 'views/leaderboard.html',
+          controller: 'LeaderboardController'
         }) // END $stateProvider leaderboard
         .state('gameresult', {
           url: '/gameresult/:gameresultID',
-          templateUrl: 'views/gameresult.html'
-          // controller: 'GameResultController'
+          templateUrl: 'views/gameresult.html',
+          controller: 'GameResultController'
         }) // END $stateProvider gameresult
         .state('player', {
           url: '/player/:playerID',
@@ -42,18 +42,22 @@
     }) // END $stateProvider .config
 
     .controller('MainController', function($scope, Auth) {
-      $scope.logStatus = false;
+
+      $scope.auth = Auth.magicAuth;
+      $scope.auth.$onAuth(function(authData){
+        $scope.authData = authData;
+        console.log(authData);
+      });
       $scope.login = function (){
         Auth.ghLogin();
-        $scope.logStatus = true;
       };
       $scope.checkAuth = function(){
         console.log(Auth.authStatus());
       };
       $scope.logout = function(){
         Auth.ghLogout();
-        $scope.logStatus = false;
       };
+
     }) // END MainController
   ; // END ALL THE THINGS
 })();

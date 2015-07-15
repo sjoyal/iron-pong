@@ -4,9 +4,10 @@
 
   angular.module('iron-pong')
     // authenticate users
-    .factory('Auth', function(){
+    .factory('Auth', function($firebaseAuth){
       var ref = new Firebase('https://iron-pong.firebaseio.com');
       return {
+        magicAuth: $firebaseAuth(ref),
         ghLogin: function(){
           ref.authWithOAuthPopup('github', function(){
             console.log('hello');

@@ -20,6 +20,12 @@
       img {
         margin-right: 5px;
       }
+      a, a:hover {
+        text-decoration: none;
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
     }
     .data-center {
       text-align: center;

@@ -1,85 +1,98 @@
 <section class="table-section table-responsive">
-  <table class="table player-stats">
-    <thead>
-      <tr>
-          <th class="player-login">Player</th>
-          <th>Wins</th>
-          <th>Losses</th>
-          <th>Win %</th>
-          <th>Games</th>
-      </tr>
-    </thead>
+  <table class="table player-stats" ng-table="tableParams">
     <tbody>
-      <tr>
+      <tr ng-repeat="player in leaderboard">
         <td class="player-login">
-          <img width="30" height="30" src=http://lorempixel.com/120/120/people/7/>
-          sjoyal
+          <img width="30" height="30" ng-src="{{player.avatarUrl[0]}}"/>
+          {{player.$id}}
         </td>
-        <td>55</td>
-        <td>14</td>
-        <td>.757</td>
-        <td>69</td>
-      </tr>
-      <tr>
-        <td class="player-login">
-          <img width="30" height="30" src=http://lorempixel.com/120/120/people/1/>
-          pcreglow
-        </td>
-        <td>40</td>
-        <td>30</td>
-        <td>.568</td>
-        <td>70</td>
-      </tr>
-      <tr>
-        <td class="player-login">
-          <img width="30" height="30" src=http://lorempixel.com/120/120/people/2/>
-          jorgehjr84
-        </td>
-        <td>8</td>
-        <td>40</td>
-        <td>.213</td>
-        <td>48</td>
-      </tr>
-      <tr>
-        <td class="player-login">
-          <img width="30" height="30" src=http://lorempixel.com/120/120/people/3/>
-          al-the-x
-        </td>
-        <td>0</td>
-        <td>125</td>
-        <td>.000</td>
-        <td>125</td>
-      </tr>
-      <tr>
-        <td class="player-login">
-          <img width="30" height="30" src=http://lorempixel.com/120/120/people/4/>
-          gatorpazz
-        </td>
-        <td>0</td>
-        <td>0</td>
-        <td>.000</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td class="player-login">
-          <img width="30" height="30" src=http://lorempixel.com/120/120/people/5/>
-          jessyriordan
-        </td>
-        <td>0</td>
-        <td>0</td>
-        <td>.000</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td class="player-login">
-          <img width="30" height="30" src=http://lorempixel.com/120/120/people/6/>
-          mstaehling
-        </td>
-        <td>0</td>
-        <td>0</td>
-        <td>.000</td>
-        <td>0</td>
+        <td data-title="'Wins'" sortable="'wins'">{{player.gamesWon.length}}</td>
+        <td data-title="'Losses'" sortable="'losses'">{{player.gamesLost.length}}</td>
+        <td data-title="'Win %'" sortable="'pct'">
+          {{(player.gamesWon.length / (player.gamesWon.length + player.gamesLost.length) * 100) | number:0}}%</td>
+        <td data-title="'Games'" sortable="'games'">{{player.gamesPlayed}}</td>
       </tr>
     </tbody>
   </table><!-- .table -->
 </section><!--.table-section-->
+
+  <!-- <thead>
+  <tr>
+    <th class="player-login">Player</th>
+    <th>Wins</th>
+    <th>Losses</th>
+    <th>Win %</th>
+    <th>Games</th>
+  </tr>
+  </thead> -->
+  <!-- <tbody>
+  <tr ng-repeat="player in players">
+    <td class="player-login">
+      <img width="30" height="30" ng-src="{{player.avatar_url}}"/>
+      {{player.login}}
+    </td>
+    <td data-title="'wins'" sortable="'wins'">{{player.wins}}</td>
+    <td data-title="'losses'" sortable="'losses'">{{player.losses}}</td>
+    <td data-title="'pct'" sortable="'pct'">{{player.pct}}</td>
+    <td data-title="'games'" sortable="'games'">{{player.games}}</td>
+  </tr> -->
+  <!-- <tr>
+    <td class="player-login">
+      <img width="30" height="30" src="http://lorempixel.com/120/120/people/1"/>
+      pcreglow
+    </td>
+    <td>40</td>
+    <td>30</td>
+    <td>.568</td>
+    <td>70</td>
+  </tr>
+  <tr>
+    <td class="player-login">
+      <img width="30" height="30" src="http://lorempixel.com/120/120/people/2"/>
+      jorgehjr84
+    </td>
+    <td>8</td>
+    <td>40</td>
+    <td>.213</td>
+    <td>48</td>
+  </tr>
+  <tr>
+    <td class="player-login">
+      <img width="30" height="30" src="http://lorempixel.com/120/120/people/3"/>
+      al-the-x
+    </td>
+    <td>0</td>
+    <td>125</td>
+    <td>.000</td>
+    <td>125</td>
+  </tr>
+  <tr>
+    <td class="player-login">
+      <img width="30" height="30" src="http://lorempixel.com/120/120/people/4"/>
+      gatorpazz
+    </td>
+    <td>0</td>
+    <td>0</td>
+    <td>.000</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td class="player-login">
+      <img width="30" height="30" src="http://lorempixel.com/120/120/people/5"/>
+      jessyriordan
+    </td>
+    <td>0</td>
+    <td>0</td>
+    <td>.000</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td class="player-login">
+      <img width="30" height="30" src="http://lorempixel.com/120/120/people/6"/>
+      mstaehling
+    </td>
+    <td>0</td>
+    <td>0</td>
+    <td>.000</td>
+    <td>0</td>
+  </tr> -->

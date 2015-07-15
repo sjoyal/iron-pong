@@ -48,14 +48,14 @@
                 <li><a ui-sref="recentresults">Results</a></li>
                 <li><a ui-sref="leaderboard">Leaderboard</a></li>
                 <li><a ui-sref="submit">Submit</a></li>
-                <li ng-click="login()" ng-hide="logStatus"><a ui-sref="recentresults">Login</a></li>
-                <li ng-click="logout()" ng-show="logStatus"><a ui-sref="recentresults">Logout</a></li>
+                <li ng-click="login()" ng-hide="authData"><a ui-sref="recentresults">Login</a></li>
+                <li ng-click="logout()" ng-show="authData"><a ui-sref="recentresults">Logout</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
         <ul class="nav nav-pills extras">
-          <li role="presentation"><a class="test-link" ui-sref="gameresult">Game Result</a></li>
+          <!-- <li role="presentation"><a class="test-link" ui-sref="gameresult">Game Result</a></li> -->
           <li role="presentation"><a class="test-link" ui-sref="player">Player</a></li>
         </ul>
       </header>
@@ -82,6 +82,7 @@
     <script src="/bower_components/lodash/lodash.js"></script>
     <script src="/bower_components/moment/moment.js"></script>
     <script src="/bower_components/restangular/dist/restangular.js"></script>
+    <script src="/bower_components/angular-moment/angular-moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -103,6 +104,7 @@
     <!-- build:js scripts/main.js -->
     <script src="scripts/iron-pong.js"></script>
     <script src="scripts/iron-pong/leaderboard.controller.js"></script>
+    <script src="scripts/iron-pong/recentresults.controller.js"></script>
     <script src="scripts/iron-pong/gameresult.controller.js"></script>
     <script src="scripts/iron-pong/submitgameresult.controller.js"></script>
     <script src="scripts/iron-pong/services/results.service.js"></script>
