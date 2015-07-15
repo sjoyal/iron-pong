@@ -9,15 +9,15 @@
       // $scope.players = Players.retrievePlayers();
       $scope.players = [];
 
-      // $scope.auth = Auth.magicAuth;
-      // $scope.auth.$onAuth(function(authData){
-      //   $scope.authData = authData;
-      // });
+      $scope.auth = Auth.magicAuth;
+      $scope.auth.$onAuth(function(authData){
+        $scope.authData = authData;
+      });
 
       // Retrieve list of stargazers from cohort repo local vs live request:
-      $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
-      // $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
-      //  + $scope.authData.github.accessToken)
+      // $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
+      $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
+       + $scope.authData.github.accessToken)
 
         .then(function(response){
           $scope.players = _.forEach(response.data, function(player){
@@ -47,7 +47,7 @@
         loser: '',
         loserScore: '',
         summary: '',
-        created_on: ''
+        createdOn: ''
       };
 
   /** results array and add / delete functions
@@ -76,10 +76,10 @@
       // adding a result to database
       $scope.submitResults = function(){
         var timestamp = new Date().getTime();
-        $scope.gameresult.created_on = timestamp;
+        $scope.gameresult.createdOn = timestamp;
         console.log($scope.gameresult);
         $scope.results.$add($scope.gameresult);
-        $scope.gameresult = { winner: '', winnerScore: '', loser: '', loserScore: '', summary: '', created_on: '' };
+        $scope.gameresult = { winner: '', winnerScore: '', loser: '', loserScore: '', summary: '', createdOn: '' };
         // $state.go('recentresults'); Must add $state as dependency for this to work
       };
 

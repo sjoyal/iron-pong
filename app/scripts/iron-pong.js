@@ -41,7 +41,7 @@
        // END redirectTo recentresults
     }) // END $stateProvider .config
 
-    .controller('MainController', function($scope, Auth, $firebase) {
+    .controller('MainController', function($scope, Auth) {
 
       $scope.auth = Auth.magicAuth;
       $scope.auth.$onAuth(function(authData){
