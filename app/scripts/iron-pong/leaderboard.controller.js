@@ -20,7 +20,7 @@
               return game.loser.login === playerName;
             });
             player.gamesLostLength = player.gamesLost.length;
-            // player.pct = (player.gamesWonLength / (players.gamesWonLength + players.gamesLostLength) * 100);
+            player.pct = (player.gamesWonLength / player.gamesPlayed) * 100;
             player.avatarUrl = _.map(player.games, function(game){
               if (game.winner.login === playerName) {
                 return game.winner.avatar_url;
