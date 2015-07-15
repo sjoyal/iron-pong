@@ -4,18 +4,17 @@
 
   angular.module('iron-pong')
     .controller('LeaderboardController',
-      function($scope, $filter, $firebase, $firebaseArray, ngTableParams){
+      function($scope, $http, $filter, $firebase, $firebaseArray, ngTableParams){
 
         var ref = new Firebase('https://iron-pong.firebaseio.com/players');
         $scope.leaderboard = $firebaseArray(ref);
         $scope.leaderboard.$loaded().then(function(leaderboard) {
           console.log(leaderboard.length);
+          _.forEach(leaderboard, function(player){
+            player.gamesPlayed = player.length;
+          });
+          console.log(leaderboard);
         });
-        //
-        // _.forEach($scope.leaderboard, function(player){
-        //   player.gamesPlayed;
-        // })
-
 
       // FIXME: Pull and munge data for live stuff in the leaderboardz
         $scope.players = [
