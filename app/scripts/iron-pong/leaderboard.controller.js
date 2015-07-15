@@ -15,9 +15,12 @@
             player.gamesWon = _.filter(player.games, function(game){
               return game.winner.login === playerName;
             });
+            player.gamesWonLength = player.gamesWon.length;
             player.gamesLost = _.filter(player.games, function(game){
               return game.loser.login === playerName;
             });
+            player.gamesLostLength = player.gamesLost.length;
+            // player.pct = (player.gamesWonLength / (players.gamesWonLength + players.gamesLostLength) * 100);
             player.avatar_url = _.map(player.games, function(game){
               if (game.winner.login === playerName) {
                 return game.winner.avatar_url;
