@@ -4,7 +4,7 @@
 
   angular.module('iron-pong')
     .controller('LeaderboardController',
-      function($scope, $http, $filter, $firebase, $firebaseArray, ngTableParams){
+      function($scope, $http, $firebase, $firebaseArray){
 
         var ref = new Firebase('https://iron-pong.firebaseio.com/players');
         $scope.leaderboard = $firebaseArray(ref);
@@ -37,24 +37,14 @@
           });
         });
 
-        this.tab = 1;
-        this.selectTab = function(setTab){
+        $scope.tab = 1;
+        $scope.selectTab = function(setTab){
           this.tab = setTab;
         };
-        this.isSelected = function(checkTab){
+        $scope.isSelected = function(checkTab){
           return this.tab === checkTab;
         };
         console.log($scope.leaderboard);
-        
-        // $scope.tableParams = new ngTableParams({
-        //   sorting: { gamesWonLength: 'desc' }  // initial sorting
-        // }, {
-        //   getData: function($defer, params){
-        //     players = $filter('orderBy')(players, params.orderBy());
-        //     console.log(players);
-        //       $defer.resolve(players);
-        //   }
-        // });
       }); // END LeaderboardController
 })();
 

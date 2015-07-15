@@ -1,11 +1,11 @@
 <section class="table-section table-responsive">
   <ul class="toggle-buttons">
-    <li class="active">Wins</li><!--
- --><li>Losses</li><!--
- --><li>Win %</li><!--
- --><li>Games</li>
+    <li ng-click="selectTab(1)" ng-class="{active:isSelected(1)}">Wins</li><!--
+ --><li ng-click="selectTab(2)" ng-class="{active:isSelected(2)}">Losses</li><!--
+ --><li ng-click="selectTab(3)" ng-class="{active:isSelected(3)}">Win %</li><!--
+ --><li ng-click="selectTab(4)" ng-class="{active:isSelected(4)}">Games</li>
   </ul>
-  <table class="table player-stats" ng-table="tableParams">
+  <table class="table player-stats" ng-table="tableParams" ng-show="isSelected(1)">
     <tbody>
       <tr ng-repeat="leader in leaderboard | orderBy:'-gamesWonLength'">
         <td class="player-login">
@@ -20,7 +20,7 @@
       </tr>
     </tbody>
   </table><!-- .table -->
-  <table class="table player-stats" ng-table="tableParams">
+  <table class="table player-stats" ng-table="tableParams" ng-show="isSelected(2)">
     <tbody>
       <tr ng-repeat="leader in leaderboard | orderBy:'-gamesLostLength'">
         <td class="player-login">
@@ -35,7 +35,7 @@
       </tr>
     </tbody>
   </table><!-- .table -->
-  <table class="table player-stats" ng-table="tableParams">
+  <table class="table player-stats" ng-table="tableParams" ng-show="isSelected(3)">
     <tbody>
       <tr ng-repeat="leader in leaderboard | orderBy:'-pct'">
         <td class="player-login">
@@ -50,7 +50,7 @@
       </tr>
     </tbody>
   </table><!-- .table -->
-  <table class="table player-stats" ng-table="tableParams">
+  <table class="table player-stats" ng-table="tableParams" ng-show="isSelected(4)">
     <tbody>
       <tr ng-repeat="leader in leaderboard | orderBy:'-gamesPlayed'">
         <td class="player-login">
