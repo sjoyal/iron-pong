@@ -15,9 +15,9 @@
             player.gamesWon = _.filter(player.games, function(game){
               return game.winner.login === playerName;
             });
-            // _.forEach(player.games, function(game){
-            //   console.log(game.winner.login);
-            // });
+            player.gamesLost = _.filter(player.games, function(game){
+              return game.loser.login === playerName;
+            });
           });
           console.log(leaderboard);
         });
