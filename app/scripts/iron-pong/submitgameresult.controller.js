@@ -12,7 +12,7 @@
       $scope.auth = Auth.magicAuth;
       $scope.auth.$onAuth(function(authData){
         $scope.authData = authData;
-      // });
+      });
 
       // Retrieve list of stargazers from cohort repo local vs live request:
       // $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
