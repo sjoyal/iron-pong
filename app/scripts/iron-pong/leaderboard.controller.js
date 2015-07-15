@@ -12,15 +12,21 @@
           _.forEach(players, function(player){
             var playerName = player.$id;
             player.gamesPlayed = _.size(player.games);
+
             player.gamesWon = _.filter(player.games, function(game){
               return game.winner.login === playerName;
             });
+
             player.gamesWonLength = player.gamesWon.length;
+
             player.gamesLost = _.filter(player.games, function(game){
               return game.loser.login === playerName;
             });
+
             player.gamesLostLength = player.gamesLost.length;
+
             player.pct = (player.gamesWonLength / player.gamesPlayed) * 100;
+
             player.avatarUrl = _.map(player.games, function(game){
               if (game.winner.login === playerName) {
                 return game.winner.avatar_url;
@@ -29,10 +35,11 @@
               }
             });
           });
-          console.log(players);
         });
 
-      // FIXME: Pull and munge data for live stuff in the leaderboardz
+        console.log($scope.leaderboard);
+
+        // FIXME: Pull and munge data for live stuff in the leaderboardz
         // $scope.players = [
         //   {avatar_url: 'http://lorempixel.com/120/120/people/1', login: 'sjoyal',
         //   wins: 55, losses: 14, pct: .757, games: 69},
@@ -50,16 +57,15 @@
         //   wins: 0, losses: 125, pct: .000, games: 125}
         // ] // END players
 
-        $scope.tableParams = new ngTableParams({
-          sorting: {
-            wins: 'desc'  // initial sorting
-          }
-        }, {
-          getData: function($defer, params){
-            $scope.players = $filter('orderBy')($scope.players, params.orderBy());
-              $defer.resolve($scope.players);
-          }
-        });
+        // $scope.tableParams = new ngTableParams({
+        //   sorting: { gamesWonLength: 'desc' }  // initial sorting
+        // }, {
+        //   getData: function($defer, params){
+        //     players = $filter('orderBy')(players, params.orderBy());
+        //     console.log(players);
+        //       $defer.resolve(players);
+        //   }
+        // });
       }); // END LeaderboardController
 
 
