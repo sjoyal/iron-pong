@@ -22,9 +22,6 @@
         createdOn: ''
       };
 
-      var timestamp = new Date().getTime();
-      self.gameresult.createdOn = timestamp;
-
       // Retrieve list of stargazers from cohort repo local vs live request:
       $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
       // $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
@@ -84,6 +81,8 @@
         });
 
       this.addResults = function(){
+        var timestamp = new Date().getTime();
+        self.gameresult.createdOn = timestamp;
         var winner = self.gameresult.winner.login;
         var winnerPic = self.gameresult.winner.avatar_url;
         var loser = self.gameresult.loser.login;
@@ -104,7 +103,6 @@
                     Restangular.one('players', winner).post('games', {jumanji});
                   })
                 } else {
-                  console.log(data.plain());
                   Restangular.one('players/' + winner).patch({
                     login: winner,
                     avatar: winnerPic,
@@ -129,7 +127,6 @@
                     Restangular.one('players', loser).post('games', {jumanji});
                   })
                 } else {
-                  console.log(data.plain());
                   Restangular.one('players/' + loser).patch({
                     login: loser,
                     avatar: loserPic,
