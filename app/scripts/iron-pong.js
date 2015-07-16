@@ -2,7 +2,7 @@
 (function(){
   'use strict';
 
-  angular.module('iron-pong', ['ui.router', 'firebase', 'angularMoment'])
+  angular.module('iron-pong', ['ui.router', 'firebase', 'angularMoment', 'restangular'])
 
     .config(function($stateProvider, $urlRouterProvider){
       $stateProvider
@@ -40,6 +40,11 @@
        // .when('/', '/recentresults');
        // END redirectTo recentresults
     }) // END $stateProvider .config
+
+    .config(function(RestangularProvider){
+      RestangularProvider.setBaseUrl('https://iron-pong.firebaseio.com');
+      RestangularProvider.setRequestSuffix('.json');
+    })
 
     .controller('MainController', function($scope, Auth) {
 

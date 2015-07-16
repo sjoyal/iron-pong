@@ -4,7 +4,7 @@
 
   angular.module('iron-pong')
     .controller('SubmitController',
-      function($scope, $http, Auth, $firebase, Players, $firebaseArray){
+      function($scope, $http, Auth, $firebase, $firebaseArray, Restangular){
 
       // $scope.players = Players.retrievePlayers();
       $scope.players = [];
@@ -70,30 +70,44 @@
       //   $scope.results.splice(index, 1);
       // };  END submit function for local deletion
 
-      var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
-      $scope.results = $firebaseArray(games);
+      // var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
+      $scope.results = [ ];
+      Restangular.one('gameresults').get()
+        .then(function(data){
+          console.log(data);
+          $scope.results = data;
+        });
 
-      // adding a result to database
       $scope.submitResults = function(){
         var timestamp = new Date().getTime();
         $scope.gameresult.createdOn = timestamp;
         console.log($scope.gameresult);
-        $scope.results.$add($scope.gameresult);
-        $scope.gameresult = { winner: '', winnerScore: '', loser: '', loserScore: '', summary: '', createdOn: '' };
-        // $state.go('recentresults'); Must add $state as dependency for this to work
+        Restangular.all('gameresults').post($scope.gameresult)
+          .then(function(data){
+            console.log(data);
+          });
       };
 
+      // adding a result to database
+      // $scope.submitResults = function(){
+      //   var timestamp = new Date().getTime();
+      //   $scope.gameresult.createdOn = timestamp;
+      //   $scope.results.$add($scope.gameresult);
+      //   $scope.gameresult = { winner: '', winnerScore: '', loser: '', loserScore: '', summary: '', createdOn: '' };
+        // $state.go('recentresults'); Must add $state as dependency for this to work
+      // };
+
       // adding results to individual players
-      $scope.submitPlayers = function(){
-        var playerWin = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.winner.login + '/games');
-        this.dbPlayersWin = $firebaseArray(playerWin);
-        var playerLose = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.loser.login + '/games');
-        this.dbPlayersLose = $firebaseArray(playerLose);
-        var timestamp = new Date().getTime();
-        $scope.gameresult.createdOn = timestamp;
-        $scope.dbPlayersWin.$add($scope.gameresult);
-        $scope.dbPlayersLose.$add($scope.gameresult);
-      };
+      // $scope.submitPlayers = function(){
+      //   var playerWin = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.winner.login + '/games');
+      //   this.dbPlayersWin = $firebaseArray(playerWin);
+      //   var playerLose = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.loser.login + '/games');
+      //   this.dbPlayersLose = $firebaseArray(playerLose);
+      //   var timestamp = new Date().getTime();
+      //   $scope.gameresult.createdOn = timestamp;
+      //   $scope.dbPlayersWin.$add($scope.gameresult);
+      //   $scope.dbPlayersLose.$add($scope.gameresult);
+      // };
 
     }); // END SubmitController
 })();
