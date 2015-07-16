@@ -75,22 +75,29 @@
       this.results = [ ];
       Restangular.one('gameresults').get()
         .then(function(data){
-          var jumanji = data.name;
           if (!data) {
-            self.results = data;
+            return
           } else {
             self.results = data.plain();
           }
+          var jumanji = data.name;
         });
 
       this.addResults = function(){
+        var winner = self.gameresult.winner.login;
+        var winnerPic = self.gameresult.winner.avatar_url;
+        var loser = self.gameresult.loser.login;
         Restangular.all('gameresults').post(self.gameresult)
           .then(function(data){
             var jumanji = data.name;
-
-            Restangular.one('players').get([self.gameresult.winner])
+            Restangular.one('players', winner).get()
               .then(function(data){
-                console.log(data);
+                if (!data) {
+                  Restangular.one('players', winner).post({
+                    login: winner,
+                    avatar:
+                  })
+                }
               });
           });
       };
