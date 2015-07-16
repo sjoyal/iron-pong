@@ -89,6 +89,8 @@
         this.dbPlayersWin = $firebaseArray(playerWin);
         var playerLose = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.loser.login + '/games');
         this.dbPlayersLose = $firebaseArray(playerLose);
+        var timestamp = new Date().getTime();
+        $scope.gameresult.createdOn = timestamp;
         $scope.dbPlayersWin.$add($scope.gameresult);
         $scope.dbPlayersLose.$add($scope.gameresult);
       };
