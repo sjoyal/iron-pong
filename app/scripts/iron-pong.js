@@ -14,7 +14,8 @@
         .state('leaderboard', {
           url: '/leaderboard',
           templateUrl: 'views/leaderboard.html',
-          controller: 'LeaderboardController'
+          controller: 'LeaderboardController',
+          controllerAs: 'leaderboard'
         }) // END $stateProvider leaderboard
         .state('gameresult', {
           url: '/gameresult/:gameresultID',

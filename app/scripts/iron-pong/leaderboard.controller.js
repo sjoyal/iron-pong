@@ -4,38 +4,50 @@
 
   angular.module('iron-pong')
     .controller('LeaderboardController',
-      function($scope, $http, $firebase, $firebaseArray){
+      function($scope, $http, $firebase, $firebaseArray, Restangular){
 
-        var ref = new Firebase('https://iron-pong.firebaseio.com/players');
-        $scope.leaderboard = $firebaseArray(ref);
-        $scope.leaderboard.$loaded().then(function(players) {
-          _.forEach(players, function(player){
-            var playerName = player.$id;
-            player.gamesPlayed = _.size(player.games);
+        // var ref = new Firebase('https://iron-pong.firebaseio.com/players');
+        // $scope.leaderboard = $firebaseArray(ref);
+        // $scope.leaderboard.$loaded().then(function(players) {
+        //   _.forEach(players, function(player){
+        //     var playerName = player.$id;
+        //     player.gamesPlayed = _.size(player.games);
+        //
+        //     player.gamesWon = _.filter(player.games, function(game){
+        //       return game.winner.login === playerName;
+        //     });
+        //
+        //     player.gamesWonLength = player.gamesWon.length;
+        //
+        //     player.gamesLost = _.filter(player.games, function(game){
+        //       return game.loser.login === playerName;
+        //     });
+        //
+        //     player.gamesLostLength = player.gamesLost.length;
+        //
+        //     player.pct = (player.gamesWonLength / player.gamesPlayed) * 100;
+        //
+        //     player.avatarUrl = _.map(player.games, function(game){
+        //       if (game.winner.login === playerName) {
+        //         return game.winner.avatar_url;
+        //       } else {
+        //         return game.loser.avatar_url;
+        //       }
+        //     });
+        //   });
+        // });
 
-            player.gamesWon = _.filter(player.games, function(game){
-              return game.winner.login === playerName;
-            });
-
-            player.gamesWonLength = player.gamesWon.length;
-
-            player.gamesLost = _.filter(player.games, function(game){
-              return game.loser.login === playerName;
-            });
-
-            player.gamesLostLength = player.gamesLost.length;
-
-            player.pct = (player.gamesWonLength / player.gamesPlayed) * 100;
-
-            player.avatarUrl = _.map(player.games, function(game){
-              if (game.winner.login === playerName) {
-                return game.winner.avatar_url;
-              } else {
-                return game.loser.avatar_url;
-              }
-            });
+        this.playerStats = [ ];
+        var self = this;
+        Restangular.one('players').get()
+          .then(function(data){
+            if (!data) {
+              return
+            } else {
+              self.playerStats = data.plain();
+            }
+            console.log(self.playerStats);
           });
-        });
 
         $scope.tab = 1;
         $scope.selectTab = function(setTab){
@@ -44,7 +56,7 @@
         $scope.isSelected = function(checkTab){
           return this.tab === checkTab;
         };
-        console.log($scope.leaderboard);
+        console.log(self.playerStats);
       }); // END LeaderboardController
 })();
 

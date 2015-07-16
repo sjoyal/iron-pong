@@ -16,15 +16,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="leader in leaderboard | orderBy:'-gamesWonLength'">
+      <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-wins'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
-          {{leader.$id}}
+          <img width="30" height="30" ng-src="{{leader.avatar}}"/>
+          {{leader.login}}
         </td>
-        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
-        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Wins'">{{leader.wins}}</td>
+        <td data-title="'Losses'">{{leader.losses}}</td>
         <td data-title="'Win %'">
-          {{leader.pct}}</td>
+          {{((leader.wins / leader.gamesPlayed) * 100) | number:0}}%</td>
         <td data-title="'Games'">{{leader.gamesPlayed}}</td>
       </tr>
     </tbody>
@@ -40,15 +40,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="leader in leaderboard | orderBy:'-gamesLostLength'">
+      <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-losses'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
-          {{leader.$id}}
+          <img width="30" height="30" ng-src="{{leader.avatar}}"/>
+          {{leader.login}}
         </td>
-        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
-        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Wins'">{{leader.wins}}</td>
+        <td data-title="'Losses'">{{leader.losses}}</td>
         <td data-title="'Win %'">
-          {{leader.pct}}</td>
+          {{((leader.wins / leader.gamesPlayed) * 100) | number:0}}%</td>
         <td data-title="'Games'">{{leader.gamesPlayed}}</td>
       </tr>
     </tbody>
@@ -64,15 +64,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="leader in leaderboard | orderBy:'-pct'">
+      <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-pct'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
-          {{leader.$id}}
+          <img width="30" height="30" ng-src="{{leader.avatar}}"/>
+          {{leader.login}}
         </td>
-        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
-        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Wins'">{{leader.wins}}</td>
+        <td data-title="'Losses'">{{leader.losses}}</td>
         <td data-title="'Win %'">
-          {{leader.pct}}</td>
+          {{((leader.wins / leader.gamesPlayed) * 100) | number:0}}%</td>
         <td data-title="'Games'">{{leader.gamesPlayed}}</td>
       </tr>
     </tbody>
@@ -88,15 +88,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="leader in leaderboard | orderBy:'-gamesPlayed'">
+      <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-gamesPlayed'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
-          {{leader.$id}}
+          <img width="30" height="30" ng-src="{{leader.avatar}}"/>
+          {{leader.login}}
         </td>
-        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
-        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Wins'">{{leader.wins}}</td>
+        <td data-title="'Losses'">{{leader.losses}}</td>
         <td data-title="'Win %'">
-          {{leader.pct}}</td>
+          {{((leader.wins / leader.gamesPlayed) * 100) | number:0}}%</td>
         <td data-title="'Games'">{{leader.gamesPlayed}}</td>
       </tr>
     </tbody>
