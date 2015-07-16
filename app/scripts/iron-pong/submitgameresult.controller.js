@@ -48,22 +48,6 @@
           }); // console.log($scope.players);
         }); // END $http.get github repo stargazers
 
-  /** results array and add / delete functions
-    * used for local storage of data;
-    * prior to submission to Firebase
-    */
-      // $scope.results = [ ];
-      // $scope.submitResults = function(){
-      //   $scope.results.push($scope.gameresult);
-      //   $scope.gameresult = {
-      //     winner: '',
-      //     winnerScore: '',
-      //     loser: '',
-      //     loserScore: '',
-      //     summary: '',
-      //     created: moment()
-      //   }
-      // };  END submit function for local viewing
       // $scope.deleteResult = function(index){
       //   $scope.results.splice(index, 1);
       // };  END submit function for local deletion
