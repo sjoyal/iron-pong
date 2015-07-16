@@ -9,7 +9,8 @@
         .state('recentresults', {
           url: '/recentresults',
           templateUrl: 'views/recentresults.html',
-          controller: 'RecentResultsController'
+          controller: 'RecentResultsController',
+          controllerAs: 'recentresults'
         }) // END $stateProvider recentresults
         .state('leaderboard', {
           url: '/leaderboard',
