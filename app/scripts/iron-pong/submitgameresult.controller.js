@@ -15,9 +15,9 @@
       });
 
       // Retrieve list of stargazers from cohort repo local vs live request:
-      // $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
-      $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
-       + $scope.authData.github.accessToken)
+      $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
+      // $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
+      //  + $scope.authData.github.accessToken)
 
         .then(function(response){
           $scope.players = _.forEach(response.data, function(player){
@@ -89,6 +89,8 @@
         this.dbPlayersWin = $firebaseArray(playerWin);
         var playerLose = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.loser.login + '/games');
         this.dbPlayersLose = $firebaseArray(playerLose);
+        var timestamp = new Date().getTime();
+        $scope.gameresult.createdOn = timestamp;
         $scope.dbPlayersWin.$add($scope.gameresult);
         $scope.dbPlayersLose.$add($scope.gameresult);
       };

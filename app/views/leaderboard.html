@@ -1,98 +1,104 @@
 <section class="table-section table-responsive">
-  <table class="table player-stats" ng-table="tableParams">
+  <ul class="toggle-buttons">
+    <li ng-click="selectTab(1)" ng-class="{active:isSelected(1)}">Wins</li><!--
+ --><li ng-click="selectTab(2)" ng-class="{active:isSelected(2)}">Losses</li><!--
+ --><li ng-click="selectTab(3)" ng-class="{active:isSelected(3)}">Win %</li><!--
+ --><li ng-click="selectTab(4)" ng-class="{active:isSelected(4)}">Games</li>
+  </ul>
+  <table class="table player-stats" ng-show="isSelected(1)">
+    <thead>
+      <tr>
+        <th class="player-login">Player</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Win %</th>
+        <th>Games</th>
+      </tr>
+    </thead>
     <tbody>
-      <tr ng-repeat="player in leaderboard">
+      <tr ng-repeat="leader in leaderboard | orderBy:'-gamesWonLength'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{player.avatarUrl[0]}}"/>
-          {{player.$id}}
+          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
+          {{leader.$id}}
         </td>
-        <td data-title="'Wins'" sortable="'wins'">{{player.gamesWon.length}}</td>
-        <td data-title="'Losses'" sortable="'losses'">{{player.gamesLost.length}}</td>
-        <td data-title="'Win %'" sortable="'pct'">
-          {{(player.gamesWon.length / (player.gamesWon.length + player.gamesLost.length) * 100) | number:0}}%</td>
-        <td data-title="'Games'" sortable="'games'">{{player.gamesPlayed}}</td>
+        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
+        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Win %'">
+          {{leader.pct}}</td>
+        <td data-title="'Games'">{{leader.gamesPlayed}}</td>
+      </tr>
+    </tbody>
+  </table><!-- .table -->
+  <table class="table player-stats" ng-show="isSelected(2)">
+    <thead>
+      <tr>
+        <th class="player-login">Player</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Win %</th>
+        <th>Games</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="leader in leaderboard | orderBy:'-gamesLostLength'">
+        <td class="player-login">
+          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
+          {{leader.$id}}
+        </td>
+        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
+        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Win %'">
+          {{leader.pct}}</td>
+        <td data-title="'Games'">{{leader.gamesPlayed}}</td>
+      </tr>
+    </tbody>
+  </table><!-- .table -->
+  <table class="table player-stats" ng-show="isSelected(3)">
+    <thead>
+      <tr>
+        <th class="player-login">Player</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Win %</th>
+        <th>Games</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="leader in leaderboard | orderBy:'-pct'">
+        <td class="player-login">
+          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
+          {{leader.$id}}
+        </td>
+        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
+        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Win %'">
+          {{leader.pct}}</td>
+        <td data-title="'Games'">{{leader.gamesPlayed}}</td>
+      </tr>
+    </tbody>
+  </table><!-- .table -->
+  <table class="table player-stats" ng-show="isSelected(4)">
+    <thead>
+      <tr>
+        <th class="player-login">Player</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Win %</th>
+        <th>Games</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="leader in leaderboard | orderBy:'-gamesPlayed'">
+        <td class="player-login">
+          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
+          {{leader.$id}}
+        </td>
+        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
+        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Win %'">
+          {{leader.pct}}</td>
+        <td data-title="'Games'">{{leader.gamesPlayed}}</td>
       </tr>
     </tbody>
   </table><!-- .table -->
 </section><!--.table-section-->
-
-  <!-- <thead>
-  <tr>
-    <th class="player-login">Player</th>
-    <th>Wins</th>
-    <th>Losses</th>
-    <th>Win %</th>
-    <th>Games</th>
-  </tr>
-  </thead> -->
-  <!-- <tbody>
-  <tr ng-repeat="player in players">
-    <td class="player-login">
-      <img width="30" height="30" ng-src="{{player.avatar_url}}"/>
-      {{player.login}}
-    </td>
-    <td data-title="'wins'" sortable="'wins'">{{player.wins}}</td>
-    <td data-title="'losses'" sortable="'losses'">{{player.losses}}</td>
-    <td data-title="'pct'" sortable="'pct'">{{player.pct}}</td>
-    <td data-title="'games'" sortable="'games'">{{player.games}}</td>
-  </tr> -->
-  <!-- <tr>
-    <td class="player-login">
-      <img width="30" height="30" src="http://lorempixel.com/120/120/people/1"/>
-      pcreglow
-    </td>
-    <td>40</td>
-    <td>30</td>
-    <td>.568</td>
-    <td>70</td>
-  </tr>
-  <tr>
-    <td class="player-login">
-      <img width="30" height="30" src="http://lorempixel.com/120/120/people/2"/>
-      jorgehjr84
-    </td>
-    <td>8</td>
-    <td>40</td>
-    <td>.213</td>
-    <td>48</td>
-  </tr>
-  <tr>
-    <td class="player-login">
-      <img width="30" height="30" src="http://lorempixel.com/120/120/people/3"/>
-      al-the-x
-    </td>
-    <td>0</td>
-    <td>125</td>
-    <td>.000</td>
-    <td>125</td>
-  </tr>
-  <tr>
-    <td class="player-login">
-      <img width="30" height="30" src="http://lorempixel.com/120/120/people/4"/>
-      gatorpazz
-    </td>
-    <td>0</td>
-    <td>0</td>
-    <td>.000</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td class="player-login">
-      <img width="30" height="30" src="http://lorempixel.com/120/120/people/5"/>
-      jessyriordan
-    </td>
-    <td>0</td>
-    <td>0</td>
-    <td>.000</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td class="player-login">
-      <img width="30" height="30" src="http://lorempixel.com/120/120/people/6"/>
-      mstaehling
-    </td>
-    <td>0</td>
-    <td>0</td>
-    <td>.000</td>
-    <td>0</td>
-  </tr> -->

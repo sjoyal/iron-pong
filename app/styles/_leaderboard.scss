@@ -8,6 +8,33 @@
   border-radius: 10px;
   text-align: center;
 
+  .toggle-buttons {
+    text-align: left;
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+      padding: auto;
+      text-align: center;
+      height: 2.5em;
+      width: 5em;
+      line-height: 2.5em;
+      cursor: pointer;
+      background-color: #9C9C9C;
+      border-right: 1px solid rgba(0,0,0,0.6)
+    }
+    li:last-child {
+      border-right: none;
+    }
+    li:hover {
+      background: rgba(0,0,0,0.4);
+    }
+    .active {
+      background: rgba(0,0,0,0.4);
+    }
+  }
+
   .player-stats {
     th {
       text-align: center;
