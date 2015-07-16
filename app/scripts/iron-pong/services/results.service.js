@@ -24,20 +24,20 @@
     }) // END Auth factory
 
     // retrieve a list of players for the cohort
-    .factory('Players', function(Auth, $http){
-      // var authInfo = Auth.authStatus();
-      this.players = [];
-      var self = this;
-      return {
-        retrievePlayers: function(){
-          $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
-          // $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token=' + authInfo.github.accessToken)
-          .then(function(response){
-            self.players = response.data;
-          });
-          return self.players;
-        }
-      }; // END Players return
-    })
+    // .factory('Players', function(Auth, $http){
+    //   // var authInfo = Auth.authStatus();
+    //   this.players = [];
+    //   var self = this;
+    //   return {
+    //     retrievePlayers: function(){
+    //       $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
+    //       // $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token=' + authInfo.github.accessToken)
+    //       .then(function(response){
+    //         self.players = response.data;
+    //       });
+    //       return self.players;
+    //     }
+    //   }; // END Players return
+    // })
     ; // END ALL THE THINGS!
 })();

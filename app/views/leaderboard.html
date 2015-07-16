@@ -1,11 +1,11 @@
 <section class="table-section table-responsive">
   <ul class="toggle-buttons">
-    <li ng-click="selectTab(1)" ng-class="{active:isSelected(1)}">Wins</li><!--
- --><li ng-click="selectTab(2)" ng-class="{active:isSelected(2)}">Losses</li><!--
- --><li ng-click="selectTab(3)" ng-class="{active:isSelected(3)}">Win %</li><!--
- --><li ng-click="selectTab(4)" ng-class="{active:isSelected(4)}">Games</li>
+    <li ng-click="leaderboard.selectTab(1)" ng-class="{active:leaderboard.isSelected(1)}">Wins</li><!--
+ --><li ng-click="leaderboard.selectTab(2)" ng-class="{active:leaderboard.isSelected(2)}">Losses</li><!--
+ --><li ng-click="leaderboard.selectTab(3)" ng-class="{active:leaderboard.isSelected(3)}">Win %</li><!--
+ --><li ng-click="leaderboard.selectTab(4)" ng-class="{active:leaderboard.isSelected(4)}">Games</li>
   </ul>
-  <table class="table player-stats" ng-show="isSelected(1)">
+  <table class="table player-stats" ng-show="leaderboard.isSelected(1)">
     <thead>
       <tr>
         <th class="player-login">Player</th>
@@ -16,20 +16,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="leader in leaderboard | orderBy:'-gamesWonLength'">
+      <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-wins'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
-          {{leader.$id}}
+          <img width="30" height="30" ng-src="{{leader.avatar}}"/>
+          {{leader.login}}
         </td>
-        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
-        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Wins'">{{leader.wins}}</td>
+        <td data-title="'Losses'">{{leader.losses}}</td>
         <td data-title="'Win %'">
-          {{leader.pct}}</td>
+          {{leader.pct | number:0}}%</td>
         <td data-title="'Games'">{{leader.gamesPlayed}}</td>
       </tr>
     </tbody>
   </table><!-- .table -->
-  <table class="table player-stats" ng-show="isSelected(2)">
+  <table class="table player-stats" ng-show="leaderboard.isSelected(2)">
     <thead>
       <tr>
         <th class="player-login">Player</th>
@@ -40,20 +40,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="leader in leaderboard | orderBy:'-gamesLostLength'">
+      <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-losses'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
-          {{leader.$id}}
+          <img width="30" height="30" ng-src="{{leader.avatar}}"/>
+          {{leader.login}}
         </td>
-        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
-        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Wins'">{{leader.wins}}</td>
+        <td data-title="'Losses'">{{leader.losses}}</td>
         <td data-title="'Win %'">
-          {{leader.pct}}</td>
+          {{leader.pct | number:0}}%</td>
         <td data-title="'Games'">{{leader.gamesPlayed}}</td>
       </tr>
     </tbody>
   </table><!-- .table -->
-  <table class="table player-stats" ng-show="isSelected(3)">
+  <table class="table player-stats" ng-show="leaderboard.isSelected(3)">
     <thead>
       <tr>
         <th class="player-login">Player</th>
@@ -64,20 +64,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="leader in leaderboard | orderBy:'-pct'">
+      <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-pct'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
-          {{leader.$id}}
+          <img width="30" height="30" ng-src="{{leader.avatar}}"/>
+          {{leader.login}}
         </td>
-        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
-        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Wins'">{{leader.wins}}</td>
+        <td data-title="'Losses'">{{leader.losses}}</td>
         <td data-title="'Win %'">
-          {{leader.pct}}</td>
+          {{leader.pct | number:0}}%</td>
         <td data-title="'Games'">{{leader.gamesPlayed}}</td>
       </tr>
     </tbody>
   </table><!-- .table -->
-  <table class="table player-stats" ng-show="isSelected(4)">
+  <table class="table player-stats" ng-show="leaderboard.isSelected(4)">
     <thead>
       <tr>
         <th class="player-login">Player</th>
@@ -88,15 +88,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="leader in leaderboard | orderBy:'-gamesPlayed'">
+      <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-gamesPlayed'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{leader.avatarUrl[0]}}"/>
-          {{leader.$id}}
+          <img width="30" height="30" ng-src="{{leader.avatar}}"/>
+          {{leader.login}}
         </td>
-        <td data-title="'Wins'">{{leader.gamesWonLength}}</td>
-        <td data-title="'Losses'">{{leader.gamesLostLength}}</td>
+        <td data-title="'Wins'">{{leader.wins}}</td>
+        <td data-title="'Losses'">{{leader.losses}}</td>
         <td data-title="'Win %'">
-          {{leader.pct}}</td>
+          {{leader.pct | number:0}}%</td>
         <td data-title="'Games'">{{leader.gamesPlayed}}</td>
       </tr>
     </tbody>

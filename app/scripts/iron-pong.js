@@ -2,19 +2,21 @@
 (function(){
   'use strict';
 
-  angular.module('iron-pong', ['ui.router', 'firebase', 'angularMoment'])
+  angular.module('iron-pong', ['ui.router', 'firebase', 'angularMoment', 'restangular'])
 
     .config(function($stateProvider, $urlRouterProvider){
       $stateProvider
         .state('recentresults', {
           url: '/recentresults',
           templateUrl: 'views/recentresults.html',
-          controller: 'RecentResultsController'
+          controller: 'RecentResultsController',
+          controllerAs: 'recentresults'
         }) // END $stateProvider recentresults
         .state('leaderboard', {
           url: '/leaderboard',
           templateUrl: 'views/leaderboard.html',
-          controller: 'LeaderboardController'
+          controller: 'LeaderboardController',
+          controllerAs: 'leaderboard'
         }) // END $stateProvider leaderboard
         .state('gameresult', {
           url: '/gameresult/:gameresultID',
@@ -29,7 +31,8 @@
         .state('submit', {
           url: '/submit',
           templateUrl: 'views/submitgameresult.html',
-          controller: 'SubmitController'
+          controller: 'SubmitController',
+          controllerAs: 'submit'
         }) // END $stateProvider submitgameresult
         .state('404', {
           url: '/404',
@@ -40,6 +43,11 @@
        // .when('/', '/recentresults');
        // END redirectTo recentresults
     }) // END $stateProvider .config
+
+    .config(function(RestangularProvider){
+      RestangularProvider.setBaseUrl('https://iron-pong.firebaseio.com');
+      RestangularProvider.setRequestSuffix('.json');
+    })
 
     .controller('MainController', function($scope, Auth) {
 
