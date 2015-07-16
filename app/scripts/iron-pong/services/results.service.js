@@ -5,7 +5,7 @@
   angular.module('iron-pong')
     // authenticate users
     .factory('Auth', function($firebaseAuth){
-      var ref = new Firebase('https://iron-pong.firebaseio.com');
+      var ref = new Firebase('https://iron-pong-dev.firebaseio.com');
       return {
         magicAuth: $firebaseAuth(ref),
         ghLogin: function(){

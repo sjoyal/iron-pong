@@ -6,7 +6,7 @@
     .controller('LeaderboardController',
       function($scope, $http, $firebase, $firebaseArray){
 
-        var ref = new Firebase('https://iron-pong.firebaseio.com/players');
+        var ref = new Firebase('https://iron-pong-dev.firebaseio.com/players');
         $scope.leaderboard = $firebaseArray(ref);
         $scope.leaderboard.$loaded().then(function(players) {
           _.forEach(players, function(player){
