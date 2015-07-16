@@ -70,7 +70,7 @@
       //   $scope.results.splice(index, 1);
       // };  END submit function for local deletion
 
-      var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
+      var games = new Firebase('https://iron-pong-dev.firebaseio.com/gameresults');
       $scope.results = $firebaseArray(games);
 
       // adding a result to database
@@ -85,9 +85,9 @@
 
       // adding results to individual players
       $scope.submitPlayers = function(){
-        var playerWin = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.winner.login + '/games');
+        var playerWin = new Firebase('https://iron-pong-dev.firebaseio.com/players/' + $scope.gameresult.winner.login + '/games');
         this.dbPlayersWin = $firebaseArray(playerWin);
-        var playerLose = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.loser.login + '/games');
+        var playerLose = new Firebase('https://iron-pong-dev.firebaseio.com/players/' + $scope.gameresult.loser.login + '/games');
         this.dbPlayersLose = $firebaseArray(playerLose);
         var timestamp = new Date().getTime();
         $scope.gameresult.createdOn = timestamp;
