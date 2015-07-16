@@ -14,11 +14,11 @@
       var self = this;
       this.players = [];
       this.gameresult = {
-        winner: '',
-        winnerScore: '',
-        loser: '',
-        loserScore: '',
-        summary: '',
+        winner: 'sjoyal',
+        winnerScore: '21',
+        loser: 'pcreglow',
+        loserScore: '18',
+        summary: 'what?',
         createdOn: ''
       };
 
@@ -93,10 +93,16 @@
             Restangular.one('players', winner).get()
               .then(function(data){
                 if (!data) {
-                  Restangular.one('players', winner).post({
+                  Restangular.one('players/' + winner).patch({
                     login: winner,
-                    avatar:
+                    avatar: winnerPic,
+                    wins: 1,
+                    gamesPlayed: 1,
+                    losses: 0,
+                    games: { 0: jumanji }
                   })
+                } else {
+                  console.log(data.plain());
                 }
               });
           });
