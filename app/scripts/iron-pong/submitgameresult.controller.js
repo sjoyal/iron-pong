@@ -14,11 +14,11 @@
       var self = this;
       this.players = [];
       this.gameresult = {
-        winner: 'sjoyal',
-        winnerScore: '21',
-        loser: 'pcreglow',
-        loserScore: '18',
-        summary: 'what?',
+        winner: '',
+        winnerScore: '',
+        loser: '',
+        loserScore: '',
+        summary: '',
         createdOn: ''
       };
 
@@ -87,6 +87,7 @@
         var winner = self.gameresult.winner.login;
         var winnerPic = self.gameresult.winner.avatar_url;
         var loser = self.gameresult.loser.login;
+        var loserPic = self.gameresult.loser.avatar_url;
         Restangular.all('gameresults').post(self.gameresult)
           .then(function(data){
             var jumanji = data.name;
@@ -98,14 +99,57 @@
                     avatar: winnerPic,
                     wins: 1,
                     gamesPlayed: 1,
-                    losses: 0,
-                    games: { 0: jumanji }
+                    losses: 0
+                  }).then(function(data){
+                    Restangular.one('players', winner).post('games', {jumanji});
                   })
                 } else {
                   console.log(data.plain());
+                  Restangular.one('players/' + winner).patch({
+                    login: winner,
+                    avatar: winnerPic,
+                    wins: (data.wins + 1),
+                    gamesPlayed: (data.gamesPlayed + 1),
+                    losses: data.losses
+                  }).then(function(data){
+                    Restangular.one('players', winner).post('games', {jumanji});
+                  })
+                }
+              });
+            Restangular.one('players', loser).get()
+              .then(function(data){
+                if (!data) {
+                  Restangular.one('players/' + loser).patch({
+                    login: loser,
+                    avatar: loserPic,
+                    wins: 0,
+                    gamesPlayed: 1,
+                    losses: 1
+                  }).then(function(data){
+                    Restangular.one('players', loser).post('games', {jumanji});
+                  })
+                } else {
+                  console.log(data.plain());
+                  Restangular.one('players/' + loser).patch({
+                    login: loser,
+                    avatar: loserPic,
+                    wins: data.wins,
+                    gamesPlayed: (data.gamesPlayed + 1),
+                    losses: (data.losses + 1)
+                  }).then(function(data){
+                    Restangular.one('players', loser).post('games', {jumanji});
+                  })
                 }
               });
           });
+          self.gameresult = {
+            winner: '',
+            winnerScore: '',
+            loser: '',
+            loserScore: '',
+            summary: '',
+            createdOn: ''
+          };
       };
 
       // adding a result to database
