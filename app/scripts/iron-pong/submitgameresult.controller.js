@@ -6,21 +6,31 @@
     .controller('SubmitController',
       function($scope, $http, Auth, $firebase, $firebaseArray, Restangular){
 
-      // $scope.players = Players.retrievePlayers();
-      $scope.players = [];
-
       $scope.auth = Auth.magicAuth;
       $scope.auth.$onAuth(function(authData){
         $scope.authData = authData;
       });
 
+      var self = this;
+      this.players = [];
+      this.gameresult = {
+        winner: '',
+        winnerScore: '',
+        loser: '',
+        loserScore: '',
+        summary: '',
+        createdOn: ''
+      };
+
+      var timestamp = new Date().getTime();
+      self.gameresult.createdOn = timestamp;
+
       // Retrieve list of stargazers from cohort repo local vs live request:
       $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
       // $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
       //  + $scope.authData.github.accessToken)
-
         .then(function(response){
-          $scope.players = _.forEach(response.data, function(player){
+          self.players = _.forEach(response.data, function(player){
             var data = player;
             delete player.id;
             delete player.gravatar_id;
@@ -40,15 +50,6 @@
             return data;
           }); // console.log($scope.players);
         }); // END $http.get github repo stargazers
-
-      $scope.gameresult = {
-        winner: '',
-        winnerScore: '',
-        loser: '',
-        loserScore: '',
-        summary: '',
-        createdOn: ''
-      };
 
   /** results array and add / delete functions
     * used for local storage of data;
@@ -71,20 +72,26 @@
       // };  END submit function for local deletion
 
       // var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
-      $scope.results = [ ];
+      this.results = [ ];
       Restangular.one('gameresults').get()
         .then(function(data){
-          console.log(data);
-          $scope.results = data;
+          var jumanji = data.name;
+          if (!data) {
+            self.results = data;
+          } else {
+            self.results = data.plain();
+          }
         });
 
-      $scope.submitResults = function(){
-        var timestamp = new Date().getTime();
-        $scope.gameresult.createdOn = timestamp;
-        console.log($scope.gameresult);
-        Restangular.all('gameresults').post($scope.gameresult)
+      this.addResults = function(){
+        Restangular.all('gameresults').post(self.gameresult)
           .then(function(data){
-            console.log(data);
+            var jumanji = data.name;
+
+            Restangular.one('players').get([self.gameresult.winner])
+              .then(function(data){
+                console.log(data);
+              });
           });
       };
 

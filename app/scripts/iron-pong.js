@@ -29,7 +29,8 @@
         .state('submit', {
           url: '/submit',
           templateUrl: 'views/submitgameresult.html',
-          controller: 'SubmitController'
+          controller: 'SubmitController',
+          controllerAs: 'submit'
         }) // END $stateProvider submitgameresult
         .state('404', {
           url: '/404',
