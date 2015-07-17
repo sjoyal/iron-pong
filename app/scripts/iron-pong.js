@@ -21,7 +21,8 @@
         .state('gameresult', {
           url: '/gameresult/:gameresultID',
           templateUrl: 'views/gameresult.html',
-          controller: 'GameResultController'
+          controller: 'GameResultController',
+          controllerAs: 'gameresult'
         }) // END $stateProvider gameresult
         .state('player', {
           url: '/player/:playerID',

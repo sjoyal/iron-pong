@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="(id, result) in recentresults.scores | orderBy: '-created_on'">
+      <tr ng-repeat="result in recentresults.scores | orderBy: '-createdOn'">
         <td>
           <img width="30" height="30" ng-src={{result.winner.avatar_url}}/>
           {{result.winner.login}}
@@ -24,7 +24,7 @@
         </td>
         <td>{{result.loserScore}}</td>
         <td class="data-center"><time am-time-ago="result.createdOn"><time></td>
-        <td><a ui-sref="gameresult({gameresultID: id})">view</a><td>
+        <td><a ui-sref="gameresult({gameresultID: result.$id})">view</a><td>
       </tr> <!--END ng-repeat-->
     </tbody>
   </table><!-- .table -->

@@ -1,21 +1,21 @@
 <section class="game-result">
   <h2>Winner!</h2>
-  <h3>{{result.winner.login}}</h3>
+  <h3>{{gameresult.game.winner.login}}</h3>
   <ul>
     <li>
-      <small class="result-player1">{{result.winner.login}}</small>
-      <big>{{result.winnerScore}}</big>
+      <small class="result-player1">{{gameresult.game.winner.login}}</small>
+      <big>{{gameresult.game.winnerScore}}</big>
     </li>
     <li class="result-vs">vs</li>
     <li>
-      <small class="result-player2">{{result.loser.login}}</small>
-      <big>{{result.loserScore}}</big>
+      <small class="result-player2">{{gameresult.game.loser.login}}</small>
+      <big>{{gameresult.game.loserScore}}</big>
     </li>
   </ul>
   <div class="game-summary">
     <aside>
       <h4>GAME SUMMARY</h4>
-      <p>{{result.summary}}</p>
+      <p>{{gameresult.game.summary}}</p>
     </aside>
   </div>
   <a ui-sref="recentresults">Back to Recent Results</a>

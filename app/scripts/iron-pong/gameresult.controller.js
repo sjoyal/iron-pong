@@ -14,6 +14,7 @@
       Restangular.one('gameresults', $stateParams.gameresultID).get()
         .then(function(data){
           self.game = data.plain();
+          console.log(self.game);
         });
 
     }); // END GameResultController
