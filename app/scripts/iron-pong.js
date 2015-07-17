@@ -40,7 +40,6 @@
         }); // END $stateProvider 404
       $urlRouterProvider
         .otherwise('/recentresults');
-       // .when('/', '/recentresults');
        // END redirectTo recentresults
     }) // END $stateProvider .config
 
@@ -50,7 +49,6 @@
     })
 
     .controller('MainController', function($scope, Auth) {
-
       $scope.auth = Auth.magicAuth;
       $scope.auth.$onAuth(function(authData){
         $scope.authData = authData;
@@ -65,7 +63,6 @@
       $scope.logout = function(){
         Auth.ghLogout();
       };
-
     }) // END MainController
   ; // END ALL THE THINGS
 })();
