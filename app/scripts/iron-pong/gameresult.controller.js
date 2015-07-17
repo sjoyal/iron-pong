@@ -17,5 +17,12 @@
           console.log(self.game);
         });
 
+      this.deleteGame = function(){
+        Restangular.one('gameresults', $stateParams.gameresultID).remove()
+          .then(function(data){
+            console.log(data);
+          });
+      };
+
     }); // END GameResultController
 })();
