@@ -1,5 +1,5 @@
 /* global angular */
-;(function(){
+(function(){
   'use strict';
 
   angular.module('iron-pong')
@@ -17,7 +17,7 @@
         console.log(self.authData);
         if (self.authData) {
           $state.go('submit');
-        };
+        }
       });
     }); // END LoginController
 })();

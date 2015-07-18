@@ -1,4 +1,4 @@
-/* global angular Firebase _*/
+/* global angular _*/
 (function(){
   'use strict';
 
@@ -11,13 +11,13 @@
         Restangular.one('players').get()
           .then(function(data){
             if (!data) {
-              return
+              return;
             } else {
               // self.playerStats = data.plain();
               _.forEach(data.plain(), function(player){
                 self.playerStats.push(player);
               });
-            };
+            }
             _.forEach(self.playerStats, function(player){
               player.pct = ((player.wins / player.gamesPlayed) * 100);
             });

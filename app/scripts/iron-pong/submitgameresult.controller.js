@@ -1,5 +1,5 @@
-/* global angular _ Firebase*/
-;(function(){
+/* global angular _ */
+(function(){
   'use strict';
 
   angular.module('iron-pong')
@@ -21,12 +21,14 @@
       this.auth = Auth.magicAuth;
       this.auth.$onAuth(function(authData){
         self.authData = authData;
-        if (!self.authData) return;
+        if (!self.authData) {
+          return;
+        }
         $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
            + self.authData.github.accessToken)
             .then(function(response){
               self.players = _.forEach(response.data, function(player){
-                var data = player;
+                var playerInfo = player;
                 delete player.id;
                 delete player.gravatar_id;
                 delete player.url;
@@ -42,7 +44,7 @@
                 delete player.received_events_url;
                 delete player.type;
                 delete player.site_admin;
-                return data;
+                return playerInfo;
               });
               self.access = _.find(self.players, function(player){
                 return player.login === self.authData.github.username;
@@ -85,54 +87,62 @@
         var loser = self.gameresult.loser.login;
         var loserPic = self.gameresult.loser.avatar_url;
         Restangular.all('gameresults').post(self.gameresult)
-          .then(function(data){
-            var jumanji = data.name;
+          .then(function(result){
+            var jumanji = result.name;
             Restangular.one('players', winner).get()
-              .then(function(data){
-                if (!data) {
+              .then(function(gameWinner){
+                if (!gameWinner) {
                   Restangular.one('players/' + winner).patch({
                     login: winner,
                     avatar: winnerPic,
                     wins: 1,
                     gamesPlayed: 1,
                     losses: 0
-                  }).then(function(data){
-                    Restangular.one('players', winner).post('games', {jumanji});
-                  })
+                  }).then(function(){
+                    Restangular.one('players', winner).post('games', {
+                      true: jumanji
+                    });
+                  });
                 } else {
                   Restangular.one('players/' + winner).patch({
                     login: winner,
                     avatar: winnerPic,
-                    wins: (data.wins + 1),
-                    gamesPlayed: (data.gamesPlayed + 1),
-                    losses: data.losses
-                  }).then(function(data){
-                    Restangular.one('players', winner).post('games', {jumanji});
-                  })
+                    wins: (gameWinner.wins + 1),
+                    gamesPlayed: (gameWinner.gamesPlayed + 1),
+                    losses: gameWinner.losses
+                  }).then(function(){
+                    Restangular.one('players', winner).post('games', {
+                      true: jumanji
+                    });
+                  });
                 }
               });
             Restangular.one('players', loser).get()
-              .then(function(data){
-                if (!data) {
+              .then(function(gameLoser){
+                if (!gameLoser) {
                   Restangular.one('players/' + loser).patch({
                     login: loser,
                     avatar: loserPic,
                     wins: 0,
                     gamesPlayed: 1,
                     losses: 1
-                  }).then(function(data){
-                    Restangular.one('players', loser).post('games', {jumanji});
-                  })
+                  }).then(function(){
+                    Restangular.one('players', loser).post('games', {
+                      true: jumanji
+                    });
+                  });
                 } else {
                   Restangular.one('players/' + loser).patch({
                     login: loser,
                     avatar: loserPic,
-                    wins: data.wins,
-                    gamesPlayed: (data.gamesPlayed + 1),
-                    losses: (data.losses + 1)
-                  }).then(function(data){
-                    Restangular.one('players', loser).post('games', {jumanji});
-                  })
+                    wins: gameLoser.wins,
+                    gamesPlayed: (gameLoser.gamesPlayed + 1),
+                    losses: (gameLoser.losses + 1)
+                  }).then(function(){
+                    Restangular.one('players', loser).post('games', {
+                      true: jumanji
+                    });
+                  });
                 }
               });
           });

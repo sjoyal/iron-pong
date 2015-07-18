@@ -1,3 +1,4 @@
+/* global angular */
 (function(){
   'use strict';
 
@@ -21,7 +22,9 @@
       this.auth.$onAuth(function(authData){
         self.authData = authData;
         // console.log(self.authData);
-        if (!authData) return;
+        if (!authData) {
+          return;
+        }
         $http.get('https://api.github.com/users/' + $stateParams.playerID)
           .then(function(response){
             self.athleteDetails = response.data;
