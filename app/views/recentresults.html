@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="result in recentresults.scores | orderBy: '-created_on'">
+      <tr ng-repeat="result in recentresults.scores | orderBy: '-createdOn'">
         <td>
           <img width="30" height="30" ng-src={{result.winner.avatar_url}}/>
           {{result.winner.login}}

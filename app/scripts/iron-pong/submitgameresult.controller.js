@@ -52,6 +52,20 @@
       //   $scope.results.splice(index, 1);
       // };  END submit function for local deletion
 
+      /** FIXME: previous filter mechanism for input fields
+        * update to use with only winner / loser fields
+        * remove selected winner option from list of loser options
+        */
+        // $scope.competitors = [ ];
+        // $scope.addPlayer1 = function(playerName){
+        //   $scope.competitors[0] = playerName;
+        //   console.log($scope.competitors);
+        // };
+        // $scope.addPlayer2 = function(playerName){
+        //   $scope.competitors[1] = playerName;
+        //   console.log($scope.competitors);
+        // };
+
       // var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
       this.results = [ ];
       Restangular.one('gameresults').get()
@@ -156,17 +170,3 @@
 
     }); // END SubmitController
 })();
-
-/** FIXME: previous filter mechanism for input fields
-  * update to use with only winner / loser fields
-  * remove selected winner option from list of loser options
-  */
-// $scope.competitors = [ ];
-// $scope.addPlayer1 = function(playerName){
-//   $scope.competitors[0] = playerName;
-//   console.log($scope.competitors);
-// };
-// $scope.addPlayer2 = function(playerName){
-//   $scope.competitors[1] = playerName;
-//   console.log($scope.competitors);
-// };
