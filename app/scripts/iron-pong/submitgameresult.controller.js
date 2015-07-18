@@ -144,6 +144,7 @@
             summary: '',
             createdOn: ''
           };
+          $state.go('recentresults');
       };
     }); // END SubmitController
 })();
