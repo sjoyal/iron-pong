@@ -4,14 +4,14 @@
 
   angular.module('iron-pong')
     .controller('SubmitController',
-      function($state, $http, Auth, $firebase, $firebaseArray, Restangular){
+      function($state, $http, Auth, Restangular){
 
       // Retrieve list of stargazers from cohort repo local vs live request:
       this.auth = Auth.magicAuth;
       this.auth.$onAuth(function(authData){
         self.authData = authData;
         console.log(self.authData);
-        if (!authData) {
+        if (!self.authData) {
           $state.go('login');
         } else {
           $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
@@ -50,10 +50,6 @@
         summary: '',
         createdOn: ''
       };
-
-      // $scope.deleteResult = function(index){
-      //   $scope.results.splice(index, 1);
-      // };  END submit function for local deletion
 
       /** FIXME: previous filter mechanism for input fields
         * update to use with only winner / loser fields
@@ -149,27 +145,5 @@
             createdOn: ''
           };
       };
-
-      // adding a result to database
-      // $scope.submitResults = function(){
-      //   var timestamp = new Date().getTime();
-      //   $scope.gameresult.createdOn = timestamp;
-      //   $scope.results.$add($scope.gameresult);
-      //   $scope.gameresult = { winner: '', winnerScore: '', loser: '', loserScore: '', summary: '', createdOn: '' };
-        // $state.go('recentresults'); Must add $state as dependency for this to work
-      // };
-
-      // adding results to individual players
-      // $scope.submitPlayers = function(){
-      //   var playerWin = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.winner.login + '/games');
-      //   this.dbPlayersWin = $firebaseArray(playerWin);
-      //   var playerLose = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.loser.login + '/games');
-      //   this.dbPlayersLose = $firebaseArray(playerLose);
-      //   var timestamp = new Date().getTime();
-      //   $scope.gameresult.createdOn = timestamp;
-      //   $scope.dbPlayersWin.$add($scope.gameresult);
-      //   $scope.dbPlayersLose.$add($scope.gameresult);
-      // };
-
     }); // END SubmitController
 })();

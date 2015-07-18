@@ -14,8 +14,8 @@
 
       this.auth.$onAuth(function(authData){
         self.authData = authData;
-        console.log(authData);
-        if (authData) {
+        console.log(self.authData);
+        if (self.authData) {
           $state.go('submit');
         };
       });

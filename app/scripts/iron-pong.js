@@ -13,13 +13,6 @@
           controllerAs: 'recentresults'
         }) // END $stateProvider recentresults
 
-        .state('login', {
-          url: '/login',
-          templateUrl: 'views/login.html',
-          controller: 'LoginController',
-          controllerAs: 'login'
-        }) // END $stateProvider login
-
         .state('leaderboard', {
           url: '/leaderboard',
           templateUrl: 'views/leaderboard.html',
@@ -48,6 +41,13 @@
           controllerAs: 'submit'
         }) // END $stateProvider submitgameresult
 
+        .state('login', {
+          url: '/login',
+          templateUrl: 'views/login.html',
+          controller: 'LoginController',
+          controllerAs: 'login'
+        }) // END $stateProvider login
+
         .state('404', {
           url: '/404',
           templateUrl: 'views/404.html'
@@ -62,7 +62,7 @@
       RestangularProvider.setRequestSuffix('.json');
     })
 
-    .controller('MainController', function($scope, $state, Auth) {
+    .controller('MainController', function(Auth) {
 
       var self = this;
       this.auth = Auth.magicAuth;
@@ -78,7 +78,6 @@
       };
       this.logout = function(){
         Auth.ghLogout();
-        // $state.go('recentresults');
       };
     }) // END MainController
   ; // END ALL THE THINGS
