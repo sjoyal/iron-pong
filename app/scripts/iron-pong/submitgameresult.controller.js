@@ -6,6 +6,17 @@
     .controller('SubmitController',
       function($state, $http, Auth, Restangular){
 
+      var self = this;
+      this.players = [];
+      this.gameresult = {
+        winner: '',
+        winnerScore: '',
+        loser: '',
+        loserScore: '',
+        summary: '',
+        createdOn: ''
+      };
+
       // Retrieve list of stargazers from cohort repo local vs live request:
       this.auth = Auth.magicAuth;
       this.auth.$onAuth(function(authData){
@@ -33,19 +44,12 @@
                 delete player.site_admin;
                 return data;
               });
-            }); // END $http.get github repo stargazers
+              self.access = _.find(self.players, function(player){
+                return player.login === self.authData.github.username;
+              });
+              console.log(self.access);
+          }); // END $http.get github repo stargazers
       });
-
-      var self = this;
-      this.players = [];
-      this.gameresult = {
-        winner: '',
-        winnerScore: '',
-        loser: '',
-        loserScore: '',
-        summary: '',
-        createdOn: ''
-      };
 
       /** FIXME: previous filter mechanism for input fields
         * update to use with only winner / loser fields
@@ -62,16 +66,16 @@
         // };
 
       // var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
-      this.results = [ ];
-      Restangular.one('gameresults').get()
-        .then(function(data){
-          if (!data) {
-            return
-          } else {
-            self.results = data.plain();
-          }
-          var jumanji = data.name;
-        });
+      // this.results = [ ];
+      // Restangular.one('gameresults').get()
+      //   .then(function(data){
+      //     if (!data) {
+      //       return
+      //     } else {
+      //       self.results = data.plain();
+      //     }
+      //     var jumanji = data.name;
+      //   });
 
       this.addResults = function(){
         var timestamp = new Date().getTime();
