@@ -4,7 +4,7 @@
 
   angular.module('iron-pong')
     .controller('SubmitController',
-      function($scope, $state, $http, Auth, $firebase, $firebaseArray, Restangular){
+      function($state, $http, Auth, $firebase, $firebaseArray, Restangular){
 
       // Retrieve list of stargazers from cohort repo local vs live request:
       this.auth = Auth.magicAuth;
