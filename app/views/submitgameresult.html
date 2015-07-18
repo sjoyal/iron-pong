@@ -7,9 +7,10 @@
     <p>{{result.summary}}{{result.created}}</p>
     <a ng-click="deleteResult($index)">delete</a>
   </div>
+  <p ng-hide="submit.authData">Log in with GitHub to submit match results. Only members of The Iron Yard--Orlando 2015--SUMMER--FEE are eligible to submit results</p> 
 
   <h3>Submit Results</h3>
-  <form name="submitDemResults" ng-submit="submit.addPlayers(); submit.addResults()">
+  <form ng-show="submit.authData" name="submitDemResults" ng-submit="submit.addPlayers(); submit.addResults()">
     <div class="form-group">
       <label>Winner:</label>
       <select class="form-control" ng-model="submit.gameresult.winner"

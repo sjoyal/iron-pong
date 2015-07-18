@@ -10,11 +10,8 @@
       this.auth = Auth.magicAuth;
       this.auth.$onAuth(function(authData){
         self.authData = authData;
-        console.log(self.authData);
-        if (!self.authData) {
-          $state.go('login');
-        } else {
-          $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
+        if (!self.authData) return;
+        $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
            + self.authData.github.accessToken)
             .then(function(response){
               self.players = _.forEach(response.data, function(player){
@@ -37,7 +34,6 @@
                 return data;
               });
             }); // END $http.get github repo stargazers
-        }
       });
 
       var self = this;
