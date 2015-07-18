@@ -1,9 +1,9 @@
-/* global angular Firebase */
+/* global angular */
 (function(){
   'use strict';
 
   angular.module('iron-pong')
-    .controller('GameResultController', function ($scope, $firebase, $firebaseObject, Restangular, $state, $stateParams){
+    .controller('GameResultController', function ($scope, Restangular, $state, $stateParams){
 
       console.log($stateParams);
       // pull in specific game result from
@@ -19,31 +19,31 @@
 
       this.deleteGame = function(){
         Restangular.one('gameresults', $stateParams.gameresultID).remove()
-          .then(function(data){
+          .then(function(){
             Restangular.one('players', self.game.winner.login).get()
-              .then(function(data){
-                if (data.gamesPlayed === 1) {
+              .then(function(gameWinner){
+                if (gameWinner.gamesPlayed === 1) {
                   Restangular.one('players', self.game.winner.login).remove();
                 } else {
                   Restangular.one('players/' + self.game.winner.login).patch({
-                    wins: (data.wins - 1),
-                    gamesPlayed: (data.gamesPlayed - 1)
-                  }).then(function(data){
+                    wins: (gameWinner.wins - 1),
+                    gamesPlayed: (gameWinner.gamesPlayed - 1)
+                  }).then(function(){
                     // Remove game reference under player ID
-                  })
+                  });
                 }
               });
             Restangular.one('players', self.game.loser.login).get()
-              .then(function(data){
-                if (data.gamesPlayed === 1) {
+              .then(function(gameLoser){
+                if (gameLoser.gamesPlayed === 1) {
                   Restangular.one('players', self.game.loser.login).remove();
                 } else {
                   Restangular.one('players/' + self.game.loser.login).patch({
-                    losses: (data.losses - 1),
-                    gamesPlayed: (data.gamesPlayed - 1)
-                  }).then(function(data){
+                    losses: (gameLoser.losses - 1),
+                    gamesPlayed: (gameLoser.gamesPlayed - 1)
+                  }).then(function(){
                     // Remove game reference under player ID
-                  })
+                  });
                 }
               });
           });
