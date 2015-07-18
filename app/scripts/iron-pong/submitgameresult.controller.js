@@ -12,7 +12,7 @@
         self.authData = authData;
         console.log(self.authData);
         if (!authData) {
-          $state.go('recentresults');
+          $state.go('login');
         } else {
           $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
            + self.authData.github.accessToken)
