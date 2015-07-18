@@ -3,12 +3,17 @@
   'use strict';
 
   angular.module('iron-pong')
-    .controller('RecentResultsController', function($scope, $firebase, $firebaseArray){
-
+    .controller('RecentResultsController', function($firebaseArray){
       // pull in the recent game results from firebase
-      var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
-      $scope.results = $firebaseArray(games);
-      console.log($scope.results);
-
+      this.scores = [ ];
+      var self = this;
+      var ref = new Firebase('https://iron-pong.firebaseio.com/gameresults');
+      this.scores = $firebaseArray(ref);
+      // Restangular.one('gameresults').get()
+        // .then(function(data){
+          // self.scores = data.plain();
+          // console.log(self.scores);
+        // });
+      console.log(self.scores);
     }); // END RecentResultsController
 })();

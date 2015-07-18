@@ -12,132 +12,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="result in results | orderBy: '-created_on'">
+      <tr ng-repeat="result in recentresults.scores | orderBy: '-createdOn'">
         <td>
-          <img width="30" height="30" ng-src={{result.winner.avatar_url}}/>
-          {{result.winner.login}}
+          <a ui-sref="player({playerID: result.winner.login})">
+            <img width="30" height="30" ng-src={{result.winner.avatar_url}}/>
+            {{result.winner.login}}
+          </a>
         </td>
         <td>{{result.winnerScore}}</td>
         <td>
-          <img width="30" height="30" ng-src={{result.loser.avatar_url}}/>
-          {{result.loser.login}}
+          <a ui-sref="player({playerID: result.loser.login})">
+            <img width="30" height="30" ng-src={{result.loser.avatar_url}}/>
+            {{result.loser.login}}
+          </a>
         </td>
         <td>{{result.loserScore}}</td>
         <td class="data-center"><time am-time-ago="result.createdOn"><time></td>
         <td><a ui-sref="gameresult({gameresultID: result.$id})">view</a><td>
       </tr> <!--END ng-repeat-->
-<!--       <tr>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/5/>
-    jorgehjr84
-  </td>
-  <td>21</td>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/4/>
-    pcreglow
-  </td>
-  <td>10</td>
-  <td class="data-center">a day ago</td>
-  <td><a ui-sref="gameresult">view</a><td>
-</tr>
-<tr>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/3/>
-    pcreglow
-  </td>
-  <td>21</td>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/2/>
-    al-the-x
-  </td>
-  <td>2</td>
-  <td class="data-center">a day ago</td>
-  <td><a ui-sref="gameresult">view</a><td>
-</tr>
-<tr>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/1/>
-    sjoyal
-  </td>
-  <td>21</td>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/7/>
-    jorgehjr84
-  </td>
-  <td>8</td>
-  <td class="data-center">2 days ago</td>
-  <td><a ui-sref="gameresult">view</a><td>
-</tr>
-<tr>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/6/>
-    pcreglow
-  </td>
-  <td>21</td>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/5/>
-    gatorpazz
-  </td>
-  <td>14</td>
-  <td class="data-center">2 days ago</td>
-  <td><a ui-sref="gameresult">view</a><td>
-</tr>
-<tr>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/4/>
-    pcreglow
-  </td>
-  <td>21</td>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/3/>
-    gatorpazz
-  </td>
-  <td>14</td>
-  <td class="data-center">2 days ago</td>
-  <td><a ui-sref="gameresult">view</a><td>
-</tr>
-<tr>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/2/>
-    pcreglow
-  </td>
-  <td>21</td>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/1/>
-    gatorpazz
-  </td>
-  <td>14</td>
-  <td class="data-center">2 days ago</td>
-  <td><a ui-sref="gameresult">view</a><td>
-</tr>
-<tr>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/7/>
-    pcreglow
-  </td>
-  <td>21</td>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/6/>
-    gatorpazz
-  </td>
-  <td>14</td>
-  <td class="data-center">2 days ago</td>
-  <td><a ui-sref="gameresult">view</a><td>
-</tr>
-<tr>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/5/>
-    pcreglow
-  </td>
-  <td>21</td>
-  <td>
-    <img width="30" height="30" src=http://lorempixel.com/120/120/people/4/>
-    gatorpazz
-  </td>
-  <td>14</td>
-  <td class="data-center">2 days ago</td>
-  <td><a ui-sref="#gameresult">view</a><td>
-</tr> -->
     </tbody>
   </table><!-- .table -->
 </section><!--.recent-games-table-->

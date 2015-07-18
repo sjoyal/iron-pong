@@ -1,60 +1,45 @@
 <section class="submit-results">
-  <div ng-repeat="result in results">
-    <img ng-src="{{result.winner.avatar_url}}" height="30" width="30">
-    <big>{{result.winner.login}}</big><small>{{result.winnerScore}}</small><br>
-    <img ng-src="{{result.loser.avatar_url}}" height="30" width="30">
-    <big>{{result.loser.login}}</big><small>{{result.loserScore}}</small>
-    <p>{{result.summary}}{{result.created}}</p>
-    <a ng-click="deleteResult($index)">delete</a>
-  </div>
+<!--   <div ng-repeat="result in submit.results">
+  <img ng-src="{{result.winner.avatar_url}}" height="30" width="30">
+  <big>{{result.winner.login}}</big><small>{{result.winnerScore}}</small><br>
+  <img ng-src="{{result.loser.avatar_url}}" height="30" width="30">
+  <big>{{result.loser.login}}</big><small>{{result.loserScore}}</small>
+  <p>{{result.summary}}{{result.created}}</p>
+  <a ng-click="deleteResult($index)">delete</a>
+</div> -->
 
   <h3>Submit Results</h3>
-  <form name="submitDemResults" ng-submit="submitPlayers(); submitResults()">
+  <p ng-hide="submit.authData">Log in with GitHub to submit match results. Only members of The Iron Yard Orlando--2015 SUMMER FEE are eligible to submit results</p>
+  <p ng-show="submit.authData && !submit.access">Match submission privileges are reserved for members of The Iron Yard Orlando--2015 Summer Fee cohort</p>
+  <form ng-show="submit.authData && submit.access" name="submitDemResults" ng-submit="submit.addPlayers(); submit.addResults()">
     <div class="form-group">
       <label>Winner:</label>
-      <select class="form-control" ng-model="gameresult.winner" ng-change="addPlayer1(player1.login)" ng-options="player.login for player in players"></select>
+      <select class="form-control" ng-model="submit.gameresult.winner"
+        ng-change="addPlayer1(player1.login)"
+        ng-options="player.login for player in submit.players">
+      </select>
       <label>Score</label>
-      <input class="form-control" ng-model="gameresult.winnerScore" placeholder="Enter score" style="width: 50%;"></input>
+      <input class="form-control" ng-model="submit.gameresult.winnerScore"
+        placeholder="Enter score" style="width: 50%;">
+      </input>
     </div>
     <div class="form-group">
       <label>Loser:</label>
-      <select class="form-control" ng-model="gameresult.loser" ng-change="addPlayer2(player2.login)" ng-options="player.login for player in players"></select>
+      <select class="form-control" ng-model="submit.gameresult.loser"
+        ng-change="addPlayer2(player2.login)"
+        ng-options="player.login for player in submit.players">
+      </select>
       <label>Score</label>
-      <input class="form-control" ng-model="gameresult.loserScore" placeholder="Enter score"></input>
+      <input class="form-control" ng-model="submit.gameresult.loserScore"
+        placeholder="Enter score">
+      </input>
     </div>
     <!-- <label>Winner:</label>
     <select class="form-control" ng-model="winner" ng-options="competitor for competitor in competitors"></select>
     <label>Loser:</label>
     <select class="form-control" ng-model="loser" ng-options="competitor for competitor in competitors"></select> -->
     <h4>Summary</h4>
-    <textarea class="form-control" ng-model="gameresult.summary" rows="5" placeholder="Provide a brief game description here"></textarea>
+    <textarea class="form-control" ng-model="submit.gameresult.summary" rows="5" placeholder="Provide a brief game description here"></textarea>
     <button name="submit" class="submit-button">Submit</button>
   </form> <!--submitResults()-->
-<!--   <table class="table borderless">
-  <thead>
-    <tr>
-        <th>Winner</th>
-        <th>Score</th>
-        <th>Loser</th>
-        <th>Score</th>
-        <th class="score-added">Submitted</th>
-        <th>&nbsp;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <img width="30" height="30" src="http://lorempixel.com/120/120/people/5"/>
-        sjoyal
-      </td>
-      <td>21</td>
-      <td>
-        <img width="30" height="30" src="http://lorempixel.com/120/120/people/3"/>
-        melrodbos
-      </td>
-      <td>4</td>
-      <td class="data-center"><time am-time-ago="result.created_on">14 minutes ago<time></td>
-    </tr> END ng-repeat
-  </tbody>
-</table>.table -->
 </section>
