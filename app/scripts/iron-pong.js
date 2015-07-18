@@ -1,5 +1,5 @@
 /* global angular */
-;(function(){
+(function(){
   'use strict';
 
   angular.module('iron-pong', ['ui.router', 'firebase', 'angularMoment', 'restangular'])

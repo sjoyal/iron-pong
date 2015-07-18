@@ -1,5 +1,5 @@
 /* global angular Firebase*/
-;(function(){
+(function(){
   'use strict';
 
   angular.module('iron-pong')
