@@ -12,37 +12,49 @@
           controller: 'RecentResultsController',
           controllerAs: 'recentresults'
         }) // END $stateProvider recentresults
+
+        .state('login', {
+          url: '/login',
+          templateUrl: 'views/login.html',
+          controller: 'LoginController',
+          controllerAs: 'login'
+        }) // END $stateProvider login
+
         .state('leaderboard', {
           url: '/leaderboard',
           templateUrl: 'views/leaderboard.html',
           controller: 'LeaderboardController',
           controllerAs: 'leaderboard'
         }) // END $stateProvider leaderboard
+
         .state('gameresult', {
           url: '/gameresult/:gameresultID',
           templateUrl: 'views/gameresult.html',
           controller: 'GameResultController',
           controllerAs: 'gameresult'
         }) // END $stateProvider gameresult
+
         .state('player', {
           url: '/player/:playerID',
           templateUrl: 'views/player.html',
           controller: 'PlayerPageController',
           controllerAs: 'playerPage'
         }) // END $stateProvider player
+
         .state('submit', {
           url: '/submit',
           templateUrl: 'views/submitgameresult.html',
           controller: 'SubmitController',
           controllerAs: 'submit'
         }) // END $stateProvider submitgameresult
+
         .state('404', {
           url: '/404',
           templateUrl: 'views/404.html'
         }); // END $stateProvider 404
+        
       $urlRouterProvider
         .otherwise('/recentresults');
-       // END redirectTo recentresults
     }) // END $stateProvider .config
 
     .config(function(RestangularProvider){
