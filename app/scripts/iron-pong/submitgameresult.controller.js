@@ -4,11 +4,40 @@
 
   angular.module('iron-pong')
     .controller('SubmitController',
-      function($scope, $http, Auth, $firebase, $firebaseArray, Restangular){
+      function($scope, $state, $http, Auth, $firebase, $firebaseArray, Restangular){
 
-      $scope.auth = Auth.magicAuth;
-      $scope.auth.$onAuth(function(authData){
-        $scope.authData = authData;
+      // Retrieve list of stargazers from cohort repo local vs live request:
+      this.auth = Auth.magicAuth;
+      this.auth.$onAuth(function(authData){
+        self.authData = authData;
+        console.log(self.authData);
+        if (!authData) {
+          $state.go('recentresults');
+        } else {
+          $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
+           + self.authData.github.accessToken)
+            .then(function(response){
+              self.players = _.forEach(response.data, function(player){
+                var data = player;
+                delete player.id;
+                delete player.gravatar_id;
+                delete player.url;
+                delete player.html_url;
+                delete player.followers_url;
+                delete player.following_url;
+                delete player.gists_url;
+                delete player.starred_url;
+                delete player.subscriptions_url;
+                delete player.organizations_url;
+                delete player.repos_url;
+                delete player.events_url;
+                delete player.received_events_url;
+                delete player.type;
+                delete player.site_admin;
+                return data;
+              });
+            }); // END $http.get github repo stargazers
+        }
       });
 
       var self = this;
@@ -21,32 +50,6 @@
         summary: '',
         createdOn: ''
       };
-
-      // Retrieve list of stargazers from cohort repo local vs live request:
-      $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
-      // $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
-      //  + $scope.authData.github.accessToken)
-        .then(function(response){
-          self.players = _.forEach(response.data, function(player){
-            var data = player;
-            delete player.id;
-            delete player.gravatar_id;
-            delete player.url;
-            delete player.html_url;
-            delete player.followers_url;
-            delete player.following_url;
-            delete player.gists_url;
-            delete player.starred_url;
-            delete player.subscriptions_url;
-            delete player.organizations_url;
-            delete player.repos_url;
-            delete player.events_url;
-            delete player.received_events_url;
-            delete player.type;
-            delete player.site_admin;
-            return data;
-          }); // console.log($scope.players);
-        }); // END $http.get github repo stargazers
 
       // $scope.deleteResult = function(index){
       //   $scope.results.splice(index, 1);
