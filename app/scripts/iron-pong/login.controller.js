@@ -1,4 +1,5 @@
-(function(){
+/* global angular */
+;(function(){
   'use strict';
 
   angular.module('iron-pong')
@@ -14,8 +15,9 @@
       this.auth.$onAuth(function(authData){
         self.authData = authData;
         console.log(authData);
-        if (!authData) return;
-        $state.go('submit');
+        if (authData) {
+          $state.go('submit');
+        };
       });
     }); // END LoginController
 })();

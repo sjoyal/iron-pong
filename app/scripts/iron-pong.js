@@ -1,5 +1,5 @@
 /* global angular */
-(function(){
+;(function(){
   'use strict';
 
   angular.module('iron-pong', ['ui.router', 'firebase', 'angularMoment', 'restangular'])
@@ -52,7 +52,7 @@
           url: '/404',
           templateUrl: 'views/404.html'
         }); // END $stateProvider 404
-        
+
       $urlRouterProvider
         .otherwise('/recentresults');
     }) // END $stateProvider .config
@@ -62,20 +62,23 @@
       RestangularProvider.setRequestSuffix('.json');
     })
 
-    .controller('MainController', function($scope, Auth) {
-      $scope.auth = Auth.magicAuth;
-      $scope.auth.$onAuth(function(authData){
-        $scope.authData = authData;
-        console.log(authData);
+    .controller('MainController', function($scope, $state, Auth) {
+
+      var self = this;
+      this.auth = Auth.magicAuth;
+      this.auth.$onAuth(function(authData){
+        self.authData = authData;
+        console.log(self.authData);
       });
-      $scope.login = function (){
+      this.login = function (){
         Auth.ghLogin();
       };
-      $scope.checkAuth = function(){
+      this.checkAuth = function(){
         console.log(Auth.authStatus());
       };
-      $scope.logout = function(){
+      this.logout = function(){
         Auth.ghLogout();
+        // $state.go('recentresults');
       };
     }) // END MainController
   ; // END ALL THE THINGS
