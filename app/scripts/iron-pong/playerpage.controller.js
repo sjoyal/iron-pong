@@ -10,7 +10,7 @@
       Restangular.one('players', $stateParams.playerID).get()
         .then(function(data){
           self.athlete = data.plain();
-          self.athlete.username = $stateParams.playerID;
+          self.athlete.pct = (data.wins / data.gamesPlayed) * 100;
           console.log(self.athlete);
         });
     }); // END PlayerPageController

@@ -1,6 +1,6 @@
 <section class="container player-page">
   <figure class="col-md-4">
-    <img height="180" width="180" src="{{playerPage.athlete.avatar}}">
+    <img height="180" width="180" ng-src="{{playerPage.athlete.avatar}}">
   </figure>
   <aside class="col-md-8">
     <h2>{{playerPage.athlete.login}}</h2>
@@ -13,20 +13,20 @@
     <table class="table player-stats">
       <thead>
         <tr>
-            <th class="player-login">Player</th>
-            <th>Wins</th>
-            <th>Losses</th>
-            <th>Win %</th>
-            <th>Games</th>
+          <!-- <th class="player-login">Player</th> -->
+          <th>Wins</th>
+          <th>Losses</th>
+          <th>Win %</th>
+          <th>Games</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="player-login">{{playerPage.athlete.login}}</td>
+          <!-- <td class="player-login">{{playerPage.athlete.login}}</td> -->
           <td>{{playerPage.athlete.wins}}</td>
           <td>{{playerPage.athlete.losses}}</td>
-          <td>.757</td>
-          <td>69</td>
+          <td>{{playerPage.athlete.pct}}%</td>
+          <td>{{playerPage.athlete.gamesPlayed}}</td>
         </tr>
       </tbody>
     </table> <!--.table player-stats-->
