@@ -1,10 +1,10 @@
 <section class="container player-page">
   <figure class="col-md-4">
-    <img height="180" width="180" src="http://lorempixel.com/400/200/people/">
+    <img height="180" width="180" src="{{playerPage.athlete.avatar}}">
   </figure>
   <aside class="col-md-8">
-    <h2>Sean Joyal</h2>
-    <h5>sjoyal</h5>
+    <h2>{{playerPage.athlete.login}}</h2>
+    <h5>Sean Joyal</h5>
     <address>sean.joyal@gmail.com</address>
     <address>Duval / Orlando</address>
     <p>The Iron Yard -- Orlando</p>
@@ -22,9 +22,9 @@
       </thead>
       <tbody>
         <tr>
-          <td class="player-login">sjoyal</td>
-          <td>55</td>
-          <td>14</td>
+          <td class="player-login">{{playerPage.athlete.login}}</td>
+          <td>{{playerPage.athlete.wins}}</td>
+          <td>{{playerPage.athlete.losses}}</td>
           <td>.757</td>
           <td>69</td>
         </tr>
