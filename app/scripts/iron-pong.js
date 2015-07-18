@@ -26,8 +26,9 @@
         }) // END $stateProvider gameresult
         .state('player', {
           url: '/player/:playerID',
-          templateUrl: 'views/player.html'
-          // controller: 'PlayerController'
+          templateUrl: 'views/player.html',
+          controller: 'PlayerPageController',
+          controllerAs: 'playerPage'
         }) // END $stateProvider player
         .state('submit', {
           url: '/submit',
