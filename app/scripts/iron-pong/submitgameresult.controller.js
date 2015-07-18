@@ -1,15 +1,10 @@
 /* global angular _ Firebase*/
-(function(){
+;(function(){
   'use strict';
 
   angular.module('iron-pong')
     .controller('SubmitController',
-      function($scope, $http, Auth, $firebase, $firebaseArray, Restangular){
-
-      $scope.auth = Auth.magicAuth;
-      $scope.auth.$onAuth(function(authData){
-        $scope.authData = authData;
-      });
+      function($state, $http, Auth, Restangular){
 
       var self = this;
       this.players = [];
@@ -23,34 +18,38 @@
       };
 
       // Retrieve list of stargazers from cohort repo local vs live request:
-      $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
-      // $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
-      //  + $scope.authData.github.accessToken)
-        .then(function(response){
-          self.players = _.forEach(response.data, function(player){
-            var data = player;
-            delete player.id;
-            delete player.gravatar_id;
-            delete player.url;
-            delete player.html_url;
-            delete player.followers_url;
-            delete player.following_url;
-            delete player.gists_url;
-            delete player.starred_url;
-            delete player.subscriptions_url;
-            delete player.organizations_url;
-            delete player.repos_url;
-            delete player.events_url;
-            delete player.received_events_url;
-            delete player.type;
-            delete player.site_admin;
-            return data;
-          }); // console.log($scope.players);
-        }); // END $http.get github repo stargazers
-
-      // $scope.deleteResult = function(index){
-      //   $scope.results.splice(index, 1);
-      // };  END submit function for local deletion
+      this.auth = Auth.magicAuth;
+      this.auth.$onAuth(function(authData){
+        self.authData = authData;
+        if (!self.authData) return;
+        $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
+           + self.authData.github.accessToken)
+            .then(function(response){
+              self.players = _.forEach(response.data, function(player){
+                var data = player;
+                delete player.id;
+                delete player.gravatar_id;
+                delete player.url;
+                delete player.html_url;
+                delete player.followers_url;
+                delete player.following_url;
+                delete player.gists_url;
+                delete player.starred_url;
+                delete player.subscriptions_url;
+                delete player.organizations_url;
+                delete player.repos_url;
+                delete player.events_url;
+                delete player.received_events_url;
+                delete player.type;
+                delete player.site_admin;
+                return data;
+              });
+              self.access = _.find(self.players, function(player){
+                return player.login === self.authData.github.username;
+              });
+              console.log(self.access);
+          }); // END $http.get github repo stargazers
+      });
 
       /** FIXME: previous filter mechanism for input fields
         * update to use with only winner / loser fields
@@ -67,16 +66,16 @@
         // };
 
       // var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
-      this.results = [ ];
-      Restangular.one('gameresults').get()
-        .then(function(data){
-          if (!data) {
-            return
-          } else {
-            self.results = data.plain();
-          }
-          var jumanji = data.name;
-        });
+      // this.results = [ ];
+      // Restangular.one('gameresults').get()
+      //   .then(function(data){
+      //     if (!data) {
+      //       return
+      //     } else {
+      //       self.results = data.plain();
+      //     }
+      //     var jumanji = data.name;
+      //   });
 
       this.addResults = function(){
         var timestamp = new Date().getTime();
@@ -145,28 +144,7 @@
             summary: '',
             createdOn: ''
           };
+          $state.go('recentresults');
       };
-
-      // adding a result to database
-      // $scope.submitResults = function(){
-      //   var timestamp = new Date().getTime();
-      //   $scope.gameresult.createdOn = timestamp;
-      //   $scope.results.$add($scope.gameresult);
-      //   $scope.gameresult = { winner: '', winnerScore: '', loser: '', loserScore: '', summary: '', createdOn: '' };
-        // $state.go('recentresults'); Must add $state as dependency for this to work
-      // };
-
-      // adding results to individual players
-      // $scope.submitPlayers = function(){
-      //   var playerWin = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.winner.login + '/games');
-      //   this.dbPlayersWin = $firebaseArray(playerWin);
-      //   var playerLose = new Firebase('https://iron-pong.firebaseio.com/players/' + $scope.gameresult.loser.login + '/games');
-      //   this.dbPlayersLose = $firebaseArray(playerLose);
-      //   var timestamp = new Date().getTime();
-      //   $scope.gameresult.createdOn = timestamp;
-      //   $scope.dbPlayersWin.$add($scope.gameresult);
-      //   $scope.dbPlayersLose.$add($scope.gameresult);
-      // };
-
     }); // END SubmitController
 })();

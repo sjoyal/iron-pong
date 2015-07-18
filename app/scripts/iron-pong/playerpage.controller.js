@@ -12,7 +12,7 @@
         .then(function(data){
           self.athlete = data.plain();
           self.athlete.pct = (data.wins / data.gamesPlayed) * 100;
-          console.log(self.athlete);
+          // console.log(self.athlete);
         }); // END Restangular request for player info
 
       // Check auth status and request user info from github
@@ -20,12 +20,12 @@
       this.auth = Auth.magicAuth;
       this.auth.$onAuth(function(authData){
         self.authData = authData;
-        console.log(self.authData);
+        // console.log(self.authData);
         if (!authData) return;
         $http.get('https://api.github.com/users/' + $stateParams.playerID)
           .then(function(response){
             self.athleteDetails = response.data;
-            console.log(self.athleteDetails);
+            // console.log(self.athleteDetails);
           });
       }); // END $onAuth and github user .get() request
 
