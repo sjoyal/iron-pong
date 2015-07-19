@@ -71,17 +71,19 @@
                 if (!gameWinner) {
                   Submit.newPlayer(winner, winnerPic, jumanji, 1, 0);
                 } else {
-                  Restangular.one('players/' + winner).patch({
-                    login: winner,
-                    avatar: winnerPic,
-                    wins: (gameWinner.wins + 1),
-                    gamesPlayed: (gameWinner.gamesPlayed + 1),
-                    losses: gameWinner.losses
-                  }).then(function(){
-                    Restangular.one('players', winner).post('games', {
-                      true: jumanji
-                    });
-                  });
+                  // Restangular.one('players/' + winner).patch({
+                  //   login: winner,
+                  //   avatar: winnerPic,
+                  //   wins: (gameWinner.wins + 1),
+                  //   gamesPlayed: (gameWinner.gamesPlayed + 1),
+                  //   losses: gameWinner.losses
+                  // }).then(function(){
+                  //   Restangular.one('players', winner).post('games', {
+                  //     true: jumanji
+                  //   });
+                  // });
+                  Submit.updatePlayer(winner, winnerPic, jumanji, gameWinner.wins,
+                    gameWinner.losses, gameWinner.gamesPlayed, 1, 0, 1);
                 }
               });
             Restangular.one('players', loser).get()

@@ -37,6 +37,19 @@
             true: game
             });
           });
+        },
+        updatePlayer: function(player, playerPic, game, wins, losses, gamesPlayed, addWins, addLosses, addGamesPlayed){
+          Restangular.one('players/' + player).patch({
+            login: player,
+            avatar: playerPic,
+            wins: (wins + addWins),
+            gamesPlayed: (gamesPlayed + addGamesPlayed),
+            losses: (losses + addLosses)
+          }).then(function(){
+            Restangular.one('players', player).post('games', {
+              true: game
+            });
+          });
         }
       };
     })
