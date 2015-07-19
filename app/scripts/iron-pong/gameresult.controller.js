@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('iron-pong')
-    .controller('GameResultController', function ($scope, Auth, Delete, Restangular, $state, $stateParams){
+    .controller('GameResultController', function ($scope, addComment, Auth, Delete, Restangular, $state, $stateParams){
 
       this.auth = Auth.magicAuth;
       this.auth.$onAuth(function(authData){
@@ -21,16 +21,20 @@
         });
 
       this.comments = [];
+      Restangular.one('gameresults', $stateParams.gameresultID).one('comments').get()
+        .then(function(showMe){
+          self.comments = showMe.plain();
+        });
       this.comment = {
         comment: '',
         author: '',
         avatar: ''
       };
-      this.addComment = function(){
+      this.submitComment = function(){
         self.comment.author = self.authData.github.username;
         self.comment.avatar = self.authData.github.profileImageURL;
-        self.comments.push(self.comment);
-        console.log('comment', self.comments);
+        addComment.new(self.comment, $stateParams.gameresultID);
+        self.comment = {};
       };
 
       this.deleteGame = function(){

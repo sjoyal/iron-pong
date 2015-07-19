@@ -76,8 +76,11 @@
     })
 
     .factory('addComment', function(Restangular){
+      var self = this;
       return {
-        
+        new: function(comment, game){
+          Restangular.one('gameresults', game).post('comments', comment);
+        }
       };
     })
     ; // END ALL THE THINGS!
