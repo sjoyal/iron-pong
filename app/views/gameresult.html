@@ -18,6 +18,9 @@
       <p>{{gameresult.game.summary}}</p>
     </aside>
   </div>
-  <a ui-sref="recentresults" ng-click="gameresult.deleteGame()">Delete Result</a>
+  <a ui-sref="recentresults" ng-click="gameresult.deleteGame()"
+    ng-show="gameresult.authData.github.username === gameresult.game.createdBy">
+    Delete Result
+  </a>
   <a ui-sref="recentresults">Back to Recent Results</a>
 </section> <!--.container-->
