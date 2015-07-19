@@ -74,5 +74,11 @@
         }
       };
     })
+
+    .factory('addComment', function(Restangular){
+      return {
+        
+      };
+    })
     ; // END ALL THE THINGS!
 })();

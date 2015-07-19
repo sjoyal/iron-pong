@@ -19,8 +19,13 @@
     </aside>
   </div>
   <aside class="submit-comments">
-    <form name="submitComments" ng-submit="submitComment()">
-      <textarea class="form-control" ng-model="gameresult.comment" rows="5" placeholder="Talk smack!"></textarea>
+    <figure ng-repeat="comment in gameresult.comments">
+      <img ng-src="{{comment.avatar}}" width="30" height="30">
+      <author>{{comment.author}}</author>
+      <p>{{comment.comment}}</p>
+    </figure>
+    <form name="submitComments" ng-submit="gameresult.addComment()">
+      <textarea class="form-control" ng-model="gameresult.comment.comment" rows="5" placeholder="Talk smack!"></textarea>
       <button name="submit" class="submit-button">Submit</button>
     </form>
   </aside>

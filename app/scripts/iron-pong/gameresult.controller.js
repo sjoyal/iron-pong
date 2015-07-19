@@ -20,6 +20,19 @@
           console.log(self.game);
         });
 
+      this.comments = [];
+      this.comment = {
+        comment: '',
+        author: '',
+        avatar: ''
+      };
+      this.addComment = function(){
+        self.comment.author = self.authData.github.username;
+        self.comment.avatar = self.authData.github.profileImageURL;
+        self.comments.push(self.comment);
+        console.log('comment', self.comments);
+      };
+
       this.deleteGame = function(){
         var winner = self.game.winner.login;
         var loser = self.game.loser.login;
