@@ -13,7 +13,6 @@
             if (!data) {
               return;
             } else {
-              // self.playerStats = data.plain();
               _.forEach(data.plain(), function(player){
                 self.playerStats.push(player);
               });
