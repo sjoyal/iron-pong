@@ -35,7 +35,6 @@
             //     }
             //   });
             Delete.resultRemove(winner, 1, 0);
-            Delete.resultRemove(loser, 0, 1);
             // Restangular.one('players', loser).get()
             //   .then(function(gameLoser){
             //     if (gameLoser.gamesPlayed === 1) {
@@ -49,6 +48,7 @@
             //       });
             //     }
             //   });
+            Delete.resultRemove(loser, 0, 1);
           });
         };
     }); // END GameResultController
