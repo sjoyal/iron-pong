@@ -3,9 +3,13 @@
   'use strict';
 
   angular.module('iron-pong')
-    .controller('GameResultController', function ($scope, Delete, Restangular, $state, $stateParams){
+    .controller('GameResultController', function ($scope, Auth, Delete, Restangular, $state, $stateParams){
 
-      console.log($stateParams);
+      this.auth = Auth.magicAuth;
+      this.auth.$onAuth(function(authData){
+        self.authData = authData;
+        console.log(self.authData);
+      });
 
       // pull in specific game result from
       this.game = {};
@@ -13,7 +17,7 @@
       Restangular.one('gameresults', $stateParams.gameresultID).get()
         .then(function(data){
           self.game = data.plain();
-          // console.log(self.game);
+          console.log(self.game);
         });
 
       this.deleteGame = function(){
