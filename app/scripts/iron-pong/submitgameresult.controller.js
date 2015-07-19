@@ -24,10 +24,7 @@
         if (!self.authData) {
           return;
         }
-        /** FIXME: filter mechanism for input fields
-          * update to use with only winner / loser fields
-          * remove selected winner option from list of loser options
-          */
+
         $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
            + self.authData.github.accessToken)
             .then(function(response){
@@ -71,17 +68,6 @@
                 if (!gameWinner) {
                   Submit.newPlayer(winner, winnerPic, jumanji, 1, 0);
                 } else {
-                  // Restangular.one('players/' + winner).patch({
-                  //   login: winner,
-                  //   avatar: winnerPic,
-                  //   wins: (gameWinner.wins + 1),
-                  //   gamesPlayed: (gameWinner.gamesPlayed + 1),
-                  //   losses: gameWinner.losses
-                  // }).then(function(){
-                  //   Restangular.one('players', winner).post('games', {
-                  //     true: jumanji
-                  //   });
-                  // });
                   Submit.updatePlayer(winner, winnerPic, jumanji, gameWinner.wins,
                     gameWinner.losses, gameWinner.gamesPlayed, 1, 0, 1);
                 }
@@ -91,17 +77,8 @@
                 if (!gameLoser) {
                   Submit.newPlayer(loser, loserPic, jumanji, 0, 1);
                 } else {
-                  Restangular.one('players/' + loser).patch({
-                    login: loser,
-                    avatar: loserPic,
-                    wins: gameLoser.wins,
-                    gamesPlayed: (gameLoser.gamesPlayed + 1),
-                    losses: (gameLoser.losses + 1)
-                  }).then(function(){
-                    Restangular.one('players', loser).post('games', {
-                      true: jumanji
-                    });
-                  });
+                  Submit.updatePlayer(loser, loserPic, jumanji, gameLoser.wins,
+                    gameLoser.losses, gameLoser.gamesPlayed, 0, 1, 1);
                 }
               });
           });
