@@ -22,7 +22,10 @@
     <figure ng-repeat="(id, comment) in gameresult.game.comments">
       <img ng-src="{{comment.avatar}}" width="30" height="30">
       <author>{{comment.author}}</author><span>{{id}}</span>
-        <button class="pull-right delete-button" ng-click="gameresult.deleteComment(id)">Delete</button>
+        <button ng-show="gameresult.authData.github.username === comment.author"
+          class="pull-right delete-button" ng-click="gameresult.deleteComment(id)">
+          Delete
+        </button>
       <p>{{comment.comment}}</p>
     </figure>
     <form name="submitComments" ng-submit="gameresult.submitComment()">
