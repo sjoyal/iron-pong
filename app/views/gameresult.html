@@ -28,7 +28,7 @@
         </button>
       <p>{{comment.comment}}</p>
     </figure>
-    <form name="submitComments" ng-submit="gameresult.submitComment()">
+    <form name="submitComments" ng-submit="gameresult.submitComment()" ng-show="gameresult.authData">
       <textarea class="form-control" ng-model="gameresult.comment.comment" rows="5" placeholder="Talk smack!" required></textarea>
       <button name="submit" class="submit-button">Submit</button>
     </form>
