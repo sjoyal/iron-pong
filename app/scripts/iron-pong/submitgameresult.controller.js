@@ -14,7 +14,8 @@
         loser: '',
         loserScore: '',
         summary: '',
-        createdOn: ''
+        createdOn: '',
+        createdBy: ''
       };
 
       // Retrieve list of stargazers from cohort repo local vs live request:
@@ -24,7 +25,6 @@
         if (!self.authData) {
           return;
         }
-
         $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
            + self.authData.github.accessToken)
             .then(function(response){
@@ -46,6 +46,7 @@
                 delete player.site_admin;
                 return player;
               });
+              console.log(self.players);
               self.access = _.find(self.players, function(player){
                 return player.login === self.authData.github.username;
               });
@@ -56,6 +57,7 @@
       this.addResults = function(){
         var timestamp = new Date().getTime();
         self.gameresult.createdOn = timestamp;
+        self.gameresult.createdBy = self.authData.github.username;
         var winner = self.gameresult.winner.login;
         var winnerPic = self.gameresult.winner.avatar_url;
         var loser = self.gameresult.loser.login;
@@ -88,7 +90,8 @@
             loser: '',
             loserScore: '',
             summary: '',
-            createdOn: ''
+            createdOn: '',
+            createdBy: ''
           };
           $state.go('recentresults');
       };

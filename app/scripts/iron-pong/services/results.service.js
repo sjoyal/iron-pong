@@ -53,5 +53,9 @@
         }
       };
     })
+
+    .factory('Delete', function(Restangular){
+      return true;
+    })
     ; // END ALL THE THINGS!
 })();

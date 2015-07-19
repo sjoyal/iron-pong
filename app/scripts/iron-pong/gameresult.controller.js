@@ -6,7 +6,7 @@
     .controller('GameResultController', function ($scope, Restangular, $state, $stateParams){
 
       console.log($stateParams);
-      
+
       // pull in specific game result from
       this.game = {};
       var self = this;
@@ -17,14 +17,16 @@
         });
 
       this.deleteGame = function(){
+        var winner = self.game.winner.login;
+        var loser = self.game.loser.login;
         Restangular.one('gameresults', $stateParams.gameresultID).remove()
           .then(function(){
-            Restangular.one('players', self.game.winner.login).get()
+            Restangular.one('players', winner).get()
               .then(function(gameWinner){
                 if (gameWinner.gamesPlayed === 1) {
-                  Restangular.one('players', self.game.winner.login).remove();
+                  Restangular.one('players', winner).remove();
                 } else {
-                  Restangular.one('players/' + self.game.winner.login).patch({
+                  Restangular.one('players/' + winner).patch({
                     wins: (gameWinner.wins - 1),
                     gamesPlayed: (gameWinner.gamesPlayed - 1)
                   }).then(function(){
@@ -32,12 +34,12 @@
                   });
                 }
               });
-            Restangular.one('players', self.game.loser.login).get()
+            Restangular.one('players', loser).get()
               .then(function(gameLoser){
                 if (gameLoser.gamesPlayed === 1) {
-                  Restangular.one('players', self.game.loser.login).remove();
+                  Restangular.one('players', loser).remove();
                 } else {
-                  Restangular.one('players/' + self.game.loser.login).patch({
+                  Restangular.one('players/' + loser).patch({
                     losses: (gameLoser.losses - 1),
                     gamesPlayed: (gameLoser.gamesPlayed - 1)
                   }).then(function(){
