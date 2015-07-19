@@ -22,6 +22,23 @@
         }
       }; // END Auth return
     }) // END Auth factory
-    
+
+    .factory('Submit', function(Restangular){
+      return {
+        newPlayer: function(player, playerPic, game, numWins, numLosses){
+          Restangular.one('players/' + player).patch({
+            login: player,
+            avatar: playerPic,
+            wins: numWins,
+            gamesPlayed: 1,
+            losses: numLosses
+          }).then(function(){
+            Restangular.one('players', player).post('games', {
+            true: game
+            });
+          });
+        }
+      };
+    })
     ; // END ALL THE THINGS!
 })();

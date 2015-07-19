@@ -4,7 +4,7 @@
 
   angular.module('iron-pong')
     .controller('SubmitController',
-      function($state, $http, Auth, Restangular){
+      function($state, $http, Auth, Submit, Restangular){
 
       var self = this;
       this.players = [];
@@ -69,17 +69,7 @@
             Restangular.one('players', winner).get()
               .then(function(gameWinner){
                 if (!gameWinner) {
-                  Restangular.one('players/' + winner).patch({
-                    login: winner,
-                    avatar: winnerPic,
-                    wins: 1,
-                    gamesPlayed: 1,
-                    losses: 0
-                  }).then(function(){
-                    Restangular.one('players', winner).post('games', {
-                      true: jumanji
-                    });
-                  });
+                  Submit.newPlayer(winner, winnerPic, jumanji, 1, 0);
                 } else {
                   Restangular.one('players/' + winner).patch({
                     login: winner,
@@ -97,17 +87,7 @@
             Restangular.one('players', loser).get()
               .then(function(gameLoser){
                 if (!gameLoser) {
-                  Restangular.one('players/' + loser).patch({
-                    login: loser,
-                    avatar: loserPic,
-                    wins: 0,
-                    gamesPlayed: 1,
-                    losses: 1
-                  }).then(function(){
-                    Restangular.one('players', loser).post('games', {
-                      true: jumanji
-                    });
-                  });
+                  Submit.newPlayer(loser, loserPic, jumanji, 0, 1);
                 } else {
                   Restangular.one('players/' + loser).patch({
                     login: loser,
