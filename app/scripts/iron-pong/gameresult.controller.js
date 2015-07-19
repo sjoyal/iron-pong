@@ -4,7 +4,7 @@
 
   angular.module('iron-pong')
     .controller('GameResultController', function ($scope, Comments,
-      Auth, Delete, Restangular, $state, $stateParams){
+      Auth, Delete, Restangular, $firebaseObject, $state, $stateParams){
 
       this.auth = Auth.magicAuth;
       this.auth.$onAuth(function(authData){
@@ -13,13 +13,10 @@
       });
 
       // pull in specific game result from
-      this.game = {};
       var self = this;
-      Restangular.one('gameresults', $stateParams.gameresultID).get()
-        .then(function(data){
-          self.game = data.plain();
-          console.log(self.game);
-        });
+      this.game = [];
+      var ref = new Firebase('https://iron-pong.firebaseio.com/gameresults/' + $stateParams.gameresultID);
+      this.game = $firebaseObject(ref);
 
       this.deleteGame = function(){
         var winner = self.game.winner.login;
@@ -73,14 +70,8 @@
       this.deleteComment = function(comment){
         Restangular.one('gameresults', $stateParams.gameresultID)
           .one('comments', comment).remove().then(function(){
-            // deleted
-          });
-        console.log("hello");
-        // Restangular.one('gameresults', $stateParams.gameresultID).get()
-        //   .then(function(updatedData){
-        //     self.game = updatedData.plain();
-        //   });
+            console.log("hello");
+        });
       };
-
     }); // END GameResultController
 })();

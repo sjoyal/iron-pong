@@ -77,6 +77,19 @@
     padding: 1em 1.25em 1em 1.25em;
     color: #EEEEEE;
 
+    .delete-button {
+      margin-top: 1em;
+      width: 4em;
+      height: 2em;
+      color: #EEEEEE;
+      background: rgba(180,16,16,0.75);
+      border-radius: 5px;
+      border: none;
+    }
+    .delete-button:hover {
+      background: rgba(222,16,16,0.75);
+    }
+
     .submit-button {
       margin-top: 1em;
       width: 6.5em;
