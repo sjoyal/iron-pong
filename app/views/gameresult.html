@@ -19,9 +19,10 @@
     </aside>
   </div>
   <aside class="submit-comments">
-    <figure ng-repeat="comment in gameresult.comments">
+    <figure ng-repeat="(id, comment) in gameresult.game.comments">
       <img ng-src="{{comment.avatar}}" width="30" height="30">
-      <author>{{comment.author}}</author>
+      <author>{{comment.author}}</author><span>{{id}}</span>
+        <a href="#" class="pull-right" ng-click="gameresult.deleteComment($index)">Delete</a>
       <p>{{comment.comment}}</p>
     </figure>
     <form name="submitComments" ng-submit="gameresult.submitComment()">

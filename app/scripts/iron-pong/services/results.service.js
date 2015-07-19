@@ -75,8 +75,7 @@
       };
     })
 
-    .factory('addComment', function(Restangular){
-      var self = this;
+    .factory('Comments', function(Restangular){
       return {
         new: function(comment, game){
           Restangular.one('gameresults', game).post('comments', comment);

@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('iron-pong')
-    .controller('GameResultController', function ($scope, addComment, Auth, Delete, Restangular, $state, $stateParams){
+    .controller('GameResultController', function ($scope, Comments, Auth, Delete, Restangular, $state, $stateParams){
 
       this.auth = Auth.magicAuth;
       this.auth.$onAuth(function(authData){
@@ -19,23 +19,6 @@
           self.game = data.plain();
           console.log(self.game);
         });
-
-      this.comments = [];
-      Restangular.one('gameresults', $stateParams.gameresultID).one('comments').get()
-        .then(function(showMe){
-          self.comments = showMe.plain();
-        });
-      this.comment = {
-        comment: '',
-        author: '',
-        avatar: ''
-      };
-      this.submitComment = function(){
-        self.comment.author = self.authData.github.username;
-        self.comment.avatar = self.authData.github.profileImageURL;
-        addComment.new(self.comment, $stateParams.gameresultID);
-        self.comment = {};
-      };
 
       this.deleteGame = function(){
         var winner = self.game.winner.login;
@@ -72,5 +55,27 @@
             Delete.resultRemove(loser, 0, 1);
           });
         };
+
+      this.comment = {
+        comment: '',
+        author: '',
+        avatar: ''
+      };
+
+      this.submitComment = function(){
+        self.comment.author = self.authData.github.username;
+        self.comment.avatar = self.authData.github.profileImageURL;
+        Comments.new(self.comment, $stateParams.gameresultID);
+        self.comment = {};
+      };
+
+      this.deleteComment = function(comment){
+        Restangular.one('gameresults', $stateParams.gameresultID)
+          .one('comments', comment).remove().then(function(something){
+            console.log(something);
+          })
+        console.log("hello");
+      };
+
     }); // END GameResultController
 })();
