@@ -18,6 +18,12 @@
       <p>{{gameresult.game.summary}}</p>
     </aside>
   </div>
+  <aside class="submit-results">
+    <form name="submitComments" ng-submit="submitComment()">
+      <textarea class="form-control" ng-model="gameresult.comment" rows="5" placeholder="Talk smack about this game!"></textarea>
+      <button name="submit" class="submit-button">Submit</button>
+    </form>
+  </aside>
   <a ui-sref="recentresults" ng-click="gameresult.deleteGame()"
     ng-show="gameresult.authData.github.username === gameresult.game.createdBy">
     Delete Result
