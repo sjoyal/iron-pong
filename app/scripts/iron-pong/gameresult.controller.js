@@ -3,7 +3,8 @@
   'use strict';
 
   angular.module('iron-pong')
-    .controller('GameResultController', function ($scope, Comments, Auth, Delete, Restangular, $state, $stateParams){
+    .controller('GameResultController', function ($scope, Comments,
+      Auth, Delete, Restangular, $state, $stateParams){
 
       this.auth = Auth.magicAuth;
       this.auth.$onAuth(function(authData){
@@ -71,10 +72,14 @@
 
       this.deleteComment = function(comment){
         Restangular.one('gameresults', $stateParams.gameresultID)
-          .one('comments', comment).remove().then(function(something){
-            console.log(something);
-          })
+          .one('comments', comment).remove().then(function(){
+            // deleted
+          });
         console.log("hello");
+        // Restangular.one('gameresults', $stateParams.gameresultID).get()
+        //   .then(function(updatedData){
+        //     self.game = updatedData.plain();
+        //   });
       };
 
     }); // END GameResultController
