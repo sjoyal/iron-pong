@@ -6,15 +6,14 @@
     .controller('GameResultController', function ($scope, Restangular, $state, $stateParams){
 
       console.log($stateParams);
+      
       // pull in specific game result from
-      // var game = new Firebase('https://iron-pong.firebaseio.com/gameresults/');
-      // $scope.result = $firebaseObject(game.child($stateParams.gameresultID));
       this.game = {};
       var self = this;
       Restangular.one('gameresults', $stateParams.gameresultID).get()
         .then(function(data){
           self.game = data.plain();
-          console.log(self.game);
+          // console.log(self.game);
         });
 
       this.deleteGame = function(){

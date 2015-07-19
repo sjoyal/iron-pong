@@ -24,11 +24,14 @@
         if (!self.authData) {
           return;
         }
+        /** FIXME: filter mechanism for input fields
+          * update to use with only winner / loser fields
+          * remove selected winner option from list of loser options
+          */
         $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
            + self.authData.github.accessToken)
             .then(function(response){
               self.players = _.forEach(response.data, function(player){
-                var playerInfo = player;
                 delete player.id;
                 delete player.gravatar_id;
                 delete player.url;
@@ -44,40 +47,14 @@
                 delete player.received_events_url;
                 delete player.type;
                 delete player.site_admin;
-                return playerInfo;
+                return player;
               });
               self.access = _.find(self.players, function(player){
                 return player.login === self.authData.github.username;
               });
-              console.log(self.access);
+              // console.log(self.access);
           }); // END $http.get github repo stargazers
       });
-
-      /** FIXME: previous filter mechanism for input fields
-        * update to use with only winner / loser fields
-        * remove selected winner option from list of loser options
-        */
-        // $scope.competitors = [ ];
-        // $scope.addPlayer1 = function(playerName){
-        //   $scope.competitors[0] = playerName;
-        //   console.log($scope.competitors);
-        // };
-        // $scope.addPlayer2 = function(playerName){
-        //   $scope.competitors[1] = playerName;
-        //   console.log($scope.competitors);
-        // };
-
-      // var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
-      // this.results = [ ];
-      // Restangular.one('gameresults').get()
-      //   .then(function(data){
-      //     if (!data) {
-      //       return
-      //     } else {
-      //       self.results = data.plain();
-      //     }
-      //     var jumanji = data.name;
-      //   });
 
       this.addResults = function(){
         var timestamp = new Date().getTime();
