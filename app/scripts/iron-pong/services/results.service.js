@@ -55,7 +55,24 @@
     })
 
     .factory('Delete', function(Restangular){
-      return true;
+      return {
+        resultRemove: function(player, removeWin, removeLoss){
+          Restangular.one('players', player).get()
+            .then(function(gamePlayer){
+              if (gamePlayer.gamesPlayed === 1) {
+                Restangular.one('players', player).remove();
+              } else {
+                Restangular.one('players/' + player).patch({
+                  wins: (gamePlayer.wins - removeWin),
+                  losses: (gamePlayer.losses - removeLoss),
+                  gamesPlayed: (gamePlayer.gamesPlayed - 1)
+                }).then(function(){
+                  // Remove game reference under player ID
+                });
+              }
+            });
+        }
+      };
     })
     ; // END ALL THE THINGS!
 })();
