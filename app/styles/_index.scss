@@ -15,8 +15,9 @@ header {
     border: none;
 
     #namesake {
-      color: #C6C6C6;
-      font-size: 1.5em;
+      font-size: 2em;
+      color: #EEEEEE;
+      font-family: serif;
     }
     .route-links li {
 
@@ -35,9 +36,8 @@ header {
     }
   }
 
-  h2 {
+  .branding {
     color: #EEEEEE;
-    font-family: serif;
     margin: 0;
     padding: .35em 0;
     text-align: center;
