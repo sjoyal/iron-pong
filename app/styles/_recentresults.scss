@@ -2,8 +2,8 @@
   width: 75%;
   margin: auto;
   background: #D23838;
-  background: rgba(222,16,16,0.75);
-  color: #EEEEEE;
+  background: $primary-red;
+  color: $font-color;
   padding: 1em;
   border-radius: 10px;
   text-align: center;
@@ -22,7 +22,7 @@
       }
       a, a:hover {
         text-decoration: none;
-        color: #EEEEEE;
+        color: $font-color;
         display: block;
         height: 100%;
         width: 100%;
@@ -31,7 +31,9 @@
         background: rgba(0,0,0,0.25);
         text-align: center;
         border-radius: 5px;
-        border: 1px solid #EEEEEE;
+        border: 1px solid $header-font-color;
+        font-size: .9em;
+        font-weight: 200;
       }
       .view-game:hover {
         background: rgba(222,16,16,0.35);

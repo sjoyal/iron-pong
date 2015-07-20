@@ -15,12 +15,10 @@ header {
   margin-bottom: 2.5em;
 
   .ip-nav {
-    /* background: rgba(222,16,16,0.75); */
     border-radius: 0;
     border: none;
     background: $header-font-color;
     background: rgba(0,0,0,0.65);
-    /* height: 4.5em; */
 
     #namesake {
       color: $header-font-color;
@@ -41,7 +39,7 @@ header {
         padding-top: 1.75ex;
       }
       a:visited {
-        color: #C9C9C9;
+        color:$header-font-color;
       }
       a:hover {
         color: white;
@@ -49,11 +47,7 @@ header {
     }
     .route-links li:hover {
       background: rgba(0,0,0,0.30);
-      /* background: rgba(140,16,16,0.4); */
     }
-  }
-  .extras .test-link {
-    color: black;
   }
 }
 
