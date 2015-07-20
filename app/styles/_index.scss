@@ -74,13 +74,18 @@ footer {
   background: #2C2C2C;
   background: rgba(0,0,0,0.65);
   margin-top: 2.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 
-  p {
+  .add-logo {
     text-align: center;
-    color: #EEEEEE;
-    padding-top: .5em;
-    margin-bottom: 0;
+  }
+
+  aside {
+    color: #C9C9C9;
     font-size: 1em;
+    padding-top: 1em;
+    text-align: center;
   }
   ul {
     text-align: center;
@@ -89,8 +94,8 @@ footer {
 
     li {
       display: inline-block;
-      margin-right: 1em;
-      margin-left: 1em;
+      margin-right: .5em;
+      margin-left: .5em;
       background: #9C9C9C;
       height: 3.5em;
       width: 6em;
