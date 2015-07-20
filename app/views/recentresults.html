@@ -1,5 +1,5 @@
 <section class="recent-games-table table-responsive">
-  <h3 class="pull-left">Recent Results</h3>
+  <h3 class="pull-left">Results</h3>
   <table class="table borderless">
     <thead>
       <tr>
@@ -28,7 +28,7 @@
         </td>
         <td>{{result.loserScore}}</td>
         <td class="data-center"><time am-time-ago="result.createdOn"><time></td>
-        <td><a ui-sref="gameresult({gameresultID: result.$id})">view</a><td>
+        <td><a class="view-game" ui-sref="gameresult({gameresultID: result.$id})">view</a><td>
       </tr> <!--END ng-repeat-->
     </tbody>
   </table><!-- .table -->
