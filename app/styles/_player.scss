@@ -4,10 +4,13 @@
   background: #2C2C2C;
   background: rgba(0,0,0,0.5);
   padding: 2em;
+  margin-bottom: 4.5em;
 
   figure, aside {
     @extend .clearfix;
+    /* clear: left; */
     margin-bottom: 1em;
+    text-align: center;
 
     img {
       border-radius: 10px;
@@ -25,6 +28,7 @@
   color: #EEEEEE;
   padding: 1em 1em 0 1em;
   text-align: center;
+  clear: left;
 
   .player-stats {
     margin-bottom: .5em;
