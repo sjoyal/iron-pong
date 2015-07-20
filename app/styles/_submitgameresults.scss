@@ -10,6 +10,34 @@
     font-weight: 300;
     margin-top: 0;
   }
+  .u-no-login {
+    margin-top: 8em;
+    text-align: center;
+    margin-bottom: 10em;
+    font-size: 1.25em;
+
+    p {
+      width: 80%;
+      margin: auto;
+    }
+    .bang {
+      font-size: 3em;
+    }
+  }
+  .u-no-access {
+    margin-top: 8em;
+    text-align: center;
+    margin-bottom: 10em;
+    font-size: 1.25em;
+
+    p {
+      width: 80%;
+      margin: auto;
+    }
+    .bang {
+      font-size: 3em;
+    }
+  }
   label {
     margin: 0;
   }
