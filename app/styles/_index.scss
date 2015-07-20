@@ -10,40 +10,53 @@ header {
   margin-bottom: 2.5em;
 
   .ip-nav {
-    background: rgba(222,16,16,0.75);
+    /* background: rgba(222,16,16,0.75); */
     border-radius: 0;
     border: none;
+    background: #2C2C2C;
+    background: rgba(0,0,0,0.65);
+    height: 4.5em;
 
     #namesake {
-      font-size: 2em;
       color: #EEEEEE;
-      font-family: serif;
+      font-size: 2.5em;
+      font-weight: 100;
+      padding-top: 1ex;
+
+      span {
+        font-weight: 400;
+        color: white;
+      }
     }
     .route-links li {
 
       a {
-        color: #C6C6C6;
+        color: #EEEEEE;
+        font-size: 1.25em;
+        padding-top: 1.25em;
       }
       a:visited {
-        color: #C6C6C6;
+        color: #EEEEEE;
       }
       a:hover {
         color: white;
       }
     }
     .route-links li:hover {
-      background: rgba(140,16,16,0.4);
+      background: rgba(0,0,0,0.30);
+      /* background: rgba(140,16,16,0.4); */
     }
   }
 
-  .branding {
-    color: #EEEEEE;
-    margin: 0;
-    padding: .35em 0;
-    text-align: center;
-    background: #2C2C2C;
-    background: rgba(0,0,0,0.65);
-  }
+/*   h2 {
+  color: #EEEEEE;
+  font-family: serif;
+  margin: 0;
+  padding: .35em 0;
+  text-align: center;
+  background: #2C2C2C;
+  background: rgba(0,0,0,0.65);
+} */
   .extras .test-link {
     color: black;
   }
@@ -67,7 +80,7 @@ footer {
     color: #EEEEEE;
     padding-top: .5em;
     margin-bottom: 0;
-    font-size: .75em;
+    font-size: 1em;
   }
   ul {
     text-align: center;

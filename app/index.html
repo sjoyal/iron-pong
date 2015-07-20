@@ -29,9 +29,6 @@
     <![endif]-->
     <main>
       <header ng-controller="MainController as app">
-        <div class="branding">
-          <img src="images/tip-logo-red.png" width="250" height="auto">
-        </div> <!--.branding-->
         <nav class="navbar navbar-default ip-nav">
           <div>
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,7 +40,8 @@
                 <span class="icon-bar"></span>
               </button>
               <a ng-click="app.checkAuth()" class="navbar-brand" id="namesake" ui-sref="recentresults">
-                IRON PONG</a>
+                iron<span>pong</span>
+              </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse route-links" id="bs-example-navbar-collapse-1">
