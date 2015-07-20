@@ -4,7 +4,7 @@
 
   angular.module('iron-pong')
     .controller('SubmitController',
-      function($state, $http, Auth, Restangular){
+      function($state, $http, Auth, Submit, Restangular){
 
       var self = this;
       this.players = [];
@@ -14,7 +14,8 @@
         loser: '',
         loserScore: '',
         summary: '',
-        createdOn: ''
+        createdOn: '',
+        createdBy: ''
       };
 
       // Retrieve list of stargazers from cohort repo local vs live request:
@@ -28,7 +29,6 @@
            + self.authData.github.accessToken)
             .then(function(response){
               self.players = _.forEach(response.data, function(player){
-                var playerInfo = player;
                 delete player.id;
                 delete player.gravatar_id;
                 delete player.url;
@@ -44,44 +44,20 @@
                 delete player.received_events_url;
                 delete player.type;
                 delete player.site_admin;
-                return playerInfo;
+                return player;
               });
+              console.log(self.players);
               self.access = _.find(self.players, function(player){
                 return player.login === self.authData.github.username;
               });
-              console.log(self.access);
+              // console.log(self.access);
           }); // END $http.get github repo stargazers
       });
-
-      /** FIXME: previous filter mechanism for input fields
-        * update to use with only winner / loser fields
-        * remove selected winner option from list of loser options
-        */
-        // $scope.competitors = [ ];
-        // $scope.addPlayer1 = function(playerName){
-        //   $scope.competitors[0] = playerName;
-        //   console.log($scope.competitors);
-        // };
-        // $scope.addPlayer2 = function(playerName){
-        //   $scope.competitors[1] = playerName;
-        //   console.log($scope.competitors);
-        // };
-
-      // var games = new Firebase('https://iron-pong.firebaseio.com/gameresults');
-      // this.results = [ ];
-      // Restangular.one('gameresults').get()
-      //   .then(function(data){
-      //     if (!data) {
-      //       return
-      //     } else {
-      //       self.results = data.plain();
-      //     }
-      //     var jumanji = data.name;
-      //   });
 
       this.addResults = function(){
         var timestamp = new Date().getTime();
         self.gameresult.createdOn = timestamp;
+        self.gameresult.createdBy = self.authData.github.username;
         var winner = self.gameresult.winner.login;
         var winnerPic = self.gameresult.winner.avatar_url;
         var loser = self.gameresult.loser.login;
@@ -92,57 +68,19 @@
             Restangular.one('players', winner).get()
               .then(function(gameWinner){
                 if (!gameWinner) {
-                  Restangular.one('players/' + winner).patch({
-                    login: winner,
-                    avatar: winnerPic,
-                    wins: 1,
-                    gamesPlayed: 1,
-                    losses: 0
-                  }).then(function(){
-                    Restangular.one('players', winner).post('games', {
-                      true: jumanji
-                    });
-                  });
+                  Submit.newPlayer(winner, winnerPic, jumanji, 1, 0);
                 } else {
-                  Restangular.one('players/' + winner).patch({
-                    login: winner,
-                    avatar: winnerPic,
-                    wins: (gameWinner.wins + 1),
-                    gamesPlayed: (gameWinner.gamesPlayed + 1),
-                    losses: gameWinner.losses
-                  }).then(function(){
-                    Restangular.one('players', winner).post('games', {
-                      true: jumanji
-                    });
-                  });
+                  Submit.updatePlayer(winner, winnerPic, jumanji, gameWinner.wins,
+                    gameWinner.losses, gameWinner.gamesPlayed, 1, 0, 1);
                 }
               });
             Restangular.one('players', loser).get()
               .then(function(gameLoser){
                 if (!gameLoser) {
-                  Restangular.one('players/' + loser).patch({
-                    login: loser,
-                    avatar: loserPic,
-                    wins: 0,
-                    gamesPlayed: 1,
-                    losses: 1
-                  }).then(function(){
-                    Restangular.one('players', loser).post('games', {
-                      true: jumanji
-                    });
-                  });
+                  Submit.newPlayer(loser, loserPic, jumanji, 0, 1);
                 } else {
-                  Restangular.one('players/' + loser).patch({
-                    login: loser,
-                    avatar: loserPic,
-                    wins: gameLoser.wins,
-                    gamesPlayed: (gameLoser.gamesPlayed + 1),
-                    losses: (gameLoser.losses + 1)
-                  }).then(function(){
-                    Restangular.one('players', loser).post('games', {
-                      true: jumanji
-                    });
-                  });
+                  Submit.updatePlayer(loser, loserPic, jumanji, gameLoser.wins,
+                    gameLoser.losses, gameLoser.gamesPlayed, 0, 1, 1);
                 }
               });
           });
@@ -152,7 +90,8 @@
             loser: '',
             loserScore: '',
             summary: '',
-            createdOn: ''
+            createdOn: '',
+            createdBy: ''
           };
           $state.go('recentresults');
       };

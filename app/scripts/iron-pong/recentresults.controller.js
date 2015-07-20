@@ -9,11 +9,13 @@
       var self = this;
       var ref = new Firebase('https://iron-pong.firebaseio.com/gameresults');
       this.scores = $firebaseArray(ref);
+
       // Restangular.one('gameresults').get()
         // .then(function(data){
           // self.scores = data.plain();
           // console.log(self.scores);
-        // });
+        // }); Removed due to orderBy problems with object returned by Restangular
+
       console.log(self.scores);
     }); // END RecentResultsController
 })();

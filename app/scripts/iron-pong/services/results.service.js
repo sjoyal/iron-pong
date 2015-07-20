@@ -23,21 +23,64 @@
       }; // END Auth return
     }) // END Auth factory
 
-    // retrieve a list of players for the cohort
-    // .factory('Players', function(Auth, $http){
-    //   // var authInfo = Auth.authStatus();
-    //   this.players = [];
-    //   var self = this;
-    //   return {
-    //     retrievePlayers: function(){
-    //       $http.get('api/github/repos/theironyard--orlando/2015--summer--fee/stargazers/stargazers.json')
-    //       // $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token=' + authInfo.github.accessToken)
-    //       .then(function(response){
-    //         self.players = response.data;
-    //       });
-    //       return self.players;
-    //     }
-    //   }; // END Players return
-    // })
+    .factory('Submit', function(Restangular){
+      return {
+        newPlayer: function(player, playerPic, game, numWins, numLosses){
+          Restangular.one('players/' + player).patch({
+            login: player,
+            avatar: playerPic,
+            wins: numWins,
+            gamesPlayed: 1,
+            losses: numLosses
+          }).then(function(){
+            Restangular.one('players', player).post('games', {
+            true: game
+            });
+          });
+        },
+        updatePlayer: function(player, playerPic, game, wins, losses, gamesPlayed, addWins, addLosses, addGamesPlayed){
+          Restangular.one('players/' + player).patch({
+            login: player,
+            avatar: playerPic,
+            wins: (wins + addWins),
+            gamesPlayed: (gamesPlayed + addGamesPlayed),
+            losses: (losses + addLosses)
+          }).then(function(){
+            Restangular.one('players', player).post('games', {
+              true: game
+            });
+          });
+        }
+      };
+    })
+
+    .factory('Delete', function(Restangular){
+      return {
+        resultRemove: function(player, removeWin, removeLoss){
+          Restangular.one('players', player).get()
+            .then(function(gamePlayer){
+              if (gamePlayer.gamesPlayed === 1) {
+                Restangular.one('players', player).remove();
+              } else {
+                Restangular.one('players/' + player).patch({
+                  wins: (gamePlayer.wins - removeWin),
+                  losses: (gamePlayer.losses - removeLoss),
+                  gamesPlayed: (gamePlayer.gamesPlayed - 1)
+                }).then(function(){
+                  // Remove game reference under player ID
+                });
+              }
+            });
+        }
+      };
+    })
+
+    .factory('Comments', function(Restangular){
+      return {
+        new: function(comment, game){
+          Restangular.one('gameresults', game).post('comments', comment);
+        }
+      };
+    })
     ; // END ALL THE THINGS!
 })();

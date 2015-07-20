@@ -18,6 +18,24 @@
       <p>{{gameresult.game.summary}}</p>
     </aside>
   </div>
-  <a ui-sref="recentresults" ng-click="gameresult.deleteGame()">Delete Result</a>
+  <aside class="submit-comments">
+    <figure ng-repeat="(id, comment) in gameresult.game.comments">
+      <img ng-src="{{comment.avatar}}" width="30" height="30">
+      <author>{{comment.author}}</author><span>{{id}}</span>
+        <button ng-show="gameresult.authData.github.username === comment.author"
+          class="pull-right delete-button" ng-click="gameresult.deleteComment(id)">
+          Delete
+        </button>
+      <p>{{comment.comment}}</p>
+    </figure>
+    <form name="submitComments" ng-submit="gameresult.submitComment()" ng-show="gameresult.authData">
+      <textarea class="form-control" ng-model="gameresult.comment.comment" rows="5" placeholder="Talk smack!" required></textarea>
+      <button name="submit" class="submit-button">Submit</button>
+    </form>
+  </aside>
+  <a ui-sref="recentresults" ng-click="gameresult.deleteGame()"
+    ng-show="gameresult.authData.github.username === gameresult.game.createdBy">
+    Delete Result
+  </a>
   <a ui-sref="recentresults">Back to Recent Results</a>
 </section> <!--.container-->
