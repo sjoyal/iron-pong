@@ -1,13 +1,15 @@
-<section class="game-result">
+<article class="game-stats">
   <h2>Winner!</h2>
   <h3>{{gameresult.game.winner.login}}</h3>
   <ul>
     <li>
+      <img ng-src="{{gameresult.game.winner.avatar_url}}" width="100" height="auto">
       <small class="result-player1">{{gameresult.game.winner.login}}</small>
       <big>{{gameresult.game.winnerScore}}</big>
     </li>
     <li class="result-vs">vs</li>
     <li>
+      <img ng-src="{{gameresult.game.loser.avatar_url}}" width="100" height="auto">
       <small class="result-player2">{{gameresult.game.loser.login}}</small>
       <big>{{gameresult.game.loserScore}}</big>
     </li>
@@ -18,6 +20,7 @@
       <p>{{gameresult.game.summary}}</p>
     </aside>
   </div>
+  <h4 class="comments-section">Game Comments</h4>
   <aside class="submit-comments">
     <figure ng-repeat="(id, comment) in gameresult.game.comments">
       <img ng-src="{{comment.avatar}}" width="30" height="30">
@@ -38,4 +41,4 @@
     Delete Result
   </a>
   <a ui-sref="recentresults">Back to Recent Results</a>
-</section> <!--.container-->
+</article><!--.game-stats-->
