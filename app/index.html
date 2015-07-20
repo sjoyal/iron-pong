@@ -46,11 +46,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse route-links" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                <li><a ui-sref="recentresults">Results</a></li>
-                <li><a ui-sref="leaderboard">Leaderboard</a></li>
-                <li><a ui-sref="submit">Submit</a></li>
-                <li ng-click="app.login()" ng-hide="app.authData"><a ui-sref="recentresults">Login</a></li>
-                <li ng-click="app.logout()" ng-show="app.authData"><a ui-sref="recentresults">Logout</a></li>
+                <li ng-click="app.collapseMenu()"><a ui-sref="recentresults">Results</a></li>
+                <li ng-click="app.collapseMenu()"><a ui-sref="leaderboard">Leaderboard</a></li>
+                <li ng-click="app.collapseMenu()"><a ui-sref="submit">Submit</a></li>
+                <li ng-click="app.login(); app.collapseMenu()" ng-hide="app.authData"><a ui-sref="recentresults">Login</a></li>
+                <li ng-click="app.logout(); app.collapseMenu()" ng-show="app.authData"><a ui-sref="recentresults">Logout</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
@@ -59,12 +59,12 @@
       <div ui-view></div>
       <p id="mission">Iron Pong is a table tennis results tracker built for members of the
         2015 Summer Front End Engineering course at The Iron Yard Orlando. To submit scores,
-        cohort members should log in and navigate to the submit page. Non-members are welcome
-        to login via GitHub and comment on match results.
+        cohort members can log in and navigate to the submit page. Non-members are welcome
+        to login via GitHub, but are limited to commenting on match results.
       </p>
       <footer class="container-fluid col-md-12">
         <div class="col-md-3 add-logo">
-          <img src="images/tip-logo-red.png" width="125" height="auto">
+          <img src="images/tip-logo-red.png" width="150" height="auto">
         </div>
         <aside class="col-md-6 site-info">
           <p>♥ This site is fueled by RedBull, Tanqueray's, and some AngularJS. Enjoy!</p>

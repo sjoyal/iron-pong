@@ -15,13 +15,13 @@ header {
     border: none;
     background: #2C2C2C;
     background: rgba(0,0,0,0.65);
-    height: 4.5em;
+    /* height: 4.5em; */
 
     #namesake {
       color: #C9C9C9;
       font-size: 2.5em;
       font-weight: 100;
-      padding-top: 1ex;
+      padding-top: .75ex;
 
       span {
         font-weight: 400;
@@ -33,7 +33,7 @@ header {
       a {
         color: #C9C9C9;
         font-size: 1.25em;
-        padding-top: 1.25em;
+        padding-top: 1.75ex;
       }
       a:visited {
         color: #C9C9C9;
@@ -84,12 +84,12 @@ footer {
   aside {
     color: #C9C9C9;
     font-size: 1em;
-    padding-top: 1em;
+    padding-top: 1.5em;
     text-align: center;
   }
   ul {
     text-align: center;
-    padding: 1em 0;
+    padding: 1.5em 0;
     margin: 0;
 
     li {
