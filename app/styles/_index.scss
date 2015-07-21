@@ -59,16 +59,16 @@ header {
 
 #mission {
   margin: auto;
-  margin-top: 3em;
   width: 90%;
+  margin-bottom: 1em;
   text-align: center;
-  color: #EEEEEE;
+  color: $header-font-color;
 }
 
 footer {
   background: #2C2C2C;
   background: rgba(0,0,0,0.65);
-  margin-top: 1em;
+  margin-top: 5em;
   padding-top: 1em;
   padding-bottom: 1em;
 
