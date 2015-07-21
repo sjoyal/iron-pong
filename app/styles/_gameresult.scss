@@ -1,10 +1,9 @@
 .game-stats {
-  width: 90%;
+  width: 80%;
   margin: auto;
-  margin-bottom: 4em;
   color: $font-color;
   background: $primary-black;
-  border-radius: 10px;
+  border-radius: 4px;
 
   h2 {
     font-weight: 400;
@@ -120,7 +119,7 @@
       line-height: 1.75em;
       color: $font-color;
       background: $button-red;
-      border-radius: 5px;
+      border-radius: 4px;
       border: none;
     }
     .delete-button:hover {
@@ -133,7 +132,7 @@
       height: 3.5em;
       color: $font-color;
       background: $button-red;
-      border-radius: 5px;
+      border-radius: 4px;
       border: none;
     }
     .submit-button:hover {

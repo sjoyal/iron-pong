@@ -1,11 +1,11 @@
 .table-section {
-  width: 75%;
+  width: 80%;
   margin: auto;
   background: #2C2C2C;
   background: rgba(222,16,16,0.75);
-  color: #EEEEEE;
+  color: $font-color;
   padding: 1em;
-  border-radius: 10px;
+  border-radius: 4px;
   text-align: center;
 
   .toggle-buttons {
@@ -21,7 +21,7 @@
       width: 5em;
       line-height: 2.5em;
       cursor: pointer;
-      /* background-color: #9C9C9C; */
+      background-color: #9C9C9C;
       background-color: rgba(0,0,0,0.25);
       border-right: 1px solid rgba(0,0,0,0.6);
     }
