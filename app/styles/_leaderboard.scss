@@ -49,6 +49,13 @@
       img {
         margin-right: 5px;
       }
+      a, a:hover {
+        text-decoration: none;
+        color: $font-color;
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
     }
   }
 }

@@ -3,15 +3,23 @@
   <h3>{{gameresult.game.winner.login}}</h3>
   <ul>
     <li>
-      <img ng-src="{{gameresult.game.winner.avatar_url}}" width="100" height="auto">
-      <small class="result-player1">{{gameresult.game.winner.login}}</small>
+      <a ui-sref="player({playerID: gameresult.game.winner.login})">
+        <img ng-src="{{gameresult.game.winner.avatar_url}}" width="100" height="auto">
+      </a>
+      <a ui-sref="player({playerID: gameresult.game.winner.login})">
+        <small class="result-player1">{{gameresult.game.winner.login}}</small>
+      </a>
       <big>{{gameresult.game.winnerScore}}</big>
     </li>
     <li class="result-vs">vs</li>
     <li>
-      <img ng-src="{{gameresult.game.loser.avatar_url}}" width="100" height="auto">
-      <small class="result-player2">{{gameresult.game.loser.login}}</small>
-      <big>{{gameresult.game.loserScore}}</big>
+        <a ui-sref="player({playerID: gameresult.game.loser.login})">
+          <img ng-src="{{gameresult.game.loser.avatar_url}}" width="100" height="auto">
+        </a>
+        <a ui-sref="player({playerID: gameresult.game.loser.login})">
+          <small class="result-player2">{{gameresult.game.loser.login}}</small>
+        </a>
+        <big>{{gameresult.game.loserScore}}</big>
     </li>
   </ul>
   <aside class="game-summary">
@@ -33,6 +41,7 @@
         </button>
       <p>{{comment.comment}}</p>
     </figure>
+    <p ng-hide="gameresult.authData">You must be logged in to leave comments</p>
     <form name="submitComments" ng-submit="gameresult.submitComment()" ng-show="gameresult.authData">
       <textarea class="form-control" ng-model="gameresult.comment.comment" rows="5" placeholder="Talk smack!" required></textarea>
       <button name="submit" class="submit-button">Submit</button>
