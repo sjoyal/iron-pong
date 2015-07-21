@@ -80,33 +80,21 @@ footer {
   }
   ul {
     text-align: center;
-    padding: 1.5em 0;
+    padding: 1em 0;
     margin: 0;
 
     li {
       display: inline-block;
-      margin-right: .5em;
-      margin-left: .5em;
-      background: #9C9C9C;
-      height: 3.5em;
-      width: 6em;
-      border-radius: 6px;
+      margin-right: 1em;
+      margin-left: 1em;
 
-      a {
-        display: block;
-        width: 100%;
-        height: 100%;
+      a, a:visited, a:focus {
         font-size: 2ex;
-        color: rgba(0,0,0,0.5);
-        line-height: 3.25em;
+        color: $header-font-color;
       }
       a:hover {
-        color: rgba(0,0,0,0.5);
-        text-decoration: none;
+          color: white;
       }
-    }
-    li:hover {
-      background: #B4B4B4;
     }
   }
 }

@@ -13,6 +13,7 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/ng-table/dist/ng-table.min.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -59,9 +60,9 @@
       </header>
       <div ui-view></div>
       <p id="mission">Iron Pong is a table tennis results tracker built for members of the
-        2015 Summer Front End Engineering course at The Iron Yard Orlando. To submit scores,
-        cohort members can log in and navigate to the submit page. Non-members are welcome
-        to login via GitHub, but limited to commenting on match results.
+        2015 Summer Front End Engineering course at The Iron Yard Orlando. Cohort members can
+        submit scores using the submit page after logging in. Non-members are welcome
+        to login via GitHub and comment on match results.
       </p>
       <footer class="container-fluid col-md-12">
         <div class="col-md-3 add-logo">
@@ -72,8 +73,16 @@
           <p>©2015 Sean Joyal. All Rights Reserved.</p>
         </aside>
         <ul class="col-md-3 project-logos">
-          <li role="navigation"><a href="https://github.com/sjoyal/iron-pong" target="_blank">GitHub</a></li>
-          <li role="navigation"><a href="mailto:sean.joyal@gmail.com">Contact</a></li>
+          <li role="navigation">
+            <a href="https://github.com/sjoyal/iron-pong" target="_blank">
+              <i class="fa fa-github fa-4x"></i>
+            </a>
+          </li>
+          <li role="navigation">
+            <a href="mailto:sean.joyal@gmail.com">
+              <i class="fa fa-envelope fa-4x"></i>
+            </a>
+          </li>
         </ul>
       </footer>
     </main> <!-- ng-controller -->

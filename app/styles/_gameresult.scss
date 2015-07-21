@@ -141,7 +141,12 @@
     }
   }
 
-  p, a, a:hover {
+  .comments-login {
+    text-align: center;
+    font-size: 1em;
+  }
+
+  a, a:hover {
     display: block;
     width: 100%;
     padding-bottom: .5em;
