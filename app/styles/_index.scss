@@ -1,3 +1,10 @@
+$primary-black: rgba(0,0,0,0.5);
+$primary-red: rgba(222,16,16,0.75);
+$button-red: rgba(180,16,16,0.75);
+$button-red-hover: rgba(222,16,16,0.75);
+$font-color: #EEEEEE;
+$header-font-color: #C9C9C9;
+
 body {
   background: url(../images/hero_image-BW.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -10,48 +17,46 @@ header {
   margin-bottom: 2.5em;
 
   .ip-nav {
-    background: rgba(222,16,16,0.75);
     border-radius: 0;
     border: none;
+    background: $header-font-color;
+    background: rgba(0,0,0,0.65);
 
     #namesake {
-      color: #C6C6C6;
-      font-size: 1.5em;
+      color: $header-font-color;
+      font-size: 2.5em;
+      font-weight: 100;
+      padding-top: .75ex;
+
+      span {
+        font-weight: 400;
+        color: white;
+      }
     }
     .route-links li {
 
       a {
-        color: #C6C6C6;
+        color: $header-font-color;
+        font-size: 1.25em;
+        font-weight: 300;
+        padding-top: 1.75ex;
       }
       a:visited {
-        color: #C6C6C6;
+        color:$header-font-color;
       }
       a:hover {
         color: white;
       }
     }
     .route-links li:hover {
-      background: rgba(140,16,16,0.4);
+      background: rgba(0,0,0,0.30);
     }
-  }
-
-  h2 {
-    color: #EEEEEE;
-    font-family: serif;
-    margin: 0;
-    padding: .35em 0;
-    text-align: center;
-    background: #2C2C2C;
-    background: rgba(0,0,0,0.65);
-  }
-  .extras .test-link {
-    color: black;
   }
 }
 
 #mission {
   margin: auto;
-  margin-top: 6em;
+  margin-top: 3em;
   width: 90%;
   text-align: center;
   color: #EEEEEE;
@@ -60,14 +65,20 @@ header {
 footer {
   background: #2C2C2C;
   background: rgba(0,0,0,0.65);
-  margin-top: 2.5em;
+  margin-top: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 
-  p {
+  .add-logo {
     text-align: center;
-    color: #EEEEEE;
-    padding-top: .5em;
-    margin-bottom: 0;
-    font-size: .75em;
+  }
+
+  aside {
+    color: #C9C9C9;
+    font-size: 1em;
+    font-weight: 300;
+    padding-top: 1.5em;
+    text-align: center;
   }
   ul {
     text-align: center;
@@ -78,26 +89,14 @@ footer {
       display: inline-block;
       margin-right: 1em;
       margin-left: 1em;
-      background: #9C9C9C;
-      height: 3.5em;
-      width: 6em;
-      border-radius: 6px;
 
-      a {
-        display: block;
-        width: 100%;
-        height: 100%;
+      a, a:visited, a:focus {
         font-size: 2ex;
-        color: rgba(0,0,0,0.5);
-        line-height: 3.25em;
+        color: $header-font-color;
       }
       a:hover {
-        color: rgba(0,0,0,0.5);
-        text-decoration: none;
+          color: white;
       }
-    }
-    li:hover {
-      background: #B4B4B4;
     }
   }
 }

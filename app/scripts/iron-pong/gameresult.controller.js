@@ -17,6 +17,7 @@
       this.game = [];
       var ref = new Firebase('https://iron-pong.firebaseio.com/gameresults/' + $stateParams.gameresultID);
       this.game = $firebaseObject(ref);
+      console.log(self.game);
 
       this.deleteGame = function(){
         var winner = self.game.winner.login;

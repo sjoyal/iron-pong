@@ -4,34 +4,71 @@
   background: rgba(0,0,0,0.5);
   border-radius: 10px;
   padding: .5em 1.25em 1em 1.25em;
-  color: #EEEEEE;
+  color: $font-color;
+  margin-bottom: 5em;
 
   h3 {
     font-weight: 300;
     margin-top: 0;
   }
+  .u-no-login {
+    margin-top: 6em;
+    text-align: center;
+    margin-bottom: 10em;
+    font-size: 1.25em;
+
+    p {
+      width: 80%;
+      margin: auto;
+    }
+    .bang {
+      font-size: 5em;
+    }
+  }
+  .u-no-access {
+    margin-top: 6em;
+    text-align: center;
+    margin-bottom: 10em;
+    font-size: 1.25em;
+
+    p {
+      width: 80%;
+      margin: auto;
+    }
+    .bang {
+      font-size: 5em;
+    }
+  }
   label {
-    margin: 0;
+    margin-bottom: .25em;
   }
   select {
     width: 75%;
+    margin-bottom: .25em;
   }
   input {
     width: 50%;
   }
   h4 {
-    margin-bottom: .25em;
+    margin: .5em 0;
   }
   .submit-button {
     margin-top: 1em;
     width: 6.5em;
     height: 3.5em;
-    color: #EEEEEE;
-    background: rgba(180,16,16,0.75);
+    color: $font-color;
+    background: $button-red;
     border-radius: 5px;
     border: none;
   }
   .submit-button:hover {
-    background: rgba(222,16,16,0.75);
+    background: $button-red-hover;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .submit-results {
+    border-radius: 0;
+    width: 100%;
   }
 }
