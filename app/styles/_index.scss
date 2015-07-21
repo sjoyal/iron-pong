@@ -51,6 +51,9 @@ header {
     .route-links li:hover {
       background: rgba(0,0,0,0.30);
     }
+    .route-links .navactive {
+      background: rgba(0,0,0,0.30);
+    }
   }
 }
 

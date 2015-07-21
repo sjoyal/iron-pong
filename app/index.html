@@ -48,9 +48,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse route-links" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                <li ng-click="app.collapseMenu()"><a ui-sref="recentresults">Results</a></li>
-                <li ng-click="app.collapseMenu()"><a ui-sref="leaderboard">Leaderboard</a></li>
-                <li ng-click="app.collapseMenu()"><a ui-sref="submit">Submit</a></li>
+                <li ng-click="app.collapseMenu(); app.selectTab(1)" ng-class="{navactive:app.isSelected(1)}"><a ui-sref="recentresults">Results</a></li>
+                <li ng-click="app.collapseMenu(); app.selectTab(2)" ng-class="{navactive:app.isSelected(2)}"><a ui-sref="leaderboard">Leaderboard</a></li>
+                <li ng-click="app.collapseMenu(); app.selectTab(3)" ng-class="{navactive:app.isSelected(3)}"><a ui-sref="submit">Submit</a></li>
                 <li ng-click="app.login(); app.collapseMenu()" ng-hide="app.authData"><a ui-sref="recentresults">Login</a></li>
                 <li ng-click="app.logout(); app.collapseMenu()" ng-show="app.authData"><a ui-sref="recentresults">Logout</a></li>
               </ul>
