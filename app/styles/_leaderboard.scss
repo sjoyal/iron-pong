@@ -2,7 +2,7 @@
   width: 75%;
   margin: auto;
   background: #2C2C2C;
-  background: rgba(0,0,0,0.5);
+  background: rgba(222,16,16,0.75);
   color: #EEEEEE;
   padding: 1em;
   border-radius: 10px;
@@ -21,17 +21,18 @@
       width: 5em;
       line-height: 2.5em;
       cursor: pointer;
-      background-color: #9C9C9C;
-      border-right: 1px solid rgba(0,0,0,0.6)
+      /* background-color: #9C9C9C; */
+      background-color: rgba(0,0,0,0.25);
+      border-right: 1px solid rgba(0,0,0,0.6);
     }
     li:last-child {
       border-right: none;
     }
     li:hover {
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.5);
     }
     .active {
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.5);
     }
   }
 
@@ -48,10 +49,27 @@
       img {
         margin-right: 5px;
       }
+      a, a:hover {
+        text-decoration: none;
+        color: $font-color;
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
     }
   }
 }
 
 .table-responsive {
   border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .table-section {
+    border-radius: 0;
+
+    .toggle-buttons {
+      text-align: center;
+    }
+  }
 }

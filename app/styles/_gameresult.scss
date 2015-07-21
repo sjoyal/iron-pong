@@ -1,13 +1,17 @@
-.game-result {
-  width: 75%;
+.game-stats {
+  width: 90%;
   margin: auto;
-  margin-bottom: 5em;
-  color: #EEEEEE;
+  margin-bottom: 4em;
+  color: $font-color;
+  background: $primary-black;
+  border-radius: 10px;
 
   h2 {
-    font-weight: 200;
+    font-weight: 400;
     text-align: center;
     margin: 0;
+    padding-top: .5em;
+    color: rgba(222,16,16,.85);
   }
   h3 {
     text-align: center;
@@ -18,33 +22,39 @@
   }
   ul {
     text-align: center;
-    padding-left: 0;
-    margin-bottom: 2.5em;
+    padding: 0;
+    margin-bottom: 0;
 
     li {
       display: inline-block;
       box-sizing: border-box;
       padding-top: .75em;
       width: 7.5em;
-      height: 5em;
+      height: 12em;
       text-align: center;
-      background: rgba(222,16,16,0.75);
+
+      a {
+        text-decoration: none;
+      }
+
+      img {
+        border-radius: 5px;
+      }
 
       small {
         display: block;
         font-size: 1em;
       }
       big {
-        color: rgba(0,0,0,0.75);
+        color: rgba(222,16,16,.85);
         font-size: 1.5em;
       }
     }
     .result-vs {
       vertical-align: top;
-      line-height: 4.75em;
+      line-height: 10em;
       background: none;
       padding-top: 0;
-      color: rgba(0,0,0,0.75);
       font-weight: bold;
       width: 4em;
     }
@@ -56,7 +66,6 @@
 
     aside {
       box-sizing: border-box;
-      background: rgba(222,16,16,0.75);
       border-radius: 10px;
       padding: 2em 1.5em;
 
@@ -66,48 +75,90 @@
       }
       p {
         margin: 0;
-        font-size: 1.25em;
+        font-size: 1em;
+        font-weight: 300;
       }
     }
   }
+  .comments-section {
+    padding-left: 1em;
+    border-bottom: 1px solid $header-font-color;
+    margin: 1em 0 0 0;
+    font-weight: 300;
+  }
+  .u-no-comments {
+    text-align: center;
+    padding-top: 2em;
+  }
   .submit-comments {
-    background: rgba(0,0,0,0.5);
     border-radius: 10px;
-    margin-top: 2.5em;
     padding: 1em 1.25em 1em 1.25em;
-    color: #EEEEEE;
+    color: $font-color;
+
+    figure {
+      padding-bottom: 1em;
+
+      img {
+        vertical-align: baseline;
+      }
+      .author {
+        font-size: 1.25em;
+        padding-left: .5em;
+      }
+      p {
+        padding-top: .5em;
+        padding-left: 1em;
+        font-weight: 200;
+        font-size: 1.75ex;
+      }
+    }
 
     .delete-button {
       margin-top: 1em;
       width: 4em;
       height: 2em;
-      color: #EEEEEE;
-      background: rgba(180,16,16,0.75);
+      line-height: 1.75em;
+      color: $font-color;
+      background: $button-red;
       border-radius: 5px;
       border: none;
     }
     .delete-button:hover {
-      background: rgba(222,16,16,0.75);
+      background: $button-red-hover;
     }
 
     .submit-button {
       margin-top: 1em;
       width: 6.5em;
       height: 3.5em;
-      color: #EEEEEE;
-      background: rgba(180,16,16,0.75);
+      color: $font-color;
+      background: $button-red;
       border-radius: 5px;
       border: none;
     }
     .submit-button:hover {
-      background: rgba(222,16,16,0.75);
+      background: $button-red-hover;
     }
   }
+
+  .comments-login {
+    text-align: center;
+    font-size: 1em;
+  }
+
   a, a:hover {
     display: block;
     width: 100%;
-    padding-top: 2.5em;
+    padding-bottom: .5em;
     text-align: center;
-    color: #EEEEEE;
+    color: $font-color;
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .game-stats {
+    border-radius: 0;
+    width: 100%;
   }
 }
