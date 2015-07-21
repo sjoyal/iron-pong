@@ -13,6 +13,9 @@
 } */
   .borderless {
 
+    thead {
+      border-bottom: 2px solid #DDDDDD;
+    }
     td {
       border: none;
       line-height: 30px;
