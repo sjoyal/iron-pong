@@ -19,7 +19,7 @@
       <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-wins'">
         <td class="player-login">
           <a ui-sref="player({playerID: leader.login})">
-            <img width="30" height="30" ng-src="{{leader.avatar}}"/>
+            <img width="40" height="auto" ng-src="{{leader.avatar}}"/>
             {{leader.login}}
           </a>
         </td>
@@ -44,8 +44,10 @@
     <tbody>
       <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-losses'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{leader.avatar}}"/>
-          {{leader.login}}
+          <a ui-sref="player({playerID: leader.login})">
+            <img width="40" height="auto" ng-src="{{leader.avatar}}"/>
+            {{leader.login}}
+          </a>
         </td>
         <td data-title="'Wins'">{{leader.wins}}</td>
         <td data-title="'Losses'">{{leader.losses}}</td>
@@ -68,8 +70,10 @@
     <tbody>
       <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-pct'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{leader.avatar}}"/>
-          {{leader.login}}
+          <a ui-sref="player({playerID: leader.login})">
+            <img width="40" height="auto" ng-src="{{leader.avatar}}"/>
+            {{leader.login}}
+          </a>
         </td>
         <td data-title="'Wins'">{{leader.wins}}</td>
         <td data-title="'Losses'">{{leader.losses}}</td>
@@ -92,8 +96,10 @@
     <tbody>
       <tr ng-repeat="leader in leaderboard.playerStats | orderBy:'-gamesPlayed'">
         <td class="player-login">
-          <img width="30" height="30" ng-src="{{leader.avatar}}"/>
-          {{leader.login}}
+          <a ui-sref="player({playerID: leader.login})">
+            <img width="40" height="auto" ng-src="{{leader.avatar}}"/>
+            {{leader.login}}
+          </a>
         </td>
         <td data-title="'Wins'">{{leader.wins}}</td>
         <td data-title="'Losses'">{{leader.losses}}</td>

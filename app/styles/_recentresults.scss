@@ -8,9 +8,9 @@
   border-radius: 4px;
   text-align: center;
 
-  .score-added {
-    text-align: center;
-  }
+/*   .score-added {
+  text-align: center;
+} */
   .borderless {
 
     td {
@@ -19,6 +19,7 @@
       text-align: left;
 
       img {
+        border-radius: 10px;
         margin-right: 5px;
       }
       a, a:hover {
@@ -41,7 +42,7 @@
     }
 
     .data-center {
-      text-align: center;
+      text-align: left;
     }
   }
 }

@@ -2,9 +2,9 @@
   width: 80%;
   margin: auto;
   background: #2C2C2C;
-  background: rgba(222,16,16,0.75);
+  background: $primary-red;
   color: $font-color;
-  padding: 1em;
+  padding: 1em 1em 0 1em;
   border-radius: 4px;
   text-align: center;
 
@@ -44,9 +44,10 @@
       text-align: left;
     }
     td {
-      line-height: 30px;
+      line-height: 40px;
 
       img {
+        border-radius: 10px;
         margin-right: 5px;
       }
       a, a:hover {
