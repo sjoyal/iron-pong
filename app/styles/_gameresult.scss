@@ -155,3 +155,10 @@
     font-size: 1em;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .game-stats {
+    border-radius: 0;
+    width: 100%;
+  }
+}

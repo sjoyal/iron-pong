@@ -63,3 +63,13 @@
 .table-responsive {
   border: none;
 }
+
+@media screen and (max-width: 768px) {
+  .table-section {
+    border-radius: 0;
+
+    .toggle-buttons {
+      text-align: center;
+    }
+  }
+}

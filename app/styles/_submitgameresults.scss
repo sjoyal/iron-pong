@@ -65,3 +65,10 @@
     background: $button-red-hover;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .submit-results {
+    border-radius: 0;
+    width: 100%;
+  }
+}

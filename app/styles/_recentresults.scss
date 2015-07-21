@@ -50,3 +50,9 @@
 .table-responsive {
   border: none;
 }
+
+@media screen and (max-width: 768px) {
+  .recent-games-table {
+    border-radius: 0;
+  }
+}

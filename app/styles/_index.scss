@@ -38,6 +38,7 @@ header {
       a {
         color: $header-font-color;
         font-size: 1.25em;
+        font-weight: 300;
         padding-top: 1.75ex;
       }
       a:visited {
@@ -75,6 +76,7 @@ footer {
   aside {
     color: #C9C9C9;
     font-size: 1em;
+    font-weight: 300;
     padding-top: 1.5em;
     text-align: center;
   }
