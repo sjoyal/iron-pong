@@ -42,7 +42,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="leader in leaderboard.playerStats | orderBy:['-losses','pct']">
+      <tr ng-repeat="leader in leaderboard.playerStats | orderBy:['-losses','-pct']">
         <td class="player-login">
           <a ui-sref="player({playerID: leader.login})">
             <img width="40" height="auto" ng-src="{{leader.avatar}}"/>

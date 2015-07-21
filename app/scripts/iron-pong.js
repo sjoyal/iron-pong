@@ -86,7 +86,7 @@
           }
         });
       };
-      this.tab = 1;
+      this.tab = null;
       this.selectTab = function(setTab){
         this.tab = setTab;
       };
