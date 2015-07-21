@@ -51,8 +51,8 @@
                 <li ng-click="app.collapseMenu(); app.selectTab(1)" ng-class="{navactive:app.isSelected(1)}"><a ui-sref="recentresults">Results</a></li>
                 <li ng-click="app.collapseMenu(); app.selectTab(2)" ng-class="{navactive:app.isSelected(2)}"><a ui-sref="leaderboard">Leaderboard</a></li>
                 <li ng-click="app.collapseMenu(); app.selectTab(3)" ng-class="{navactive:app.isSelected(3)}"><a ui-sref="submit">Submit</a></li>
-                <li ng-click="app.login(); app.collapseMenu()" ng-hide="app.authData"><a ui-sref="recentresults">Login</a></li>
-                <li ng-click="app.logout(); app.collapseMenu()" ng-show="app.authData"><a ui-sref="recentresults">Logout</a></li>
+                <li ng-click="app.login(); app.collapseMenu()" ng-hide="app.authData"><a ui-sref="#">Login</a></li>
+                <li ng-click="app.logout(); app.collapseMenu()" ng-show="app.authData"><a ui-sref="#">Logout</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->

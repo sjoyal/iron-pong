@@ -46,13 +46,14 @@ header {
       }
       a:hover {
         color: white;
+        cursor: pointer;
       }
     }
     .route-links li:hover {
-      background: rgba(0,0,0,0.30);
+      background: rgba(0,0,0,0.40);
     }
     .route-links .navactive {
-      background: rgba(0,0,0,0.30);
+      background: rgba(0,0,0,0.40);
     }
   }
 }
