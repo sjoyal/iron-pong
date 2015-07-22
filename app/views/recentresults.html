@@ -14,16 +14,16 @@
     <tbody>
       <tr ng-repeat="result in recentresults.scores | orderBy: '-createdOn'">
         <td>
-          <a ui-sref="player({playerID: result.winner.login})">
-            <img width="35" height="auto" ng-src={{result.winner.avatar_url}}/>
-            <span class="hide-this">{{result.winner.login}}</span>
+          <a ui-sref="player({playerID: result.winner})">
+            <img width="35" height="auto" ng-src={{result.winnerAvatar}}/>
+            <span class="hide-this">{{result.winner}}</span>
           </a>
         </td>
         <td>{{result.winnerScore}}</td>
         <td>
-          <a ui-sref="player({playerID: result.loser.login})">
-            <img width="35" height="auto" ng-src={{result.loser.avatar_url}}/>
-            <span class="hide-this">{{result.loser.login}}</span>
+          <a ui-sref="player({playerID: result.loser})">
+            <img width="35" height="auto" ng-src={{result.loserAvatar}}/>
+            <span class="hide-this">{{result.loser}}</span>
           </a>
         </td>
         <td>{{result.loserScore}}</td>

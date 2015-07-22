@@ -9,7 +9,8 @@
 
   h3 {
     font-weight: 300;
-    margin-top: 0;
+    margin-top: 1em;
+    margin-bottom: .5em;
   }
   .u-no-login {
     margin-top: 6em;
@@ -20,6 +21,11 @@
     p {
       width: 80%;
       margin: auto;
+      color: $header-font-color;
+
+      .gimme-stars, .gimme-stars:hover, .gimme-stars:visited, .gimme-stars:focus {
+        color: white;
+      }
     }
     .bang {
       font-size: 5em;
@@ -34,23 +40,29 @@
     p {
       width: 80%;
       margin: auto;
+      color: $header-font-color;
+
+      .gimme-stars, .gimme-stars:hover, .gimme-stars:visited, .gimme-stars:focus {
+        color: white;
+      }
     }
     .bang {
       font-size: 5em;
     }
   }
-  label {
-    margin-bottom: .25em;
-  }
-  select {
-    width: 75%;
-    margin-bottom: .25em;
-  }
-  input {
-    width: 50%;
+  .scorez {
+    @extend .clearfix;
+
+    .playas {
+      width: 100%;
+    }
+    .playa-score {
+      width: 35%;
+    }
   }
   h4 {
-    margin: .5em 0;
+    margin-top: 2em;
+    clear: both;
   }
   .submit-button {
     margin-top: 1em;
@@ -70,5 +82,13 @@
   .submit-results {
     border-radius: 0;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .submit-results {
+    .submit-button {
+      width: 100%;
+    }
   }
 }
