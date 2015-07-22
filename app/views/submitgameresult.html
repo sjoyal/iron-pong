@@ -2,11 +2,12 @@
   <h3>Submit Results</h3>
   <div ng-hide="submit.authData" class="u-no-login">
     <p class="bang">&#10071;</p>
-    <p>Only members of The Iron Yard Orlando--2015 SUMMER FEE are eligible to submit results. Please login to submit.</p>
+    <p>Login with GitHub to view additional details about players and make comments on matches. Submitting match
+      results is limited to registered GitHub users that star the <a href="https://github.com/sjoyal/iron-pong" class="gimme-stars">Iron Pong GitHub repo.</a></p>
   </div>
   <div ng-show="submit.authData && !submit.access" class="u-no-access">
     <p class="bang">&#10071;</p>
-    <p>Match submission privileges are reserved for members of The Iron Yard Orlando--2015 Summer Fee cohort</p>
+    <p>Match submission privileges are reserved for users that star the <a href="https://github.com/sjoyal/iron-pong" class="gimme-stars">Iron Pong GitHub repo.</a></p>
   </div>
   <form ng-show="submit.authData && submit.access" name="submitDemResults" ng-submit="submit.addResults()">
     <div class="form-group scorez">
@@ -21,7 +22,7 @@
       <figure class="col-sm-6">
         <label>Score</label><br>
         <input class="form-control playa-score" ng-model="submit.gameresult.winnerScore"
-          placeholder="Enter score" required type="number" min="0" max="21">
+          required type="number" min="0" max="21">
         </input>
       </figure>
     </div>
@@ -37,7 +38,7 @@
       <figure class="col-sm-6">
         <label>Score</label><br>
         <input class="form-control playa-score" ng-model="submit.gameresult.loserScore"
-          placeholder="Enter score" required type="number" min="0" max="21">
+          required type="number" min="0" max="21">
         </input>
       </figure>
     </div>

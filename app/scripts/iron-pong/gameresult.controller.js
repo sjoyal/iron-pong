@@ -20,8 +20,8 @@
       console.log(self.game);
 
       this.deleteGame = function(){
-        var winner = self.game.winner.login;
-        var loser = self.game.loser.login;
+        var winner = self.game.winner;
+        var loser = self.game.loser;
         Restangular.one('gameresults', $stateParams.gameresultID).remove()
           .then(function(){
             Delete.resultRemove(winner, 1, 0);

@@ -21,6 +21,11 @@
     p {
       width: 80%;
       margin: auto;
+      color: $header-font-color;
+
+      .gimme-stars, .gimme-stars:hover, .gimme-stars:visited, .gimme-stars:focus {
+        color: white;
+      }
     }
     .bang {
       font-size: 5em;
@@ -35,18 +40,16 @@
     p {
       width: 80%;
       margin: auto;
+      color: $header-font-color;
+
+      .gimme-stars, .gimme-stars:hover, .gimme-stars:visited, .gimme-stars:focus {
+        color: white;
+      }
     }
     .bang {
       font-size: 5em;
     }
   }
-/*   label {
-  margin-bottom: .25em;
-} */
-  /* select {
-    width: 50%;
-    margin-bottom: .25em;
-  } */
   .scorez {
     @extend .clearfix;
 
