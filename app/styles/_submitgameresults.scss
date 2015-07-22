@@ -43,11 +43,16 @@
     margin-bottom: .25em;
   }
   select {
-    width: 75%;
+    width: 50%;
     margin-bottom: .25em;
   }
-  input {
+  .playas {
     width: 50%;
+    display: inline-block;
+  }
+  .playa-score {
+    width: 15%;
+    display: inline-block;
   }
   h4 {
     margin: .5em 0;
@@ -70,5 +75,13 @@
   .submit-results {
     border-radius: 0;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .submit-results {
+    .submit-button {
+      width: 100%;
+    }
   }
 }
