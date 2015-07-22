@@ -42,8 +42,6 @@
         <p>{{comment.comment}}</p>
         <small class="delete-comment" ng-show="gameresult.authData.github.username === comment.author"
           ng-click="gameresult.deleteComment(id)">Delete</small>
-        <small class="edit-comment" ng-show="gameresult.authData.github.username === comment.author"
-          ng-click="gameresult.editComment(id)">Edit</small>
       </div>
     </section>
     <p class="comments-login" ng-hide="gameresult.authData">You must be logged in to leave comments</p>
