@@ -22,8 +22,8 @@
         <big>{{gameresult.game.loserScore}}</big>
     </li>
   </ul>
-  <aside class="game-summary">
-      <h4>GAME SUMMARY</h4>
+  <aside class="game-summary" ng-show="gameresult.game.summary">
+      <h4>Play-by-Play</h4>
       <p>{{gameresult.game.summary}}</p>
   </aside>
   <h4 class="comments-section">Game Comments</h4>
@@ -32,15 +32,18 @@
     <p>No comments yet.</p>
   </div>
   <aside class="submit-comments">
-    <figure ng-repeat="(id, comment) in gameresult.game.comments">
-      <img ng-src="{{comment.avatar}}" width="40" height="40">
-      <author class="author">{{comment.author}}</author>
-        <button ng-show="gameresult.authData.github.username === comment.author"
-          class="pull-right delete-button" ng-click="gameresult.deleteComment(id)">
-          Delete
-        </button>
-      <p>{{comment.comment}}</p>
-    </figure>
+    <section ng-repeat="(id, comment) in gameresult.game.comments" >
+      <figure class="col-sm-2">
+        <img ng-src="{{comment.avatar}}" width="40" height="40"><br>
+        <author class="author">{{comment.author}}</author>
+      </figure>
+      <div class="col-sm-10 comment-block">
+        <p>{{comment.comment}}</p>
+        <small>Commented on <time>{{comment.createdOn | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a'}}<time></small><br>
+        <small class="delete-comment" ng-show="gameresult.authData.github.username === comment.author"
+          ng-click="gameresult.deleteComment(id)">Delete</small>
+      </div>
+    </section>
     <p class="comments-login" ng-hide="gameresult.authData">You must be logged in to leave comments</p>
     <form name="submitComments" ng-submit="gameresult.submitComment()" ng-show="gameresult.authData">
       <textarea class="form-control" ng-model="gameresult.comment.comment" rows="5" placeholder="Talk smack!" required></textarea>

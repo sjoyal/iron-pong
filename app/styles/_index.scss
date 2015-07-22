@@ -14,7 +14,7 @@ body {
 }
 
 header {
-  margin-bottom: 2.5em;
+  margin-bottom: 5em;
 
   .ip-nav {
     border-radius: 0;
@@ -75,6 +75,14 @@ footer {
 
   .add-logo {
     text-align: center;
+  }
+
+  .gimme-stars, .gimme-stars:hover, .gimme-stars:visited, .gimme-stars:focus {
+    color: white;
+  }
+
+  .what-star, .what-star:hover, .what-star:visited, .what-star:focus {
+    color: white;
   }
 
   aside {

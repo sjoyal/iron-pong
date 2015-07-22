@@ -1,4 +1,8 @@
-<section class="table-section table-responsive">
+<!-- <div ng-show="leaderboard.playerStats.length === 0" class="y-no-leaders">
+  <span class="cry">&#128546;</span>
+  <p class="no-leaders-text">No friends? Submit a result and make this look less sad.</p>
+</div> -->
+<section class="table-section table-responsive" id="leaderboard-height">
   <ul class="toggle-buttons">
     <li ng-click="leaderboard.selectTab(1)" ng-class="{active:leaderboard.isSelected(1)}">Wins</li><!--
  --><li ng-click="leaderboard.selectTab(2)" ng-class="{active:leaderboard.isSelected(2)}">Losses</li><!--

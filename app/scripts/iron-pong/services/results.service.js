@@ -32,10 +32,10 @@
             wins: numWins,
             gamesPlayed: 1,
             losses: numLosses
-          }).then(function(){
-            Restangular.one('players', player).post('games', {
-            true: game
-            });
+          }).then(function(){ // saves games wildcard key but currently not used
+            // Restangular.one('players', player).post('games', {
+            // true: game
+            // });
           });
         },
         updatePlayer: function(player, playerPic, game, wins, losses, gamesPlayed, addWins, addLosses, addGamesPlayed){
@@ -45,10 +45,10 @@
             wins: (wins + addWins),
             gamesPlayed: (gamesPlayed + addGamesPlayed),
             losses: (losses + addLosses)
-          }).then(function(){
-            Restangular.one('players', player).post('games', {
-              true: game
-            });
+          }).then(function(){ // saves wildcard key but currently not used
+            // Restangular.one('players', player).post('games', {
+            //   true: game
+            // });
           });
         }
       };
@@ -67,7 +67,7 @@
                   losses: (gamePlayer.losses - removeLoss),
                   gamesPlayed: (gamePlayer.gamesPlayed - 1)
                 }).then(function(){
-                  // Remove game reference under player ID
+                  // Remove game reference under player ID but currently not saved
                 });
               }
             });
