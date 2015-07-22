@@ -16,14 +16,14 @@
         <td>
           <a ui-sref="player({playerID: result.winner.login})">
             <img width="35" height="auto" ng-src={{result.winner.avatar_url}}/>
-            {{result.winner.login}}
+            <span class="hide-this">{{result.winner.login}}</span>
           </a>
         </td>
         <td>{{result.winnerScore}}</td>
         <td>
           <a ui-sref="player({playerID: result.loser.login})">
             <img width="35" height="auto" ng-src={{result.loser.avatar_url}}/>
-            {{result.loser.login}}
+            <span class="hide-this">{{result.loser.login}}</span>
           </a>
         </td>
         <td>{{result.loserScore}}</td>

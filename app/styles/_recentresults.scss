@@ -8,9 +8,6 @@
   border-radius: 4px;
   text-align: center;
 
-/*   .score-added {
-  text-align: center;
-} */
   .borderless {
 
     thead {
@@ -57,5 +54,23 @@
 @media screen and (max-width: 768px) {
   .recent-games-table {
     border-radius: 0;
+
+    table {
+      td:nth-child(5), th:nth-child(5) {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .recent-games-table {
+
+    table {
+
+      .hide-this {
+        display: none;
+      }
+    }
   }
 }
