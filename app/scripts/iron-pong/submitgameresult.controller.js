@@ -23,7 +23,7 @@
         if (!self.authData) {
           return;
         }
-        $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
+        $http.get('https://api.github.com/repos/sjoyal/iron-pong/stargazers?access_token='
            + self.authData.github.accessToken)
             .then(function(response){
               self.players = _.forEach(response.data, function(player){
