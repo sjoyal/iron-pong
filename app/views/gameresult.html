@@ -31,8 +31,8 @@
     <p class="bang">&#10071;</p>
     <p>No comments yet.</p>
   </div>
-  <aside class="submit-comments container">
-    <section class="row" ng-repeat="(id, comment) in gameresult.game.comments" >
+  <aside class="submit-comments">
+    <section ng-repeat="(id, comment) in gameresult.game.comments" >
       <figure class="col-sm-2">
         <img ng-src="{{comment.avatar}}" width="40" height="40"><br>
         <author class="author">{{comment.author}}</author>
