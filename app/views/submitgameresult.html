@@ -8,31 +8,31 @@
     <p class="bang">&#10071;</p>
     <p>Match submission privileges are reserved for members of The Iron Yard Orlando--2015 Summer Fee cohort</p>
   </div>
-  <form ng-show="submit.authData && submit.access" name="submitDemResults" ng-submit="submit.addPlayers(); submit.addResults()">
+  <form ng-show="submit.authData && submit.access" name="submitDemResults" ng-submit="submit.addResults()">
     <div class="form-group">
-      <label>Winner:</label>
-      <select class="form-control" ng-model="submit.gameresult.winner"
-        ng-change="addPlayer1(player1.login)"
-        ng-options="player.login for player in submit.players">
-      </select>
+      <label>Winner</label>
+        <select class="form-control" ng-model="submit.gameresult.winner"
+          ng-options="player.login for player in submit.players" required>
+          <option></option>
+        </select>
       <label>Score</label>
       <input class="form-control" ng-model="submit.gameresult.winnerScore"
-        placeholder="Enter score" style="width: 50%;">
+        placeholder="Enter score" required type="number" min="0" max="21">
       </input>
     </div>
     <div class="form-group">
-      <label>Loser:</label>
-      <select class="form-control" ng-model="submit.gameresult.loser"
-        ng-change="addPlayer2(player2.login)"
-        ng-options="player.login for player in submit.players">
-      </select>
+      <label>Loser</label>
+        <select class="form-control" ng-model="submit.gameresult.loser"
+          ng-options="player.login for player in submit.players" required>
+          <option></option>
+        </select>
       <label>Score</label>
       <input class="form-control" ng-model="submit.gameresult.loserScore"
-        placeholder="Enter score">
+        placeholder="Enter score" required type="number" min="0" max="21">
       </input>
     </div>
-    <h4>Summary</h4>
-    <textarea class="form-control" ng-model="submit.gameresult.summary" rows="5" placeholder="Provide a brief game description here"></textarea>
+    <h4>Play-by-play</h4>
+    <textarea class="form-control" ng-model="submit.gameresult.summary" rows="8" placeholder="John hit a backhand smash on match point. It was epic!!!"></textarea>
     <button name="submit" class="submit-button">Submit</button>
   </form> <!--submitResults()-->
 </section>

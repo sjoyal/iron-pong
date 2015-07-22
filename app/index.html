@@ -12,7 +12,6 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="/bower_components/ng-table/dist/ng-table.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -29,8 +28,8 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <main>
-      <header ng-controller="MainController as app">
+    <main ng-controller="MainController as app">
+      <header>
         <nav class="navbar navbar-default ip-nav">
           <div>
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -48,23 +47,23 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse route-links" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                <li ng-click="app.collapseMenu()"><a ui-sref="recentresults">Results</a></li>
-                <li ng-click="app.collapseMenu()"><a ui-sref="leaderboard">Leaderboard</a></li>
-                <li ng-click="app.collapseMenu()"><a ui-sref="submit">Submit</a></li>
-                <li ng-click="app.login(); app.collapseMenu()" ng-hide="app.authData"><a ui-sref="recentresults">Login</a></li>
-                <li ng-click="app.logout(); app.collapseMenu()" ng-show="app.authData"><a ui-sref="recentresults">Logout</a></li>
+                <li ng-click="app.collapseMenu(); app.selectTab(1)" ng-class="{navactive:app.isSelected(1)}"><a ui-sref="recentresults">Results</a></li>
+                <li ng-click="app.collapseMenu(); app.selectTab(2)" ng-class="{navactive:app.isSelected(2)}"><a ui-sref="leaderboard">Leaderboard</a></li>
+                <li ng-click="app.collapseMenu(); app.selectTab(3)" ng-class="{navactive:app.isSelected(3)}"><a ui-sref="submit">Submit</a></li>
+                <li ng-click="app.login(); app.collapseMenu()" ng-hide="app.authData"><a ui-sref="#">Login</a></li>
+                <li ng-click="app.logout(); app.collapseMenu()" ng-show="app.authData"><a ui-sref="#">Logout</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
       </header>
       <div ui-view></div>
-      <p id="mission">Iron Pong is a table tennis results tracker built for members of the
-        2015 Summer Front End Engineering course at The Iron Yard Orlando. Cohort members can
-        submit scores using the submit page after logging in. Non-members are welcome
-        to login via GitHub and comment on match results.
-      </p>
       <footer class="container-fluid col-md-12">
+        <p id="mission">Iron Pong is a table tennis results tracker built for members of the
+          2015 Summer Front End Engineering course at The Iron Yard Orlando. Cohort members can
+          submit scores using the submit page after logging in. Non-members are welcome
+          to login via GitHub and comment on match results.
+        </p>
         <div class="col-md-3 add-logo">
           <img src="images/tip-logo-red.png" width="150" height="auto">
         </div>
@@ -93,12 +92,12 @@
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/firebase/firebase.js"></script>
     <script src="/bower_components/angularfire/dist/angularfire.js"></script>
-    <script src="/bower_components/ng-table/dist/ng-table.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/lodash/lodash.js"></script>
     <script src="/bower_components/moment/moment.js"></script>
     <script src="/bower_components/restangular/dist/restangular.js"></script>
     <script src="/bower_components/angular-moment/angular-moment.js"></script>
+    <script src="/bower_components/typeahead.js/dist/typeahead.bundle.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

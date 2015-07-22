@@ -62,7 +62,7 @@
       RestangularProvider.setRequestSuffix('.json');
     })
 
-    .controller('MainController', function(Auth) {
+    .controller('MainController', function(Auth, $state) {
       var self = this;
       this.auth = Auth.magicAuth;
       this.auth.$onAuth(function(authData){
@@ -85,6 +85,13 @@
             $('.navbar-collapse').collapse('hide');
           }
         });
+      };
+      this.tab = null;
+      this.selectTab = function(setTab){
+        this.tab = setTab;
+      };
+      this.isSelected = function(checkTab){
+        return this.tab === checkTab;
       };
     }) // END MainController
   ; // END ALL THE THINGS

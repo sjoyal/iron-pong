@@ -1,24 +1,25 @@
 .recent-games-table {
-  width: 75%;
+  width: 80%;
   margin: auto;
   background: #D23838;
   background: $primary-red;
   color: $font-color;
   padding: 1em;
-  border-radius: 10px;
+  border-radius: 4px;
   text-align: center;
 
-  .score-added {
-    text-align: center;
-  }
   .borderless {
 
+    thead {
+      border-bottom: 2px solid #DDDDDD;
+    }
     td {
       border: none;
       line-height: 30px;
       text-align: left;
 
       img {
+        border-radius: 10px;
         margin-right: 5px;
       }
       a, a:hover {
@@ -31,18 +32,17 @@
       .view-game {
         background: rgba(0,0,0,0.25);
         text-align: center;
-        border-radius: 5px;
-        border: 1px solid $header-font-color;
+        border-radius: 4px;
         font-size: .9em;
         font-weight: 200;
       }
       .view-game:hover {
-        background: rgba(222,16,16,0.35);
+        background: rgba(0,0,0,0.5);
       }
     }
 
     .data-center {
-      text-align: center;
+      text-align: left;
     }
   }
 }
@@ -54,5 +54,23 @@
 @media screen and (max-width: 768px) {
   .recent-games-table {
     border-radius: 0;
+
+    table {
+      td:nth-child(5), th:nth-child(5) {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .recent-games-table {
+
+    table {
+
+      .hide-this {
+        display: none;
+      }
+    }
   }
 }

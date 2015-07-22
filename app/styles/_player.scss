@@ -1,16 +1,18 @@
 .player-page {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 2em;
   color: $font-color;
-  border-radius: 10px;
-  background: #2C2C2C;
+  border-radius: 4px;
   background: $primary-black;
   padding: 2em;
-  margin-bottom: 4.5em;
 
   figure, aside {
     @extend .clearfix;
     /* clear: left; */
     margin-bottom: 1em;
     text-align: center;
+    color: rgba(222,16,16,.85);
 
     img {
       border-radius: 10px;
@@ -19,12 +21,14 @@
 
   h5, address, p {
     margin-bottom: .75em;
+    color: $font-color;
   }
 }
 
 .narcissistic-stats {
   margin: auto;
   margin-top: 1em;
+  width: 75%;
   color: $font-color;
   padding: 1em 1em 0 1em;
   text-align: center;
@@ -49,5 +53,6 @@
 @media screen and (max-width: 768px) {
   .player-page {
     border-radius: 0;
+    width: 100%;
   }
 }
