@@ -56,3 +56,15 @@
     width: 100%;
   }
 }
+
+@media screen and (max-width: 480px) {
+.narcissistic-stats {
+
+  .player-stats {
+
+      .hide-this {
+        display: none;
+      }
+    }
+  }
+}
