@@ -102,30 +102,38 @@
       }
       .author {
         font-size: 1.25em;
-        padding-left: .5em;
+      }
+    }
+
+    .comment-block {
+      background: #909090;
+      margin-bottom: 1em;
+      padding-top: .25em;
+      padding-bottom: .75em;
+      border-radius: 4px;
+
+      small {
+        font-size: 1em;
       }
       p {
         padding-top: .5em;
-        padding-left: 1em;
+        margin-bottom: 2em;
         font-weight: 200;
         font-size: 1.75ex;
+        clear: both;
+      }
+      .delete-comment {
+        cursor: pointer;
+        padding-right: 1em;
+        text-decoration: underline;
+      }
+      .edit-comment {
+        @extend .delete-comment;
       }
     }
+    .comment-block::before {
 
-    .delete-button {
-      margin-top: 1em;
-      width: 4em;
-      height: 2em;
-      line-height: 1.75em;
-      color: $font-color;
-      background: $button-red;
-      border-radius: 4px;
-      border: none;
     }
-    .delete-button:hover {
-      background: $button-red-hover;
-    }
-
     .submit-button {
       margin-top: 1em;
       width: 6.5em;

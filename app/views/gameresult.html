@@ -31,16 +31,21 @@
     <p class="bang">&#10071;</p>
     <p>No comments yet.</p>
   </div>
-  <aside class="submit-comments">
-    <figure ng-repeat="(id, comment) in gameresult.game.comments">
-      <img ng-src="{{comment.avatar}}" width="40" height="40">
-      <author class="author">{{comment.author}}</author>
-        <button ng-show="gameresult.authData.github.username === comment.author"
-          class="pull-right delete-button" ng-click="gameresult.deleteComment(id)">
-          Delete
-        </button>
-      <p>{{comment.comment}}</p>
-    </figure>
+  <aside class="submit-comments container">
+    <section class="row" ng-repeat="(id, comment) in gameresult.game.comments" >
+      <figure class="col-sm-2">
+        <img ng-src="{{comment.avatar}}" width="40" height="40"><br>
+        <author class="author">{{comment.author}}</author>
+      </figure>
+      <div class="col-sm-10 comment-block">
+        <small>Commented on Jul 22 15 9:01AM</small>
+        <p>{{comment.comment}}</p>
+        <small class="delete-comment" ng-show="gameresult.authData.github.username === comment.author"
+          ng-click="gameresult.deleteComment(id)">Delete</small>
+        <small class="edit-comment" ng-show="gameresult.authData.github.username === comment.author"
+          ng-click="gameresult.editComment(id)">Edit</small>
+      </div>
+    </section>
     <p class="comments-login" ng-hide="gameresult.authData">You must be logged in to leave comments</p>
     <form name="submitComments" ng-submit="gameresult.submitComment()" ng-show="gameresult.authData">
       <textarea class="form-control" ng-model="gameresult.comment.comment" rows="5" placeholder="Talk smack!" required></textarea>
