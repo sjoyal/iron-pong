@@ -9,28 +9,32 @@
     <p>Match submission privileges are reserved for members of The Iron Yard Orlando--2015 Summer Fee cohort</p>
   </div>
   <form ng-show="submit.authData && submit.access" name="submitDemResults" ng-submit="submit.addResults()">
-    <div class="form-group">
-      <label>Winner</label><br>
+    <div class="form-group scorez">
+      <figure class="col-sm-6">
+        <label>Winner</label><br>
         <!-- <select class="form-control" ng-model="submit.gameresult.winner"
           ng-options="player.login for player in submit.players" required>
           <option></option>
         </select> -->
-      <input id="players" type="text" class="form-control playas" ng-model="submit.gameresult.winner">
-      <label>Score</label>
-      <input class="form-control playa-score" ng-model="submit.gameresult.winnerScore"
-        placeholder="Enter score" required type="number" min="0" max="21">
-      </input>
+        <input list="competitors" type="text" class="form-control playas" ng-model="submit.gameresult.winner">
+      </figure>
+      <figure class="col-sm-6">
+        <label>Score</label><br>
+        <input class="form-control playa-score" ng-model="submit.gameresult.winnerScore"
+          placeholder="Enter score" required type="number" min="0" max="21">
+        </input>
+      </figure>
     </div>
-    <div class="form-group">
-      <figure>
+    <div class="form-group scorez">
+      <figure class="col-sm-6">
         <label>Loser</label><br>
   <!--   <select class="form-control" ng-model="submit.gameresult.loser"
             ng-options="player.login for player in submit.players" required>
             <option></option>
           </select> -->
-        <input id="players" type="text" class="form-control playas" ng-model="submit.gameresult.winner">
+        <input list="competitors" type="text" class="form-control playas" ng-model="submit.gameresult.loser">
       </figure>
-      <figure>
+      <figure class="col-sm-6">
         <label>Score</label><br>
         <input class="form-control playa-score" ng-model="submit.gameresult.loserScore"
           placeholder="Enter score" required type="number" min="0" max="21">
@@ -38,7 +42,15 @@
       </figure>
     </div>
     <h4>Play-by-play</h4>
-    <textarea class="form-control" ng-model="submit.gameresult.summary" rows="8" placeholder="John hit a backhand smash on match point. It was epic!!!"></textarea>
+    <textarea class="form-control" ng-model="submit.gameresult.summary" rows="8"
+      placeholder="John hit a backhand smash on match point. It was epic!!!"></textarea>
     <button name="submit" class="submit-button">Submit</button>
   </form> <!--submitResults()-->
 </section>
+<datalist id="competitors">
+<!--   <select class="form-control" ng-model="submit.gameresult.loser"
+  ng-repeat="player.login for player in submit.players" required>
+  <option></option>
+</select> -->
+  <option ng-repeat="player in submit.players" value="{{player.login}}" required></option>
+</datalist>

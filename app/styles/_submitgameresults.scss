@@ -9,7 +9,8 @@
 
   h3 {
     font-weight: 300;
-    margin-top: 0;
+    margin-top: 1em;
+    margin-bottom: .5em;
   }
   .u-no-login {
     margin-top: 6em;
@@ -39,23 +40,26 @@
       font-size: 5em;
     }
   }
-  label {
-    margin-bottom: .25em;
-  }
-  select {
+/*   label {
+  margin-bottom: .25em;
+} */
+  /* select {
     width: 50%;
     margin-bottom: .25em;
-  }
-  .playas {
-    width: 50%;
-    display: inline-block;
-  }
-  .playa-score {
-    width: 15%;
-    display: inline-block;
+  } */
+  .scorez {
+    @extend .clearfix;
+
+    .playas {
+      width: 100%;
+    }
+    .playa-score {
+      width: 35%;
+    }
   }
   h4 {
-    margin: .5em 0;
+    margin-top: 2em;
+    clear: both;
   }
   .submit-button {
     margin-top: 1em;

@@ -13,9 +13,7 @@
         winnerScore: '',
         loser: '',
         loserScore: '',
-        summary: '',
-        createdOn: '',
-        createdBy: ''
+        summary: ''
       };
 
       // Retrieve list of stargazers from cohort repo local vs live request:
@@ -56,13 +54,24 @@
 
       // Submit game result:
       this.addResults = function(){
+        console.log(self.gameresult);
         var timestamp = new Date().getTime();
         self.gameresult.createdOn = timestamp;
         self.gameresult.createdBy = self.authData.github.username;
-        var winner = self.gameresult.winner.login;
-        var winnerPic = self.gameresult.winner.avatar_url;
-        var loser = self.gameresult.loser.login;
-        var loserPic = self.gameresult.loser.avatar_url;
+        var winner = self.gameresult.winner;
+        _.find(self.players, function(player){
+          if (player.login === winner) {
+            self.gameresult.winnerAvatar = player.avatar_url;
+          }
+        });
+        var winnerPic = self.gameresult.winnerAvatar;
+        var loser = self.gameresult.loser;
+        _.find(self.players, function(player){
+          if (player.login === loser) {
+            self.gameresult.loserAvatar = player.avatar_url;
+          }
+        });
+        var loserPic = self.gameresult.loserAvatar;
         if (self.gameresult.winner === self.gameresult.loser) {
           return alert("Winner and Loser cannot be the same player");
         } else {
@@ -93,9 +102,7 @@
               winnerScore: '',
               loser: '',
               loserScore: '',
-              summary: '',
-              createdOn: '',
-              createdBy: ''
+              summary: ''
             };
             $state.go('recentresults');
         } // END if...else statement
