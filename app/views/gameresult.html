@@ -22,7 +22,7 @@
         <big>{{gameresult.game.loserScore}}</big>
     </li>
   </ul>
-  <aside class="game-summary">
+  <aside class="game-summary" ng-show="gameresult.game.summary">
       <h4>Play-by-Play</h4>
       <p>{{gameresult.game.summary}}</p>
   </aside>
@@ -38,8 +38,8 @@
         <author class="author">{{comment.author}}</author>
       </figure>
       <div class="col-sm-10 comment-block">
-        <small>Commented on Jul 22 15 9:01AM</small>
         <p>{{comment.comment}}</p>
+        <small>Commented on <time>{{comment.createdOn | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a'}}<time></small><br>
         <small class="delete-comment" ng-show="gameresult.authData.github.username === comment.author"
           ng-click="gameresult.deleteComment(id)">Delete</small>
       </div>

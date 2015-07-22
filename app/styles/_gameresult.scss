@@ -60,24 +60,17 @@
   }
   .game-summary {
     text-align: center;
-    width: 100%;
+    width: 90%;
     margin: auto;
     padding-bottom: 2em;
 
-    aside {
-      box-sizing: border-box;
-      border-radius: 10px;
-      padding: 2em 1.5em;
-
-      h4 {
-        margin-top: 0;
-        margin-bottom: .5em;
-      }
-      p {
-        margin: 0;
-        font-size: 1em;
-        font-weight: 300;
-      }
+    h4 {
+      margin-top: 0;
+      margin-bottom: .5em;
+    }
+    p {
+      font-size: 1em;
+      font-weight: 300;
     }
   }
   .comments-section {
@@ -92,7 +85,7 @@
   }
   .submit-comments {
     border-radius: 10px;
-    padding: 1em 1.25em 1em 1.25em;
+    padding: 2em 1.25em 1em 1.25em;
     color: $font-color;
 
     figure {
@@ -114,13 +107,13 @@
       border-radius: 4px;
 
       small {
-        font-size: 1em;
+        font-size: .75em;
       }
       p {
         padding-top: .5em;
         margin-bottom: 2em;
         font-weight: 200;
-        font-size: 1.75ex;
+        font-size: 2ex;
         clear: both;
       }
       .delete-comment {

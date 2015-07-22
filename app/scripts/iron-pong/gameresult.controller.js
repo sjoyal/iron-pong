@@ -36,6 +36,8 @@
       };
 
       this.submitComment = function(){
+        var timestamp = new Date().getTime();
+        self.comment.createdOn = timestamp;
         self.comment.author = self.authData.github.username;
         self.comment.avatar = self.authData.github.profileImageURL;
         Comments.new(self.comment, $stateParams.gameresultID);
