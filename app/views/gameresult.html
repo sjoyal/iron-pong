@@ -1,23 +1,23 @@
 <article class="game-stats">
   <h2>Winner!</h2>
-  <h3>{{gameresult.game.winner.login}}</h3>
+  <h3>{{gameresult.game.winner}}</h3>
   <ul>
     <li>
-      <a ui-sref="player({playerID: gameresult.game.winner.login})">
-        <img ng-src="{{gameresult.game.winner.avatar_url}}" width="100" height="auto">
+      <a ui-sref="player({playerID: gameresult.game.winner})">
+        <img ng-src="{{gameresult.game.winnerAvatar}}" width="100" height="auto">
       </a>
-      <a ui-sref="player({playerID: gameresult.game.winner.login})">
-        <small class="result-player1">{{gameresult.game.winner.login}}</small>
+      <a ui-sref="player({playerID: gameresult.game.winner})">
+        <small class="result-player1">{{gameresult.game.winner}}</small>
       </a>
       <big>{{gameresult.game.winnerScore}}</big>
     </li>
     <li class="result-vs">vs</li>
     <li>
-        <a ui-sref="player({playerID: gameresult.game.loser.login})">
-          <img ng-src="{{gameresult.game.loser.avatar_url}}" width="100" height="auto">
+        <a ui-sref="player({playerID: gameresult.game.loser})">
+          <img ng-src="{{gameresult.game.loserAvatar}}" width="100" height="auto">
         </a>
-        <a ui-sref="player({playerID: gameresult.game.loser.login})">
-          <small class="result-player2">{{gameresult.game.loser.login}}</small>
+        <a ui-sref="player({playerID: gameresult.game.loser})">
+          <small class="result-player2">{{gameresult.game.loser}}</small>
         </a>
         <big>{{gameresult.game.loserScore}}</big>
     </li>
