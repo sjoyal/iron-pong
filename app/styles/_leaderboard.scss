@@ -1,3 +1,29 @@
+/* .y-no-leaders {
+  width: 80%;
+  margin: auto;
+  background: rgba(0,0,0,0.5);
+  border-radius: 4px;
+  color: $font-color;
+  margin-bottom: 3em;
+  text-align: center;
+  padding-top: 7.5em;
+
+  .cry {
+    font-size: 10em;
+  }
+
+  .no-leaders-text {
+    text-align: center;
+    padding-top: 2.5em;
+    padding-bottom: 7.5em;
+    font-size: 1.25em;
+  }
+} */
+
+#leaderboard-height {
+  min-height: 37.5em;
+}
+
 .table-section {
   width: 80%;
   margin: auto;

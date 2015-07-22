@@ -7,6 +7,7 @@
       function($scope, $http, $firebase, $firebaseArray, Restangular){
 
         this.playerStats = [ ];
+        console.log(this.playerStats);
         var self = this;
         Restangular.one('players').get()
           .then(function(data){
