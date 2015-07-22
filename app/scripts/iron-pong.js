@@ -86,13 +86,13 @@
           }
         });
       };
-      this.tab = null;
-      this.selectTab = function(setTab){
-        this.tab = setTab;
-      };
-      this.isSelected = function(checkTab){
-        return this.tab === checkTab;
-      };
+      // this.tab = null;
+      // this.selectTab = function(setTab){
+      //   this.tab = setTab;
+      // };
+      // this.isSelected = function(checkTab){
+      //   return this.tab === checkTab;
+      // };
     }) // END MainController
   ; // END ALL THE THINGS
 })();

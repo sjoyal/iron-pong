@@ -54,6 +54,7 @@
           }); // END $http.get github repo stargazers
       });
 
+      // Submit game result:
       this.addResults = function(){
         var timestamp = new Date().getTime();
         self.gameresult.createdOn = timestamp;
@@ -62,38 +63,42 @@
         var winnerPic = self.gameresult.winner.avatar_url;
         var loser = self.gameresult.loser.login;
         var loserPic = self.gameresult.loser.avatar_url;
-        Restangular.all('gameresults').post(self.gameresult)
-          .then(function(result){
-            var jumanji = result.name;
-            Restangular.one('players', winner).get()
-              .then(function(gameWinner){
-                if (!gameWinner) {
-                  Submit.newPlayer(winner, winnerPic, jumanji, 1, 0);
-                } else {
-                  Submit.updatePlayer(winner, winnerPic, jumanji, gameWinner.wins,
-                    gameWinner.losses, gameWinner.gamesPlayed, 1, 0, 1);
-                }
-              });
-            Restangular.one('players', loser).get()
-              .then(function(gameLoser){
-                if (!gameLoser) {
-                  Submit.newPlayer(loser, loserPic, jumanji, 0, 1);
-                } else {
-                  Submit.updatePlayer(loser, loserPic, jumanji, gameLoser.wins,
-                    gameLoser.losses, gameLoser.gamesPlayed, 0, 1, 1);
-                }
-              });
-          });
-          self.gameresult = {
-            winner: '',
-            winnerScore: '',
-            loser: '',
-            loserScore: '',
-            summary: '',
-            createdOn: '',
-            createdBy: ''
-          };
-          $state.go('recentresults');
-      };
+        if (self.gameresult.winner === self.gameresult.loser) {
+          return alert("Winner and Loser cannot be the same player");
+        } else {
+          Restangular.all('gameresults').post(self.gameresult)
+            .then(function(result){
+              var jumanji = result.name;
+              Restangular.one('players', winner).get()
+                .then(function(gameWinner){
+                  if (!gameWinner) {
+                    Submit.newPlayer(winner, winnerPic, jumanji, 1, 0);
+                  } else {
+                    Submit.updatePlayer(winner, winnerPic, jumanji, gameWinner.wins,
+                      gameWinner.losses, gameWinner.gamesPlayed, 1, 0, 1);
+                  }
+                });
+              Restangular.one('players', loser).get()
+                .then(function(gameLoser){
+                  if (!gameLoser) {
+                    Submit.newPlayer(loser, loserPic, jumanji, 0, 1);
+                  } else {
+                    Submit.updatePlayer(loser, loserPic, jumanji, gameLoser.wins,
+                      gameLoser.losses, gameLoser.gamesPlayed, 0, 1, 1);
+                  }
+                });
+            });
+            self.gameresult = {
+              winner: '',
+              winnerScore: '',
+              loser: '',
+              loserScore: '',
+              summary: '',
+              createdOn: '',
+              createdBy: ''
+            };
+            $state.go('recentresults');
+        } // END if...else statement
+      }; // END submit game result method
     }); // END SubmitController
 })();
