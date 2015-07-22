@@ -93,6 +93,7 @@
             createdOn: '',
             createdBy: ''
           };
+          $state.go('recentresults');
       };
     }); // END SubmitController
 })();

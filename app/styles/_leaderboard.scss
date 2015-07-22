@@ -72,5 +72,26 @@
     .toggle-buttons {
       text-align: center;
     }
+    .player-stats {
+
+      /* .hide-this {
+        display: none;
+      } */
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+.table-section {
+
+  .player-stats {
+
+      .hide-this {
+        display: none;
+      }
+      .player-login {
+        width: 5em;
+      }
+    }
   }
 }
