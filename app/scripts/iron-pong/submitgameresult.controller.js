@@ -1,4 +1,4 @@
-/* global angular _ alert */
+/* global angular _ */
 (function(){
   'use strict';
 
@@ -6,6 +6,7 @@
     .controller('SubmitController',
       function($state, $http, Auth, Submit, Restangular){
 
+      var alert;
       var self = this;
       this.players = [];
       this.gameresult = {
