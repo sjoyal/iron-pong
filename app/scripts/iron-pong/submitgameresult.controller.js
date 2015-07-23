@@ -72,8 +72,13 @@
           }
         });
         var loserPic = self.gameresult.loserAvatar;
+        var isPresent = _.find(self.players, function(player){
+          return player.login === self.gameresult.winner;
+        });
         if (self.gameresult.winner === self.gameresult.loser) {
-          return alert("Winner and Loser cannot be the same player");
+          return alert('Winner and Loser cannot be the same player');
+        } else if (!isPresent){
+          return alert(self.gameresult.winner + ' is not a valid username')
         } else {
           Restangular.all('gameresults').post(self.gameresult)
             .then(function(result){
