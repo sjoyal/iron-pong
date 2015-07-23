@@ -78,14 +78,20 @@
       this.logout = function(){
         Auth.ghLogout();
       };
-      this.collapseMenu = function(){
-        $('.navbar-nav li a').click(function(){
-          var open = $('.navbar-toggle').is(':visible');
-          if (open){
-            $('.navbar-collapse').collapse('hide');
-          }
-        });
-      };
+
+      $('.navbar-nav li a').click(function(){
+        var open = $('.navbar-toggle').is(':visible');
+        if (open){
+          $('.navbar-collapse').collapse('hide');
+        }
+      });
+      // this.tab = null;
+      // this.selectTab = function(setTab){
+      //   this.tab = setTab;
+      // };
+      // this.isSelected = function(checkTab){
+      //   return this.tab === checkTab;
+      // };
     }) // END MainController
   ; // END ALL THE THINGS
 })();

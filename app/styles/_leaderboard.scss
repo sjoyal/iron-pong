@@ -1,11 +1,37 @@
+/* .y-no-leaders {
+  width: 80%;
+  margin: auto;
+  background: rgba(0,0,0,0.5);
+  border-radius: 4px;
+  color: $font-color;
+  margin-bottom: 3em;
+  text-align: center;
+  padding-top: 7.5em;
+
+  .cry {
+    font-size: 10em;
+  }
+
+  .no-leaders-text {
+    text-align: center;
+    padding-top: 2.5em;
+    padding-bottom: 7.5em;
+    font-size: 1.25em;
+  }
+} */
+
+#leaderboard-height {
+  min-height: 37.5em;
+}
+
 .table-section {
-  width: 75%;
+  width: 80%;
   margin: auto;
   background: #2C2C2C;
-  background: rgba(222,16,16,0.75);
-  color: #EEEEEE;
-  padding: 1em;
-  border-radius: 10px;
+  background: $primary-red;
+  color: $font-color;
+  padding: 1em 1em 0 1em;
+  border-radius: 4px;
   text-align: center;
 
   .toggle-buttons {
@@ -21,7 +47,7 @@
       width: 5em;
       line-height: 2.5em;
       cursor: pointer;
-      /* background-color: #9C9C9C; */
+      background-color: #9C9C9C;
       background-color: rgba(0,0,0,0.25);
       border-right: 1px solid rgba(0,0,0,0.6);
     }
@@ -44,9 +70,10 @@
       text-align: left;
     }
     td {
-      line-height: 30px;
+      line-height: 40px;
 
       img {
+        border-radius: 10px;
         margin-right: 5px;
       }
       a, a:hover {
@@ -70,6 +97,21 @@
 
     .toggle-buttons {
       text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+.table-section {
+
+  .player-stats {
+
+      .hide-this {
+        display: none;
+      }
+      .player-login {
+        width: 5em;
+      }
     }
   }
 }

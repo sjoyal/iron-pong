@@ -1,29 +1,29 @@
 <article class="game-stats">
   <h2>Winner!</h2>
-  <h3>{{gameresult.game.winner.login}}</h3>
+  <h3>{{gameresult.game.winner}}</h3>
   <ul>
     <li>
-      <a ui-sref="player({playerID: gameresult.game.winner.login})">
-        <img ng-src="{{gameresult.game.winner.avatar_url}}" width="100" height="auto">
+      <a ui-sref="player({playerID: gameresult.game.winner})">
+        <img ng-src="{{gameresult.game.winnerAvatar}}" width="100" height="auto">
       </a>
-      <a ui-sref="player({playerID: gameresult.game.winner.login})">
-        <small class="result-player1">{{gameresult.game.winner.login}}</small>
+      <a ui-sref="player({playerID: gameresult.game.winner})">
+        <small class="result-player1">{{gameresult.game.winner}}</small>
       </a>
       <big>{{gameresult.game.winnerScore}}</big>
     </li>
     <li class="result-vs">vs</li>
     <li>
-        <a ui-sref="player({playerID: gameresult.game.loser.login})">
-          <img ng-src="{{gameresult.game.loser.avatar_url}}" width="100" height="auto">
+        <a ui-sref="player({playerID: gameresult.game.loser})">
+          <img ng-src="{{gameresult.game.loserAvatar}}" width="100" height="auto">
         </a>
-        <a ui-sref="player({playerID: gameresult.game.loser.login})">
-          <small class="result-player2">{{gameresult.game.loser.login}}</small>
+        <a ui-sref="player({playerID: gameresult.game.loser})">
+          <small class="result-player2">{{gameresult.game.loser}}</small>
         </a>
         <big>{{gameresult.game.loserScore}}</big>
     </li>
   </ul>
-  <aside class="game-summary">
-      <h4>GAME SUMMARY</h4>
+  <aside class="game-summary" ng-show="gameresult.game.summary">
+      <h4>Play-by-Play</h4>
       <p>{{gameresult.game.summary}}</p>
   </aside>
   <h4 class="comments-section">Game Comments</h4>
@@ -32,15 +32,18 @@
     <p>No comments yet.</p>
   </div>
   <aside class="submit-comments">
-    <figure ng-repeat="(id, comment) in gameresult.game.comments">
-      <img ng-src="{{comment.avatar}}" width="40" height="40">
-      <author class="author">{{comment.author}}</author>
-        <button ng-show="gameresult.authData.github.username === comment.author"
-          class="pull-right delete-button" ng-click="gameresult.deleteComment(id)">
-          Delete
-        </button>
-      <p>{{comment.comment}}</p>
-    </figure>
+    <section ng-repeat="(id, comment) in gameresult.game.comments" >
+      <figure class="col-sm-2">
+        <img ng-src="{{comment.avatar}}" width="40" height="40"><br>
+        <author class="author">{{comment.author}}</author>
+      </figure>
+      <div class="col-sm-10 comment-block">
+        <p>{{comment.comment}}</p>
+        <small>Commented on <time>{{comment.createdOn | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a'}}<time></small><br>
+        <small class="delete-comment" ng-show="gameresult.authData.github.username === comment.author"
+          ng-click="gameresult.deleteComment(id)">Delete</small>
+      </div>
+    </section>
     <p class="comments-login" ng-hide="gameresult.authData">You must be logged in to leave comments</p>
     <form name="submitComments" ng-submit="gameresult.submitComment()" ng-show="gameresult.authData">
       <textarea class="form-control" ng-model="gameresult.comment.comment" rows="5" placeholder="Talk smack!" required></textarea>

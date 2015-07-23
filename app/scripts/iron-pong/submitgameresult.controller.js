@@ -1,4 +1,4 @@
-/* global angular _ */
+/* global angular _ $ */
 (function(){
   'use strict';
 
@@ -13,9 +13,7 @@
         winnerScore: '',
         loser: '',
         loserScore: '',
-        summary: '',
-        createdOn: '',
-        createdBy: ''
+        summary: ''
       };
 
       // Retrieve list of stargazers from cohort repo local vs live request:
@@ -25,7 +23,7 @@
         if (!self.authData) {
           return;
         }
-        $http.get('https://api.github.com/repos/TheIronYard--Orlando/2015--SUMMER--FEE/stargazers?access_token='
+        $http.get('https://api.github.com/repos/sjoyal/iron-pong/stargazers?access_token='
            + self.authData.github.accessToken)
             .then(function(response){
               self.players = _.forEach(response.data, function(player){
@@ -54,46 +52,74 @@
           }); // END $http.get github repo stargazers
       });
 
+      this.errorMessage = null;
+
+      // Submit game result:
       this.addResults = function(){
+        console.log(self.gameresult);
         var timestamp = new Date().getTime();
         self.gameresult.createdOn = timestamp;
         self.gameresult.createdBy = self.authData.github.username;
-        var winner = self.gameresult.winner.login;
-        var winnerPic = self.gameresult.winner.avatar_url;
-        var loser = self.gameresult.loser.login;
-        var loserPic = self.gameresult.loser.avatar_url;
-        Restangular.all('gameresults').post(self.gameresult)
-          .then(function(result){
-            var jumanji = result.name;
-            Restangular.one('players', winner).get()
-              .then(function(gameWinner){
-                if (!gameWinner) {
-                  Submit.newPlayer(winner, winnerPic, jumanji, 1, 0);
-                } else {
-                  Submit.updatePlayer(winner, winnerPic, jumanji, gameWinner.wins,
-                    gameWinner.losses, gameWinner.gamesPlayed, 1, 0, 1);
-                }
-              });
-            Restangular.one('players', loser).get()
-              .then(function(gameLoser){
-                if (!gameLoser) {
-                  Submit.newPlayer(loser, loserPic, jumanji, 0, 1);
-                } else {
-                  Submit.updatePlayer(loser, loserPic, jumanji, gameLoser.wins,
-                    gameLoser.losses, gameLoser.gamesPlayed, 0, 1, 1);
-                }
-              });
-          });
-          self.gameresult = {
-            winner: '',
-            winnerScore: '',
-            loser: '',
-            loserScore: '',
-            summary: '',
-            createdOn: '',
-            createdBy: ''
-          };
-          $state.go('recentresults');
-      };
+        var winner = self.gameresult.winner;
+        _.find(self.players, function(player){
+          if (player.login === winner) {
+            self.gameresult.winnerAvatar = player.avatar_url;
+          }
+        });
+        var winnerPic = self.gameresult.winnerAvatar;
+        var loser = self.gameresult.loser;
+        _.find(self.players, function(player){
+          if (player.login === loser) {
+            self.gameresult.loserAvatar = player.avatar_url;
+          }
+        });
+        var loserPic = self.gameresult.loserAvatar;
+        var isPresent = _.find(self.players, function(player){
+          return player.login === self.gameresult.winner;
+        });
+        var isPresent2 = _.find(self.players, function(player){
+          return player.login === self.gameresult.loser;
+        });
+        if (self.gameresult.winner === self.gameresult.loser){
+          self.errorMessage = 'Winner and Loser cannot be the same player';
+          $('#errorMessage').modal('toggle');
+          return;
+        } else if (!isPresent || !isPresent2){
+          self.errorMessage = 'Username is not valid';
+          $('#errorMessage').modal('toggle');
+          return;
+        } else {
+          Restangular.all('gameresults').post(self.gameresult)
+            .then(function(result){
+              var jumanji = result.name;
+              Restangular.one('players', winner).get()
+                .then(function(gameWinner){
+                  if (!gameWinner) {
+                    Submit.newPlayer(winner, winnerPic, jumanji, 1, 0);
+                  } else {
+                    Submit.updatePlayer(winner, winnerPic, jumanji, gameWinner.wins,
+                      gameWinner.losses, gameWinner.gamesPlayed, 1, 0, 1);
+                  }
+                });
+              Restangular.one('players', loser).get()
+                .then(function(gameLoser){
+                  if (!gameLoser) {
+                    Submit.newPlayer(loser, loserPic, jumanji, 0, 1);
+                  } else {
+                    Submit.updatePlayer(loser, loserPic, jumanji, gameLoser.wins,
+                      gameLoser.losses, gameLoser.gamesPlayed, 0, 1, 1);
+                  }
+                });
+            });
+            self.gameresult = {
+              winner: '',
+              winnerScore: '',
+              loser: '',
+              loserScore: '',
+              summary: ''
+            };
+            $state.go('recentresults');
+        } // END if...else statement
+      }; // END submit game result method
     }); // END SubmitController
 })();
