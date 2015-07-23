@@ -62,7 +62,7 @@
       RestangularProvider.setRequestSuffix('.json');
     })
 
-    .controller('MainController', function(Auth, $state) {
+    .controller('MainController', function(Auth) {
       var self = this;
       this.auth = Auth.magicAuth;
       this.auth.$onAuth(function(authData){
