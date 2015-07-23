@@ -55,3 +55,19 @@
 </select> -->
   <option ng-repeat="player in submit.players" value="{{player.login}}" required></option>
 </datalist>
+<section id="errorMessage" class="modal fade" role="Confirmation Message">
+ <div class="modal-dialog">
+   <!-- Modal content-->
+   <div class="modal-content">
+     <div class="modal-header">
+       <h3 class="modal-title">You did something stoopid.</h3>
+     </div>
+     <div class="modal-body well" data-dismiss="modal">
+       <h5>{{submit.errorMessage}}</h5>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-danger btn-lg pull-right" data-dismiss="modal">Cancel</button>
+     </div>
+   </div>
+ </div>
+</section>

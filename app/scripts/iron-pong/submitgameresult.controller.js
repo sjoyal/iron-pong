@@ -1,4 +1,4 @@
-/* global angular _ */
+/* global angular _ $ */
 (function(){
   'use strict';
 
@@ -6,7 +6,6 @@
     .controller('SubmitController',
       function($state, $http, Auth, Submit, Restangular){
 
-      var alert;
       var self = this;
       this.players = [];
       this.gameresult = {
@@ -53,6 +52,8 @@
           }); // END $http.get github repo stargazers
       });
 
+      this.errorMessage = null;
+
       // Submit game result:
       this.addResults = function(){
         console.log(self.gameresult);
@@ -76,10 +77,17 @@
         var isPresent = _.find(self.players, function(player){
           return player.login === self.gameresult.winner;
         });
-        if (self.gameresult.winner === self.gameresult.loser) {
-          return alert('Winner and Loser cannot be the same player');
-        } else if (!isPresent){
-          return alert(self.gameresult.winner + ' is not a valid username');
+        var isPresent2 = _.find(self.players, function(player){
+          return player.login === self.gameresult.loser;
+        });
+        if (self.gameresult.winner === self.gameresult.loser){
+          self.errorMessage = 'Winner and Loser cannot be the same player';
+          $('#errorMessage').modal('toggle');
+          return;
+        } else if (!isPresent || !isPresent2){
+          self.errorMessage = 'Username is not valid';
+          $('#errorMessage').modal('toggle');
+          return;
         } else {
           Restangular.all('gameresults').post(self.gameresult)
             .then(function(result){
